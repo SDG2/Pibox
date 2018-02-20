@@ -1,7 +1,9 @@
 
 #include "piMusicBox_1.h"
 //TODO: PIN_PWM
-#define PIN_PWM 0
+#define PIN_PWM 6
+#define CANCION_ACABADA 1
+#define CANCION_NOACABADA 0;
 
 
 int frecuenciaDespacito[160] = {0,1175,1109,988,740,740,740,740,740,740,988,988,988,988,880,988,784,0,784,784,784,784,784,988,988,988,988,1109,1175,880,0,880,880,880,880,880,1175,1175,1175,1175,1318,1318,1109,0,1175,1109,988,740,740,740,740,740,740,988,988,988,988,880,988,784,0,784,784,784,784,784,988,988,988,988,1109,1175,880,0,880,880,880,880,880,1175,1175,1175,1175,1318,1318,1109,0,1480,1318,1480,1318,1480,1318,1480,1318,1480,1318,1480,1568,1568,1175,0,1175,1568,1568,1568,0,1568,1760,1568,1480,0,1480,1480,1480,1760,1568,1480,1318,659,659,659,659,659,659,659,659,554,587,1480,1318,1480,1318,1480,1318,1480,1318,1480,1318,1480,1568,1568,1175,0,1175,1568,1568,1568,1568,1760,1568,1480,0,1480,1480,1480,1760,1568,1480,1318};
@@ -55,14 +57,29 @@ void InicializaPlayer(TipoPlayer *p_player){
 	p_player->duracion_nota_actual = p_player->melodia->duraciones[0];
 }
 
-void ActualizaPlayer(TipoPlayer *p_player){
+int ActualizaPlayer(TipoPlayer *p_player){
 	p_player->posicion_nota_actual = (p_player->posicion_nota_actual)+1;
 	p_player->frecuencia_nota_actual = p_player->melodia->frecuencias[p_player->posicion_nota_actual];
 	p_player->duracion_nota_actual = p_player->melodia->frecuencias[p_player->posicion_nota_actual];
 	softToneWrite(PIN_PWM,p_player->frecuencia_nota_actual);
-	delay(p_player->duracion_nota_actual);
+
+#ifdef DEBUG
+#if DEBUG
+				 printf("Frecuencia %d, Duracion %d",p_player->frecuencia_nota_actual,p_player->duracion_nota_actual);
+#endif
+#endif
+					if(p_player->posicion_nota_actual == p_player->melodia->num_notas-1){
+						return CANCION_ACABADA;
+					}
+					return CANCION_NOACABADA;
+	//delay(p_player->duracion_nota_actual);
 }
 void StopPlayer(TipoPlayer *p_player){
+#ifdef DEBUG
+#if DEBUG
+				 printf("Cancion Acabada/PAUSADA");
+#endif
+#endif
 	softToneWrite(PIN_PWM,0);
 }
 //------------------------------------------------------
@@ -85,10 +102,12 @@ int systemSetup (void) {
 
 int main ()
 {
+	int final = 0;
 	int duracion;
 	char *nombre = "nombre";
 	TipoSistema* sistema = (TipoSistema*)malloc(sizeof(TipoSistema));
 	sistema->player.melodia = (TipoMelodia*) malloc(sizeof(TipoMelodia));
+	sistema->estado = WAIT_START;
 
 	// Configuracion e inicializacion del sistema
 	systemSetup();
@@ -114,29 +133,31 @@ int main ()
 			}
 			else if( sistema->estado == WAIT_END ) { // Cualquier nos devuelve al estado inicial...
 				// Descomente ambas lineas y sustituya cada etiqueta XXXXXXX por lo que corresponda en cada caso...
-				// XXXXXXX();
+				 StopPlayer(&sistema->player);
 				 sistema->estado = WAIT_START;
 #ifdef DEBUG
 #if DEBUG
 				 printf("Sistema Estado final");
 #endif
 #endif
-			}
-			else { // Si estamos jugando...
+			}else{ // Si estamos jugando...
 				switch(sistema->teclaPulsada) {
 					case 's':
 						// A completar por el alumno...
-						ActualizaPlayer(&sistema->player);
+
 #ifdef DEBUG
 #if DEBUG
 				 printf("Suena Melodia");
 #endif
 #endif
+				 final = ActualizaPlayer(&sistema->player);
+				 if(final == CANCION_ACABADA){
+					 sistema->estado = WAIT_END;
+				 }
 						break;
 
 					case 't':
-						// A completar por el alumno...
-
+						StopPlayer(&sistema->player);
 						break;
 
 					case 'q':
