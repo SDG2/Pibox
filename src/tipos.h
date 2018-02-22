@@ -1,44 +1,21 @@
 /*
- * piMusicBox_1.h
+ * tipos.h
  *
- *  Created on: 11 de sep. de 2017
- *      Author: FFM
+ *  Created on: 22 feb. 2018
+ *      Author: jcala
  */
 
-#ifndef PIMUSICBOX_1_H_
-#define PIMUSICBOX_1_H_
+#ifndef SRC_TIPOS_H_
+#define SRC_TIPOS_H_
 
-#ifdef DEBUG
-#undef DEBUG
-#endif
-
-#define DEBUG 1
-
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <wiringPi.h>
-#include <softTone.h>
-#include <string.h>
-
-#include "kbhit.h" // Para poder detectar teclas pulsadas sin bloqueo y leer las teclas pulsadas
-
-extern int frecuenciaDespacito[];
-extern int tiempoDespacito[];
-extern int frecuenciaGOT[];
-extern int tiempoGOT[];
-extern int frecuenciaTetris[];
-extern int tiempoTetris[];
-extern int frecuenciaStarwars[];
-extern int tiempoStarwars[];
-
-
+#include <stdint.h>
 
 #define MAX_NUM_TARJETAS	5
 #define MAX_NUM_NOTAS 		600
 #define MAX_NUM_CHAR_NOMBRE	100
 #define MAX_NUM_CHAR_UID	100
 
+//Estructuras
 typedef struct {
 	char* nombre; // String con el nombre de la melodia
 	int* frecuencias; // Array con las frecuencias de las notas de la melodia
@@ -75,13 +52,22 @@ typedef struct {
 
 	char uid_tarjeta_actual_string[MAX_NUM_CHAR_UID]; // Identificador de la tarjeta actual a modo de string de caracteres
 
+	TipoEstadosSistema estado; // Variable que almacena el estado actual del sistema
 
 	char teclaPulsada; // Variable que almacena la ultima tecla pulsada
 
 	int debug; // Variable que habilita o deshabilita la impresion de mensajes por salida estandar
 } TipoSistema;
 
-int InicializaMelodia (TipoMelodia *melodia, char *nombre, int *array_frecuencias, int *array_duraciones, int num_notas);
-int systemSetup (void);
+//Vatiables globales
+/*
+ * 0 ->	FLAG_PLAYER_START
+ * 1 -> FLAG_PLATER_STOP
+ * 2 ->	FLAG_PLAYER_END
+ * 3 -> FLAG_NOTA_TIMEOUT
+ * 4 -> FLAG_NOTA_END
+ * */
+uint8_t flags_fsm =0x00;
 
-#endif /* PIMUSICBOX_1_H_ */
+
+#endif /* SRC_TIPOS_H_ */
