@@ -15,6 +15,8 @@
 #define MAX_NUM_CHAR_NOMBRE	100
 #define MAX_NUM_CHAR_UID	100
 
+
+
 //Estructuras
 typedef struct {
 	char* nombre; // String con el nombre de la melodia
@@ -52,12 +54,12 @@ typedef struct {
 
 	char uid_tarjeta_actual_string[MAX_NUM_CHAR_UID]; // Identificador de la tarjeta actual a modo de string de caracteres
 
-	TipoEstadosSistema estado; // Variable que almacena el estado actual del sistema
-
 	char teclaPulsada; // Variable que almacena la ultima tecla pulsada
 
 	int debug; // Variable que habilita o deshabilita la impresion de mensajes por salida estandar
 } TipoSistema;
+
+
 
 //Vatiables globales
 /*
@@ -67,7 +69,18 @@ typedef struct {
  * 3 -> FLAG_NOTA_TIMEOUT
  * 4 -> FLAG_NOTA_END
  * */
-uint8_t flags_fsm =0x00;
+
+enum flag{
+	FLAG_PLAYER_START 	= 0x00,
+	FLAG_PLATER_STOP 	= 0x01,
+	FLAG_PLAYER_END 	= 0x02,
+	FLAG_NOTA_TIMEOUT 	= 0x03,
+	FLAG_QUIT			= 0x10
+
+};
+
+
+uint8_t flags_fsm =0xFF;
 
 
 #endif /* SRC_TIPOS_H_ */

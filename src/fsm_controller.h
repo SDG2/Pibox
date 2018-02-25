@@ -11,9 +11,12 @@
 
 #include <stdio.h>
 #include <wiringPi.h>
+#include <time.h>
 
 #include "fsm.h"
 #include "tipos.h"
+#include "defines.h"
+#include "timers.h"
 
 
 typedef enum{
@@ -27,11 +30,12 @@ typedef struct pibox_fsm{
 		TipoSistema* pibox;
 }pibox_fsm_t;
 
-//nevera_fsm_t* new_nevera_fsm(fsm_trans_t* nevera_transition_table);
-//int delete_nevera_fsm(nevera_fsm_t* nevera_fsm);
 
+timer_t* timerSound;
 
+/*prototipos*/
 
+fsm_t* getSoundFsm(int state, TipoSistema* user_data);
 
 
 #endif /* SRC_FSM_CONTROLLER_H_ */
