@@ -31,7 +31,7 @@ typedef struct pibox_fsm{
 		TipoSistema* pibox;
 }pibox_fsm_t;
 
-timer_t timerSound;
+
 
 /*prototipos*/
 

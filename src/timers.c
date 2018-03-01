@@ -9,7 +9,7 @@ timerState timerIdInit(timer_t *timerId, void* func){
 	se.sigev_value.sival_ptr = timerId; 
 	se.sigev_notify_function = func;
 	se.sigev_notify_attributes = NULL;
-	if(timer_create(CLOCK_REALTIME, &se, timerId)	==	-1)
+	if(timer_create(CLOCK_MONOTONIC, &se, timerId)	==	-1)
 		return STATUS_ERROR;
 	return STATUS_OK;
 

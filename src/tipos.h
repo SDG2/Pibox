@@ -45,17 +45,11 @@ typedef struct {
 	TipoPlayer player; // Reproductor de melodias
 
 	int num_tarjetas_activas; // Numero de tarjetas validas
-
 	TipoTarjeta tarjetas_activas[MAX_NUM_TARJETAS]; // Array con todas las tarjetas validas
-
 	//Uid uid_tarjeta_actual; // Identificador de la tarjeta actual (tipo de datos complejo definido en liberia control RFID)
-
 	int pos_tarjeta_actual; // Posicion de la tarjeta actual en el array de tarjetas validas
-
 	char uid_tarjeta_actual_string[MAX_NUM_CHAR_UID]; // Identificador de la tarjeta actual a modo de string de caracteres
-
 	char teclaPulsada; // Variable que almacena la ultima tecla pulsada
-
 	int debug; // Variable que habilita o deshabilita la impresion de mensajes por salida estandar
 } TipoSistema;
 

@@ -23,7 +23,8 @@ static void Final_Melodia(fsm_t* fsm);
 void UpdateTimeState();
 
 /* transition_table*/
-
+timer_t timerSound;
+timer_t timerSound2;
 fsm_trans_t transition_table[] = {
 		{WAIT_START, CompruebaPlayerStart,WAIT_NEXT,Iniciliza_player},
 		{WAIT_NEXT,Comprueba_nota_timeout,WAIT_END,Actualiza_player},
@@ -102,7 +103,8 @@ static int CompruebaFinalMelodia(fsm_t* fsm){
 
 static void Iniciliza_player(fsm_t* fsm){
 	pibox_fsm_t* pi_box_fsm = (pibox_fsm_t*)fsm;
-	pi_box_fsm->pibox =(TipoSistema*)pi_box_fsm->fsm.user_data;
+	pi_box_fsm->pibox =(TipoSistema*)fsm->user_data;
+	struct sigevent se;
 
 	pi_box_fsm->pibox->player.posicion_nota_actual 	= 0;
 	pi_box_fsm->pibox->player.frecuencia_nota_actual 	= pi_box_fsm->pibox->player.melodia->frecuencias[0];
@@ -112,7 +114,13 @@ static void Iniciliza_player(fsm_t* fsm){
 		printf("Inicia player");
 	#endif
 
-	timerIdInit(timerSound, UpdateTimeState);
+		se.sigev_notify = SIGEV_THREAD;
+		se.sigev_value.sival_ptr = &timerSound;
+		se.sigev_notify_function = UpdateTimeState;
+		se.sigev_notify_attributes = NULL;
+		if(timer_create(CLOCK_MONOTONIC, &se, &timerSound)	==	-1)
+			printf("funciono");
+		timerIdInit(&timerSound2,UpdateTimeState);
 }
 
 static void Actualiza_player(fsm_t* fsm){

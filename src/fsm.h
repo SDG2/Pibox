@@ -28,7 +28,7 @@ struct fsm_ {
 	void* user_data;
 };
 
-fsm_t* fsm_new (fsm_trans_t* tt);
+fsm_t* fsm_new (fsm_trans_t* tt,void* user_data);
 void fsm_fire (fsm_t* fsm);
 int fsm_delete(fsm_t* fsm);
 
