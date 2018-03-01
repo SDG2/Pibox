@@ -76,11 +76,8 @@ enum flag{
 	FLAG_PLAYER_END 	= 0x02,
 	FLAG_NOTA_TIMEOUT 	= 0x03,
 	FLAG_QUIT			= 0x10
-
 };
 
-
-uint8_t flags_fsm =0xFF;
-
+uint8_t flag_fsm;
 
 #endif /* SRC_TIPOS_H_ */

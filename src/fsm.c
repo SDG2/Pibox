@@ -8,7 +8,7 @@
 
 
 fsm_t* fsm_new (fsm_trans_t* tt){
-	fsm_t* new_fsm = (fsm_t*) malloc (sizeof (fsm_t));
+	fsm_t* new_fsm = (fsm_t*)malloc(sizeof (fsm_t));
 	new_fsm->tt = tt;
 	new_fsm->current_state = 0;
 	return new_fsm;

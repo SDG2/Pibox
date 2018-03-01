@@ -1,21 +1,21 @@
 /*
- * main.h
+ * fsm_controller.h
  *
- *  Created on: 22 feb. 2018
- *      Author: jcala
+ *  Created on: 1 mar. 2018
+ *      Author: Alejo
  */
 
 #ifndef SRC_FSM_CONTROLLER_H_
 #define SRC_FSM_CONTROLLER_H_
 
-
 #include <stdio.h>
 #include <wiringPi.h>
+#include <softTone.h>
 #include <time.h>
 
 #include "fsm.h"
-#include "tipos.h"
 #include "defines.h"
+#include "tipos.h"
 #include "timers.h"
 
 
@@ -25,17 +25,16 @@ typedef enum{
 	WAIT_END = 2
 }_state;
 
+
 typedef struct pibox_fsm{
 		fsm_t fsm;
 		TipoSistema* pibox;
 }pibox_fsm_t;
 
-
-timer_t* timerSound;
+timer_t timerSound;
 
 /*prototipos*/
 
-fsm_t* getSoundFsm(int state, TipoSistema* user_data);
-
+//fsm_t* getSoundFsm(int state, TipoSistema* user_data);
 
 #endif /* SRC_FSM_CONTROLLER_H_ */
