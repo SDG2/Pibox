@@ -1,7 +1,8 @@
 
 #include "fsm_controller.h"
+#include "tmr.h"
 
-
+//#define DEBUG
 /* private testing functions prototypes*/
 
 static int CompruebaPlayerStart(fsm_t* fsm);
@@ -20,17 +21,16 @@ static void Final_Melodia(fsm_t* fsm);
 
 /* Another private prototype*/
 
-void UpdateTimeState();
 
 /* transition_table*/
-timer_t timerSound;
-timer_t timerSound2;
+
+
 fsm_trans_t transition_table[] = {
 		{WAIT_START, CompruebaPlayerStart,WAIT_NEXT,Iniciliza_player},
 		{WAIT_NEXT,Comprueba_nota_timeout,WAIT_END,Actualiza_player},
 		{WAIT_NEXT,CompruebaPlayerStop,WAIT_START,Stop_Player},
-		{WAIT_END,CompruebaNuevaNota,WAIT_NEXT,Comienza_nueva_nota},
 		{WAIT_END,CompruebaFinalMelodia,WAIT_START,Final_Melodia},
+		{WAIT_END,CompruebaNuevaNota,WAIT_NEXT,Comienza_nueva_nota},
 		{-1, NULL, -1, NULL }
 };
 
@@ -43,28 +43,31 @@ fsm_trans_t transition_table[] = {
  *
  */
 static int CompruebaPlayerStart(fsm_t* fsm){
-	if(flag_fsm &~ FLAG_PLAYER_START){
-		return 0;
+	if(flag_fsm & FLAG_PLAYER_START){
+		return 1;
 	}
 	#ifdef DEBUG
 		printf("Cambio de WAIT_START a WAIT_NEXT");
 	#endif
-	return 1;
+	return 0;
 }
 
 static int Comprueba_nota_timeout(fsm_t* fsm){
-	if(flag_fsm &~ FLAG_NOTA_TIMEOUT){
-		return 0;
+
+	if(flag_fsm & FLAG_NOTA_TIMEOUT){
+		printf("LEO FLAG \n");
+		fflush(stdout);
+		return 1;
 	}
 	#ifdef DEBUG
 		printf("Cambio de WAIT_NEXT a WAIT_END");
 	#endif
-	return 1;
+	return 0;
 }
 
 
 static int CompruebaNuevaNota(fsm_t* fsm){
-	if(flag_fsm &~ FLAG_PLAYER_END){
+	if(flag_fsm & FLAG_PLAYER_END){
 		return 1;
 	}
 	#ifdef DEBUG
@@ -74,23 +77,23 @@ static int CompruebaNuevaNota(fsm_t* fsm){
 }
 
 static int CompruebaPlayerStop(fsm_t* fsm){
-	if((flag_fsm &~ FLAG_PLATER_STOP)){
-		return 0;
+	if((flag_fsm & FLAG_PLAYER_STOP)){
+		return 1;
 	}
 	#ifdef DEBUG
 		printf("Cambio de WAIT_NEXT a WAIT_START");
 	#endif
-	return 1;
+	return 0;
 }
 
 static int CompruebaFinalMelodia(fsm_t* fsm){
-	if(flag_fsm &~ FLAG_PLAYER_END){
-		return 0;
-	}
+	pibox_fsm_t* pi_box_fsm = (pibox_fsm_t*)fsm;
+	if( (flag_fsm & FLAG_PLAYER_STOP) && (pi_box_fsm->pibox->player.posicion_nota_actual ==	pi_box_fsm->pibox->player.melodia->num_notas -1) )
+		return 1;
 	#ifdef DEBUG
 		printf("Cambio de WAIT_END a WAIT_START");
 	#endif
-	return 1;
+	return 0;
 }
 
 
@@ -104,67 +107,66 @@ static int CompruebaFinalMelodia(fsm_t* fsm){
 static void Iniciliza_player(fsm_t* fsm){
 	pibox_fsm_t* pi_box_fsm = (pibox_fsm_t*)fsm;
 	pi_box_fsm->pibox =(TipoSistema*)fsm->user_data;
-	struct sigevent se;
-
+	printf("Inicio \n");
 	pi_box_fsm->pibox->player.posicion_nota_actual 	= 0;
-	pi_box_fsm->pibox->player.frecuencia_nota_actual 	= pi_box_fsm->pibox->player.melodia->frecuencias[0];
+	pi_box_fsm->pibox->player.frecuencia_nota_actual = pi_box_fsm->pibox->player.melodia->frecuencias[0];
 	pi_box_fsm->pibox->player.duracion_nota_actual 	= pi_box_fsm->pibox->player.melodia->duraciones[0];
 
+	//Inicio el Timer
+	tmr_startms(pi_box_fsm->pibox->timerSound,pi_box_fsm->pibox->player.duracion_nota_actual);
+	//Quito Flag de Stop si hubiese
+	if(flag_fsm & FLAG_PLAYER_STOP)
+		flag_fsm ^= FLAG_PLAYER_STOP;
 	#ifdef DEBUG
 		printf("Inicia player");
 	#endif
 
-		se.sigev_notify = SIGEV_THREAD;
-		se.sigev_value.sival_ptr = &timerSound;
-		se.sigev_notify_function = UpdateTimeState;
-		se.sigev_notify_attributes = NULL;
-		if(timer_create(CLOCK_MONOTONIC, &se, &timerSound)	==	-1)
-			printf("funciono");
-		timerIdInit(&timerSound2,UpdateTimeState);
 }
 
 static void Actualiza_player(fsm_t* fsm){
 	#ifdef DEBUG
 		printf("Actualiza player");
 	#endif
+
 	pibox_fsm_t* pi_box_fsm = (pibox_fsm_t*)fsm;
 	pi_box_fsm->pibox =(TipoSistema*)pi_box_fsm->fsm.user_data;
 	pi_box_fsm->pibox->player.posicion_nota_actual 	= (pi_box_fsm->pibox->player.posicion_nota_actual)+1;
-	pi_box_fsm->pibox->player.frecuencia_nota_actual 	= pi_box_fsm->pibox->player.melodia->frecuencias[ pi_box_fsm->pibox->player.posicion_nota_actual ];
-	pi_box_fsm->pibox->player.duracion_nota_actual 	= pi_box_fsm->pibox->player.melodia->duraciones[ pi_box_fsm->pibox->player.posicion_nota_actual] ;
-
-	flag_fsm = 0xFF;
-
-	if(pi_box_fsm->pibox->player.posicion_nota_actual	==	pi_box_fsm->pibox->player.melodia->num_notas -1 )
-		flag_fsm = FLAG_PLAYER_END;
+	pi_box_fsm->pibox->player.frecuencia_nota_actual 	= pi_box_fsm->pibox->player.melodia->frecuencias[pi_box_fsm->pibox->player.posicion_nota_actual];
+	pi_box_fsm->pibox->player.duracion_nota_actual 	= pi_box_fsm->pibox->player.melodia->duraciones[pi_box_fsm->pibox->player.posicion_nota_actual] ;
+	printf("Actualizo %d \n",(pi_box_fsm->pibox->player.posicion_nota_actual));
+	tmr_stop_tmp(pi_box_fsm->pibox->timerSound);
+	flag_fsm = FLAG_PLAYER_END;
 
 }
 static void Comienza_nueva_nota(fsm_t* fsm){
 	pibox_fsm_t* pi_box_fsm = (pibox_fsm_t*)fsm;
-	pi_box_fsm->pibox =(TipoSistema*)pi_box_fsm->fsm.user_data;
 	#ifdef DEBUG
 		printf("Comienza nota");
 	#endif
-	softToneWrite(PIN_PWM , pi_box_fsm->pibox->player.frecuencia_nota_actual);
-	timerIdStart(timerSound, pi_box_fsm->pibox->player.duracion_nota_actual);
+
+	printf("COMIENZA %d \n",(pi_box_fsm->pibox->player.posicion_nota_actual));
+	//softToneWrite(PIN_PWM , pi_box_fsm->pibox->player.frecuencia_nota_actual);
+	tmr_startms(pi_box_fsm->pibox->timerSound,pi_box_fsm->pibox->player.duracion_nota_actual);
 }
 
 
 static void Stop_Player(fsm_t* fsm){
-	softToneWrite(PIN_PWM,0);
-	timerIdStop(timerSound);
+	//softToneWrite(PIN_PWM,0);
+	printf("STOP PLAYER \n");
+	pibox_fsm_t* pi_box_fsm = (pibox_fsm_t*)fsm;
+	tmr_stop_tmp(pi_box_fsm->pibox->timerSound);
 }
 static void Final_Melodia(fsm_t* fsm){
-	timerIdStop(timerSound);
+	pibox_fsm_t* pi_box_fsm = (pibox_fsm_t*)fsm;
+	tmr_stop_tmp(pi_box_fsm->pibox->timerSound);
+	flag_fsm ^= FLAG_PLAYER_START;
+	//timerIdStop(timerSound);
 }
 
 
 
 
-void UpdateTimeState(){
-	flag_fsm = FLAG_NOTA_TIMEOUT;
-	timerIdStop(timerSound);
-}
+
 
 //
 

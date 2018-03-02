@@ -43,6 +43,6 @@ extern int tiempoStarwars[];
 
 int InicializaMelodia (TipoMelodia *melodia, char *nombre, int *array_frecuencias, int *array_duraciones, int num_notas);
 int systemSetup (void);
-void getUserOption();
+//void getUserOption();
 
 #endif /* PIMUSICBOX_1_H_ */

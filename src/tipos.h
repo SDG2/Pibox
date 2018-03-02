@@ -9,6 +9,7 @@
 #define SRC_TIPOS_H_
 
 #include <stdint.h>
+#include "tmr.h"
 
 #define MAX_NUM_TARJETAS	5
 #define MAX_NUM_NOTAS 		600
@@ -51,6 +52,7 @@ typedef struct {
 	char uid_tarjeta_actual_string[MAX_NUM_CHAR_UID]; // Identificador de la tarjeta actual a modo de string de caracteres
 	char teclaPulsada; // Variable que almacena la ultima tecla pulsada
 	int debug; // Variable que habilita o deshabilita la impresion de mensajes por salida estandar
+	tmr_t* timerSound;
 } TipoSistema;
 
 
@@ -64,14 +66,12 @@ typedef struct {
  * 4 -> FLAG_NOTA_END
  * */
 
-enum flag{
-	FLAG_PLAYER_START 	= 0x00,
-	FLAG_PLATER_STOP 	= 0x01,
-	FLAG_PLAYER_END 	= 0x02,
-	FLAG_NOTA_TIMEOUT 	= 0x03,
-	FLAG_QUIT			= 0x10
-};
+#define	FLAG_PLAYER_START 0x01
+#define	FLAG_PLAYER_STOP  0x02
+#define	FLAG_PLAYER_END   0x04
+#define	FLAG_NOTA_TIMEOUT 0x08
+#define	FLAG_QUIT	      0x10
 
-uint8_t flag_fsm;
+volatile uint8_t flag_fsm;
 
 #endif /* SRC_TIPOS_H_ */

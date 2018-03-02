@@ -1,5 +1,6 @@
 
 #include "piMusicBox_2.h"
+#include "tmr.h"
 
 extern fsm_trans_t  transition_table[];
 
@@ -13,7 +14,10 @@ int frecuenciaStarwars[59] = {523,0,523,0,523,0,698,0,1046,0,0,880,0,784,0,1397,
 int tiempoStarwars[59] = {134,134,134,134,134,134,536,134,536,134,134,134,134,134,134,536,134,402,134,134,429,357,134,134,134,134,536,134,402,134,134,429,357,134,134,134,134,536,134,402,134,134,429,357,134,134,134,429,357,1071,268,67,67,268,67,67,67,67,67};
 
 //Prototipado de funciones
-void getUserOption();
+//Callbacks
+extern void getUserOption();
+extern void UpdateTimeState();
+
 //------------------------------------------------------
 // void InicializaMelodia (TipoMelodia *melodia)
 //
@@ -33,7 +37,6 @@ void getUserOption();
 //
 //------------------------------------------------------
 int InicializaMelodia (TipoMelodia *melodia, char *nombre, int *array_frecuencias, int *array_duraciones, int num_notas) {
-
 	melodia->nombre = nombre;
 	melodia->duraciones = array_duraciones;
 	melodia->frecuencias = array_frecuencias;
@@ -53,8 +56,6 @@ int InicializaMelodia (TipoMelodia *melodia, char *nombre, int *array_frecuencia
 // configurar las interrupciones periódicas y sus correspondientes temporizadores,
 // crear, si fuese necesario, los threads adicionales que pueda requerir el sistema
 int systemSetup (void) {
-	// A completar por el alumno...
-	// ...
 	wiringPiSetupPhys();
 	softToneCreate(PIN_PWM);
 	return 0;
@@ -68,26 +69,23 @@ int main ()
 	fsm_t* sFsm;
 	int duracion;
 	char *nombre = "nombre";
-	char temp;
-	timer_t* keyTimer;
-	timer_t* keyTimer2;
+	tmr_t* keyTimer;
 
 	TipoSistema* sistema = (TipoSistema*)malloc(sizeof(TipoSistema));
 	sistema->player.melodia = (TipoMelodia*) malloc(sizeof(TipoMelodia));
-	keyTimer = (timer_t*)malloc(sizeof(timer_t));
-	keyTimer2 = (timer_t*)malloc(sizeof(timer_t));
-
+	sistema->timerSound = tmr_new(UpdateTimeState);
+	keyTimer = tmr_new(getUserOption);
 	// Configuracion e inicializacion del sistema
 	systemSetup();
-	flag_fsm = 0xFF;
-	timerIdInit(keyTimer, &getUserOption);
+	//Inicio Flags
+	flag_fsm = 0x00;
+	//Inicializo Timers
+	tmr_startms_period(keyTimer,100);
 	duracion = InicializaMelodia(sistema->player.melodia,nombre,frecuenciaDespacito,tiempoDespacito,160);
 	#ifdef DEBUG
 		printf("Sistema iniciado: Duracion %d",duracion);
 	#endif
-
 	sFsm = fsm_new(transition_table,sistema);
-	timerIdStart(keyTimer, 100);
 	printf("Welcome to piMusicBox! \n \t-Press 's' to start \n");
 	while (1) {
 		fsm_fire(sFsm);
@@ -95,25 +93,4 @@ int main ()
 }
 
 
-void getUserOption(){
-	char temp;
-	if(kbhit()) {
-		temp = kbread();
-		printf("Gestionado %c",temp);
-		switch(temp){
-			case 's':
-				flag_fsm = FLAG_PLAYER_START;
-				break;
-			case 't' :
-				flag_fsm = FLAG_PLATER_STOP;
-				break;
-			case 'q' :
-				flag_fsm = FLAG_QUIT;
-				break;
-			default:
-				printf("sorry, unknow option %c \n", temp);
-				break;
-		}
-	}
-}
 

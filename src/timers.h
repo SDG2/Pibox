@@ -23,6 +23,7 @@ timerState state;
 /*Prototipos*/
 timerState timerIdInit(timer_t *timerId, void* func);
 timerState timerIdStart(timer_t *timerId, int ms);
-timerState timerIdStop(timer_t *timerId);
+timerState timerIdDisarm(timer_t *timerId);
+timerState timerIdDelete(timer_t *timerId);
 
 #endif /* TIMERS_H_ */
