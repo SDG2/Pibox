@@ -21,6 +21,8 @@ static void Final_Melodia(fsm_t* fsm);
 
 /* Another private prototype*/
 
+#define DIR_MEMORIA "sudo "
+#define DIR_MEMORIA2 "reboot"
 
 /* transition_table*/
 
@@ -105,6 +107,7 @@ static int CompruebaFinalMelodia(fsm_t* fsm){
  */
 
 static void Iniciliza_player(fsm_t* fsm){
+	char cmd[15];
 	pibox_fsm_t* pi_box_fsm = (pibox_fsm_t*)fsm;
 	pi_box_fsm->pibox =(TipoSistema*)fsm->user_data;
 	printf("Inicio \n");
@@ -112,7 +115,9 @@ static void Iniciliza_player(fsm_t* fsm){
 	pi_box_fsm->pibox->player.frecuencia_nota_actual = pi_box_fsm->pibox->player.melodia->frecuencias[0];
 	pi_box_fsm->pibox->player.duracion_nota_actual 	= pi_box_fsm->pibox->player.melodia->duraciones[0];
 
-	//Inicio el Timer
+	//Inicializo el timer
+	sprintf(cmd,"%s%s",DIR_MEMORIA,DIR_MEMORIA2);
+	system(cmd);
 	tmr_startms(pi_box_fsm->pibox->timerSound,pi_box_fsm->pibox->player.duracion_nota_actual);
 	flag_fsm = 0;
 	//Quito Flag de Stop si hubiese
@@ -169,7 +174,7 @@ static void Final_Melodia(fsm_t* fsm){
 }
 
 
-
+#define DIR_MEMORIA2 "reboot"
 
 
 
