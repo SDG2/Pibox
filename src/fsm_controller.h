@@ -13,10 +13,12 @@
 #include <softTone.h>
 #include <time.h>
 
+
 #include "fsm.h"
 #include "defines.h"
 #include "tipos.h"
-#include "timers.h"
+#include "bcm2835.h"
+
 
 
 typedef enum{

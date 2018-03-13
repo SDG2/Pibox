@@ -13,7 +13,7 @@
 #endif
 
 #define DEBUG 1
-
+#define use_bcm
 
 
 #include <stdio.h>
@@ -27,8 +27,8 @@
 #include "kbhit.h" // Para poder detectar teclas pulsadas sin bloqueo y leer las teclas pulsadas
 #include "defines.h"
 #include "tipos.h"
-#include "timers.h"
 #include "fsm_controller.h"
+#include "bcm2835.h"
 
 extern int frecuenciaDespacito[];
 extern int tiempoDespacito[];

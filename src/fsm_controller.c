@@ -141,10 +141,9 @@ static void Actualiza_player(fsm_t* fsm){
 static void Comienza_nueva_nota(fsm_t* fsm){
 	pibox_fsm_t* pi_box_fsm = (pibox_fsm_t*)fsm;
 	#ifdef DEBUG
-		printf("Comienza nota");
+		printf("COMIENZA %d \n",(pi_box_fsm->pibox->player.posicion_nota_actual));
 	#endif
 
-	printf("COMIENZA %d \n",(pi_box_fsm->pibox->player.posicion_nota_actual));
 	//softToneWrite(PIN_PWM , pi_box_fsm->pibox->player.frecuencia_nota_actual);
 	tmr_startms(pi_box_fsm->pibox->timerSound,pi_box_fsm->pibox->player.duracion_nota_actual);
 }
@@ -160,7 +159,6 @@ static void Final_Melodia(fsm_t* fsm){
 	pibox_fsm_t* pi_box_fsm = (pibox_fsm_t*)fsm;
 	tmr_stop_tmp(pi_box_fsm->pibox->timerSound);
 	flag_fsm ^= FLAG_PLAYER_START;
-	//timerIdStop(timerSound);
 }
 
 
@@ -168,14 +166,6 @@ static void Final_Melodia(fsm_t* fsm){
 
 
 
-//
-
-/*fsm_t* getSoundFsm(int state, TipoSistema* user_data){
-	fsm_t* fsm = fsm_new(transition_table);
-	fsm->current_state = state;
-	fsm->user_data = user_data;
-	return fsm;
-}*/
 
 
 

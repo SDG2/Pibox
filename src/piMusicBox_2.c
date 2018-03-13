@@ -56,8 +56,17 @@ int InicializaMelodia (TipoMelodia *melodia, char *nombre, int *array_frecuencia
 // configurar las interrupciones periódicas y sus correspondientes temporizadores,
 // crear, si fuese necesario, los threads adicionales que pueda requerir el sistema
 int systemSetup (void) {
-	wiringPiSetupPhys();
-	softToneCreate(PIN_PWM);
+	#ifdef use_wiringPI
+		wiringPiSetupPhys();
+		softToneCreate(PIN_PWM);
+	#endif
+	#ifdef use_bcm
+		if(!bcm2835_init()){
+			printf("Failed!. Are you root? \n");
+			return 1;
+		}
+		tone_init(PIN_PWM);
+	#endif
 	return 0;
 }
 
