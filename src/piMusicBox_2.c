@@ -2,6 +2,10 @@
 #include "piMusicBox_2.h"
 #include "tmr.h"
 
+
+#define CLK_FMS 100
+
+
 extern fsm_trans_t  transition_table[];
 
 int frecuenciaDespacito[160] = {0,1175,1109,988,740,740,740,740,740,740,988,988,988,988,880,988,784,0,784,784,784,784,784,988,988,988,988,1109,1175,880,0,880,880,880,880,880,1175,1175,1175,1175,1318,1318,1109,0,1175,1109,988,740,740,740,740,740,740,988,988,988,988,880,988,784,0,784,784,784,784,784,988,988,988,988,1109,1175,880,0,880,880,880,880,880,1175,1175,1175,1175,1318,1318,1109,0,1480,1318,1480,1318,1480,1318,1480,1318,1480,1318,1480,1568,1568,1175,0,1175,1568,1568,1568,0,1568,1760,1568,1480,0,1480,1480,1480,1760,1568,1480,1318,659,659,659,659,659,659,659,659,554,587,1480,1318,1480,1318,1480,1318,1480,1318,1480,1318,1480,1568,1568,1175,0,1175,1568,1568,1568,1568,1760,1568,1480,0,1480,1480,1480,1760,1568,1480,1318};
@@ -17,6 +21,7 @@ int tiempoStarwars[59] = {134,134,134,134,134,134,536,134,536,134,134,134,134,13
 //Callbacks
 extern void getUserOption();
 extern void UpdateTimeState();
+void delay_until(unsigned int next);
 
 //------------------------------------------------------
 // void InicializaMelodia (TipoMelodia *melodia)
@@ -61,6 +66,12 @@ int systemSetup (void) {
 	return 0;
 }
 
+void delay_until(unsigned int next) {
+	unsigned int now = millis();
+	if (next > now) {
+		delay (next - now);
+    }
+}
 
 
 
@@ -70,6 +81,7 @@ int main ()
 	int duracion;
 	char *nombre = "nombre";
 	tmr_t* keyTimer;
+	unsigned int next;
 
 	TipoSistema* sistema = (TipoSistema*)malloc(sizeof(TipoSistema));
 	sistema->player.melodia = (TipoMelodia*) malloc(sizeof(TipoMelodia));
@@ -87,9 +99,14 @@ int main ()
 	#endif
 	sFsm = fsm_new(transition_table,sistema);
 	printf("Welcome to piMusicBox! \n \t-Press 's' to start \n");
+	next = millis();
 	while (1) {
 		fsm_fire(sFsm);
+		next += CLK_FMS;
+		delay_until(next);
 	}
+	fsm_delete(sFsm);
+	tmr_destroy(keyTimer);
 }
 
 
