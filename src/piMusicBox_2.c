@@ -2,10 +2,11 @@
 #include "piMusicBox_2.h"
 #include "tmr.h"
 
+//Fijacion del periodo de la tarea de tiempo real
+#define CLK_FMS 1
 
-#define CLK_FMS 100
 
-
+//Definicion de la tabla de transiciones
 extern fsm_trans_t  transition_table[];
 
 int frecuenciaDespacito[160] = {0,1175,1109,988,740,740,740,740,740,740,988,988,988,988,880,988,784,0,784,784,784,784,784,988,988,988,988,1109,1175,880,0,880,880,880,880,880,1175,1175,1175,1175,1318,1318,1109,0,1175,1109,988,740,740,740,740,740,740,988,988,988,988,880,988,784,0,784,784,784,784,784,988,988,988,988,1109,1175,880,0,880,880,880,880,880,1175,1175,1175,1175,1318,1318,1109,0,1480,1318,1480,1318,1480,1318,1480,1318,1480,1318,1480,1568,1568,1175,0,1175,1568,1568,1568,0,1568,1760,1568,1480,0,1480,1480,1480,1760,1568,1480,1318,659,659,659,659,659,659,659,659,554,587,1480,1318,1480,1318,1480,1318,1480,1318,1480,1318,1480,1568,1568,1175,0,1175,1568,1568,1568,1568,1760,1568,1480,0,1480,1480,1480,1760,1568,1480,1318};
@@ -61,8 +62,17 @@ int InicializaMelodia (TipoMelodia *melodia, char *nombre, int *array_frecuencia
 // configurar las interrupciones periódicas y sus correspondientes temporizadores,
 // crear, si fuese necesario, los threads adicionales que pueda requerir el sistema
 int systemSetup (void) {
-	wiringPiSetupPhys();
-	softToneCreate(PIN_PWM);
+	#ifdef use_wiringPI
+		wiringPiSetupPhys();
+		softToneCreate(PIN_PWM);
+	#endif
+	#ifdef use_bcm
+		if(!bcm2835_init()){
+			printf("Failed!. Are you root? \n");
+			return 1;
+		}
+		tone_init(PIN_PWM);
+	#endif
 	return 0;
 }
 
@@ -92,8 +102,8 @@ int main ()
 	//Inicio Flags
 	flag_fsm = 0x00;
 	//Inicializo Timers
-	tmr_startms_period(keyTimer,100);
-	duracion = InicializaMelodia(sistema->player.melodia,nombre,frecuenciaDespacito,tiempoDespacito,160);
+	tmr_startms_period(keyTimer,200);
+	duracion = InicializaMelodia(sistema->player.melodia,nombre,frecuenciaDespacito,tiempoDespacito,15);
 	#ifdef DEBUG
 		printf("Sistema iniciado: Duracion %d",duracion);
 	#endif
@@ -105,6 +115,7 @@ int main ()
 		next += CLK_FMS;
 		delay_until(next);
 	}
+	tmr_destroy(sistema->timerSound);
 	fsm_delete(sFsm);
 	tmr_destroy(keyTimer);
 }

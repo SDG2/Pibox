@@ -46,6 +46,14 @@ void tmr_startms_period(tmr_t* this, int ms){
 	    timer_settime (this->timerid, 0, &(this->spec), NULL);
 }
 
+void tmr_startus_period(tmr_t* this, int us){
+		this->spec.it_value.tv_sec = us;
+	    this->spec.it_value.tv_nsec = 0;
+	    this->spec.it_interval.tv_sec = us;
+	    this->spec.it_interval.tv_nsec = 0;
+	    timer_settime (this->timerid, 0, &(this->spec), NULL);
+}
+
 void tmr_startms(tmr_t* this, int ms) {
 		this->spec.it_value.tv_sec = ms / 1000;
 		this->spec.it_value.tv_nsec = (ms % 1000) * 1000000;
@@ -53,24 +61,54 @@ void tmr_startms(tmr_t* this, int ms) {
 		this->spec.it_interval.tv_nsec = 0;
 		timer_settime (this->timerid, 0, &(this->spec), NULL);
 }
-
+/* tmr_stop_tmp
+ * Para el timer pasado como parametro sin destruirlo
+ * @param
+ * 		tmr_t* this -> Timer que se quiere parar
+ * @return
+ * 		None
+ *
+ */
 void tmr_stop_tmp(tmr_t* this){
 	tmr_startms(this, 0);
 }
 
 void tmr_stop (tmr_t* this) {
-    timer_delete (this->timerid);
+    timer_delete(this->timerid);
 }
 
 //CallBack timers
+/*
+ * UpdateTimeState
+ * Funcion de callback del timer que gestiona la duracion de las notas
+ * Cambia flag_fsm poniendo a 1 FLAG_NOTA_TIMEOUT
+ * @param
+ * 		None
+ * @return
+ * 		None
+ *
+ */
 
 void UpdateTimeState(){
 	flag_fsm |= FLAG_NOTA_TIMEOUT;
+	int tst = millis();
+	printf("Fin Nota Millis: %d \n",tst);
 }
 
+/*
+ * getUserOption
+ * Funcion de callback del timer que gestiona la captura de teclas
+ * Registra los cambios en flag_fsm
+ * @param
+ * 		None
+ * @return
+ * 		None
+ *
+ */
 
 void getUserOption(){
 	char temp;
+	int time;
 	if(kbhit()){
 		temp = kbread();
 		printf("Gestionado %c",temp);
@@ -89,4 +127,6 @@ void getUserOption(){
 				break;
 		}
 	}
+	//time = millis();
+	//printf("/**************** \n %d \n *************\ \n",time);
 }

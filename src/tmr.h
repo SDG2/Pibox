@@ -27,5 +27,6 @@ void tmr_startms(tmr_t* this, int ms);
 void tmr_startms_period(tmr_t* this, int ms);
 void tmr_stop_tmp(tmr_t* this);
 void tmr_stop (tmr_t* this);
+void tmr_startus_period(tmr_t* this, int us);
 
 #endif /* TMR_H_ */

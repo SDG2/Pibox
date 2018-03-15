@@ -18,7 +18,6 @@
 #define MAX_NUM_CHAR_UID	100
 
 
-
 //Estructuras
 typedef struct {
 	char* nombre; // String con el nombre de la melodia

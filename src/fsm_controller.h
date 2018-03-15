@@ -13,10 +13,12 @@
 #include <softTone.h>
 #include <time.h>
 
+
 #include "fsm.h"
 #include "defines.h"
 #include "tipos.h"
-#include "timers.h"
+//#include "bcm2835.h"
+
 
 
 typedef enum{
@@ -25,7 +27,10 @@ typedef enum{
 	WAIT_END = 2
 }_state;
 
-
+/*
+ * Tipo que hereda del propio de la maquina de estados,
+ * para una mejor gestion de la maquina de estados
+ * */
 typedef struct pibox_fsm{
 		fsm_t fsm;
 		TipoSistema* pibox;
