@@ -13,7 +13,6 @@
 #endif
 
 #define DEBUG 1
-#define use_bcm
 
 
 #include <stdio.h>

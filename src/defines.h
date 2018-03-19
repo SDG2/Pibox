@@ -16,8 +16,21 @@
  * */
 //Necesario para funcionar con BCM
 #define bcm_spi
-#define PIN_PWM 12
+
+
 #define CANCION_ACABADA 1
 #define CANCION_NOACABADA 0;
+
+#define use_bcm
+
+#ifdef use_wiringPI
+	#define PIN_PWM 12
+#else
+	#define PIN_PWM 18
+#endif
+
+
+
+
 
 #endif /* SRC_DEFINES_H_ */

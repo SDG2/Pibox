@@ -15,9 +15,9 @@
 #define RANGE 1024
 #define PWM_FREQ_BASE 1920000
 
-extern void tone_init(uint8_t pin);
+extern void tone_init(uint8_t P) ;
 extern void tone_write(uint32_t freq);
-extern void tone_stop(void);
+extern void tone_stop(void) ;
 void toggle();
 
 #endif /* SRC_TONE_H_ */

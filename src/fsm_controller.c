@@ -6,7 +6,6 @@
 #include <softTone.h>
 #include <wiringPi.h>
 
-#define use_wiringPI
 
 //#define DEBUG
 /* private testing functions prototypes*/
@@ -266,7 +265,7 @@ void parar_melodia(){
 	softToneWrite(PIN_PWM ,0);
 #endif
 #ifdef use_bcm
-	tone_stop();
+	tone_write(0);
 #endif
 }
 

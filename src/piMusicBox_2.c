@@ -103,7 +103,7 @@ int main ()
 	flag_fsm = 0x00;
 	//Inicializo Timers
 	tmr_startms_period(keyTimer,200);
-	duracion = InicializaMelodia(sistema->player.melodia,nombre,frecuenciaDespacito,tiempoDespacito,15);
+	duracion = InicializaMelodia(sistema->player.melodia,nombre,frecuenciaGOT,tiempoGOT,518);
 	#ifdef DEBUG
 		printf("Sistema iniciado: Duracion %d",duracion);
 	#endif
