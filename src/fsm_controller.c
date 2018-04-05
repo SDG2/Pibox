@@ -11,16 +11,16 @@
 /* private testing functions prototypes*/
 
 static int CompruebaPlayerStart(fsm_t* fsm);
-static int Comprueba_nota_timeout(fsm_t* fsm);
-static int CompruebaNuevaNota(fsm_t* fsm);
+static int Comprueba_mitad(fsm_t* fsm);
+static int _Comprueba_final_de_melodia(fsm_t* fsm);
 static int CompruebaPlayerStop(fsm_t* fsm);
 static int CompruebaFinalMelodia(fsm_t* fsm);
 
 /*private output functions prototypes*/
 
 static void Iniciliza_player(fsm_t* fsm);
-static void Actualiza_player(fsm_t* fsm);
-static void Comienza_nueva_nota(fsm_t* fsm);
+static void Carga_buffer(fsm_t* fsm);
+static void No_hago_nada(fsm_t* fsm);
 static void Stop_Player(fsm_t* fsm);
 static void Final_Melodia(fsm_t* fsm);
 
@@ -35,11 +35,11 @@ void inicia_nota(uint32_t freq);
 
 /* transition_table*/
 fsm_trans_t transition_table[] = {
-		{WAIT_START, CompruebaPlayerStart,WAIT_NEXT,Iniciliza_player},
-		{WAIT_NEXT,Comprueba_nota_timeout,WAIT_END,Actualiza_player},
-		{WAIT_NEXT,CompruebaPlayerStop,WAIT_START,Stop_Player},
+		{WAIT_START, CompruebaPlayerStart,WAIT_MITAD,Iniciliza_player},
+		{WAIT_MITAD,Comprueba_mitad,WAIT_END,Carga_buffer},
+		{WAIT_MITAD,CompruebaPlayerStop,WAIT_START,Stop_Player},
 		{WAIT_END,CompruebaFinalMelodia,WAIT_START,Final_Melodia},
-		{WAIT_END,CompruebaNuevaNota,WAIT_NEXT,Comienza_nueva_nota},
+		{WAIT_END,_Comprueba_final_de_melodia,WAIT_MITAD,No_hago_nada},
 		{-1, NULL, -1, NULL }
 };
 
@@ -61,7 +61,7 @@ static int CompruebaPlayerStart(fsm_t* fsm){
 	return 0;
 }
 
-static int Comprueba_nota_timeout(fsm_t* fsm){
+static int Comprueba_mitad(fsm_t* fsm){
 
 	if(flag_fsm & FLAG_NOTA_TIMEOUT){
 		printf("LEO FLAG \n");
@@ -75,7 +75,7 @@ static int Comprueba_nota_timeout(fsm_t* fsm){
 }
 
 
-static int CompruebaNuevaNota(fsm_t* fsm){
+static int _Comprueba_final_de_melodia(fsm_t* fsm){
 	if(!(flag_fsm & FLAG_PLAYER_END)){
 		return 1;
 	}
@@ -141,7 +141,7 @@ static void Iniciliza_player(fsm_t* fsm){
 	#endif
 }
 /*
- * Actualiza_player
+ * Carga_buffer
  * Si no ha acabado la canción carga la nota siguiente en
  * tipo player, si ha acabado, pone FLAG_PLAYER_END a 1 en flag_fsm.
  * Resetea siempre FLAG_NOTA_TIMEOUT
@@ -151,7 +151,7 @@ static void Iniciliza_player(fsm_t* fsm){
  * 		None
  *
  */
-static void Actualiza_player(fsm_t* fsm){
+static void Carga_buffer(fsm_t* fsm){
 	#ifdef DEBUG
 		printf("Actualiza player");
 	#endif
@@ -184,7 +184,7 @@ static void Actualiza_player(fsm_t* fsm){
  *
  */
 
-static void Comienza_nueva_nota(fsm_t* fsm){
+static void No_hago_nada(fsm_t* fsm){
 	pibox_fsm_t* pi_box_fsm = (pibox_fsm_t*)fsm;
 	#ifdef DEBUG
 		printf("COMIENZA %d \n",(pi_box_fsm->pibox->player.posicion_nota_actual));

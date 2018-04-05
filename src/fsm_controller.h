@@ -23,7 +23,7 @@
 
 typedef enum{
 	WAIT_START = 0,
-	WAIT_NEXT = 1,
+	WAIT_MITAD = 1,
 	WAIT_END = 2
 }_state;
 
@@ -31,6 +31,7 @@ typedef enum{
  * Tipo que hereda del propio de la maquina de estados,
  * para una mejor gestion de la maquina de estados
  * */
+
 typedef struct pibox_fsm{
 		fsm_t fsm;
 		TipoSistema* pibox;

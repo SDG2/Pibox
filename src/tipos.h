@@ -74,4 +74,13 @@ typedef struct {
 
 volatile uint8_t flag_fsm;
 
+
+#define FLAG_DAC_START	 0x01
+#define	FLAG_DAC_STOP  	 0x02
+#define FLAG_DAC_HALF_0  0x03
+#define FLAG_DAC_HALF_1  0x04
+#define FLAG_DAC_HALF___	 0x08
+
+volatile uint8_t flag_dac;
+
 #endif /* SRC_TIPOS_H_ */
