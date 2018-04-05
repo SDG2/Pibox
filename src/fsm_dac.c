@@ -28,7 +28,7 @@ void InitDac(fsm_t* fsm);
 void CleanData(fsm_t* fsm);
 
 fsm_trans_t transition_table[] = {
-		{PARADO, CompruebaStart ,MANDA,InitDac},
+		{PARADO,CompruebaStart,MANDA,InitDac},
 		{MANDA,CompruebaStop,PARADO,CleanData},
 		{MANDA ,CompruebaMitad,MANDA,SendData},
 		{-1, NULL, -1, NULL }
