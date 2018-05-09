@@ -12,7 +12,7 @@
 
 //Testing
 #include  "dbcontroller.h"
-
+#include <sqlite3.h>
 void callback(int event);
 
 extern fsm_trans_t transition_table_polla[];
@@ -24,10 +24,12 @@ void func(void* data){
 }
 
 int main(void){
+	char* song_name = NULL;
 	printf("Hola Funciono");
-	sqlite3* db = load_db("test.db");
-	create_tables_db(db);
-	check_db(db);
+	sqlite3* db = db_load("dbtest/test.db");
+	db_get_song_name(db,5,song_name);
+	db_close(db);
+	while(1);
 	return 0;
 //	pthread_attr_t tattr;
 //	pthread_t thread;
