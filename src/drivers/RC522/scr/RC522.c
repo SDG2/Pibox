@@ -7,18 +7,17 @@
 
 
 #include "RC522.h"
-#include <stdio.h>
 
 const uint8_t antenna_Gain[] = {18, 23, 18, 23, 33,38,43,48};
 
 Status_t RC522_Init(void) {
 	Status_t state = STATUS_OK;
 	#ifdef SPI_DEV
-	printf("Setup: %d \n",wiringPiSPISetup(spidev0, DEFAULT_SPEED));
+	 printf("Setup: %d \n",wiringPiSPISetup(spidev0, DEFAULT_SPEED));
 
 	#endif
     #ifdef bcm_spi
-	state = bcm_spi_init();
+	 state = bcm_spi_init();
 	#endif
 
 	RC522_Reset();
@@ -29,6 +28,7 @@ Status_t RC522_Init(void) {
 	RC522_WriteRegister(MFRC522_REG_T_RELOAD_H, 0);
 
 	RC522_WriteRegister(MFRC522_REG_RF_CFG, 0x70);
+
 	RC522_WriteRegister(MFRC522_REG_TX_AUTO, 0x40);
 	RC522_WriteRegister(MFRC522_REG_MODE, 0x3D);
 
@@ -40,7 +40,6 @@ Status_t RC522_Init(void) {
 
 Status_t RC522_Check(uint8_t* id) {
 	Status_t status;
-
 	status = RC522_Request(PICC_REQIDL, id);
 	if (status == STATUS_OK) {
 		status = RC522_Anticoll(id);
@@ -55,7 +54,7 @@ Status_t RC522_Check(uint8_t* id) {
 
 void RC522_WriteRegister(uint8_t addr, uint8_t val) {
 	uint8_t buffer[2];
-	uint32_t len = 2;
+
 	#ifdef SPI_DEV
 		buffer[0] = (addr << 1) & 0x7E;
 		buffer[1] = val;
@@ -64,13 +63,12 @@ void RC522_WriteRegister(uint8_t addr, uint8_t val) {
 	#ifdef bcm_spi
 		buffer[0] = (addr << 1) & 0x7E;
 		buffer[1] = val;
-		bcm2835_spi_transfern((char *)buffer, len);
+		bcm2835_spi_transfern(buffer, 2);
 	#endif
 }
 
 
 uint8_t RC522_ReadRegister(uint8_t addr) {
-	uint32_t len = 2;
 	uint8_t buffer[2];
 	buffer[0]= ((addr << 1) & 0x7E) | 0x80;
 	buffer[1]= 0x00;
@@ -78,7 +76,7 @@ uint8_t RC522_ReadRegister(uint8_t addr) {
 		wiringPiSPIDataRW(spidev0, buffer, 2);
 	#endif
 	#ifdef bcm_spi
-		bcm2835_spi_transfern((char *)buffer, len);
+		bcm2835_spi_transfern(buffer, 2);
 	#endif
 	return buffer[1];
 }

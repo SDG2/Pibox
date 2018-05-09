@@ -21,6 +21,7 @@
 #include <softTone.h>
 #include <string.h>
 #include <time.h>
+#include <portaudio.h>
 
 
 #include "kbhit.h" // Para poder detectar teclas pulsadas sin bloqueo y leer las teclas pulsadas

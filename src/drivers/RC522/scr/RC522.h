@@ -16,7 +16,7 @@
 #include "wiringPi.h"
 #include "wiringPiSPI.h"
 #include "bcm2835.h"
-#include "../../../defines.h"
+#include "defines.h"
 
 /*defines*/
 

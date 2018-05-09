@@ -22,9 +22,9 @@
 
 
 typedef enum{
-	WAIT_START = 0,
-	WAIT_NEXT = 1,
-	WAIT_END = 2
+	//WAIT_START,
+	WAIT_NEXT ,
+	WAIT_END
 }_state;
 
 /*

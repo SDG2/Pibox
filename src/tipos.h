@@ -72,6 +72,15 @@ typedef struct {
 #define	FLAG_NOTA_TIMEOUT 0x08
 #define	FLAG_QUIT	      0x10
 
+
+#define FLAG_BFF1_END 0x01
+#define FLAG_BFF2_END 0x02
+#define FLAG_END 0x04
+#define FLAG_START 0x08
+
 volatile uint8_t flag_fsm;
+volatile  uint8_t flags_player ;
+volatile  uint8_t flag_rfid;
+
 
 #endif /* SRC_TIPOS_H_ */
