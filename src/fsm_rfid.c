@@ -74,7 +74,7 @@ void CancelaReproduccion(fsm_t* fsm){
 	unlock(0);
 }
 void CompruebaTarjeta(fsm_t* fsm){
-	//interrup
+
 }
 void FinalizaReproduccion(fsm_t* fsm){
 	lock(0);
