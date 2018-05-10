@@ -81,6 +81,7 @@ typedef struct {
 volatile uint8_t flag_fsm;
 volatile  uint8_t flags_player ;
 volatile  uint8_t flag_rfid;
-
+volatile uint8_t stepper_irq_flag;
+volatile char* song_name;
 
 #endif /* SRC_TIPOS_H_ */

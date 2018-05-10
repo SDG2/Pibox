@@ -24,11 +24,7 @@ void func(void* data){
 }
 
 int main(void){
-	char* song_name = NULL;
 	printf("Hola Funciono");
-	sqlite3* db = db_load("KK.db");
-	db_get_song_name(db,5,song_name);
-	db_close(db);
 	pthread_attr_t tattr;
 	pthread_t thread;
 	fsm_audio_controller_t* sFsm = (fsm_audio_controller_t*)malloc(sizeof(fsm_audio_controller_t));
@@ -59,12 +55,6 @@ int main(void){
 	pthread_create(&thread,&tattr, func, sFsm);
 	//func();
 	menu_lcd_init();
-	while (1){
-		menu_lcd_display("hola","esto","funciona","de puta madre");
-		delay(1000);
-		menu_lcd_display_clear();
-		delay(1000);
-	}
 	attachIsr(18, CHANGE, NULL, callback);
 	launchRFID();
 	while(1);

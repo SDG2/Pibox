@@ -171,6 +171,7 @@ void carga_bff1(fsm_t* userData) {
 
 
 void Final_Melodia(fsm_t* userData) {
+	printf("Final de la melodia \n");
 	flags_player = 0;
 	 Pa_StopStream( stream );
 }

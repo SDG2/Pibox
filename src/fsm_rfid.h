@@ -14,18 +14,26 @@
 #include "RC522.h"
 
 uint8_t UUID[16];
+typedef struct list_files{
+	int num_files;
+	int current_file;
+	char** name_file;
+}list_files_t;
 
 enum flags_rfid{
 	FLAG_SYSTEM_STARTn = 0x01,
 	FLAG_CARD_IN = 0x02,
 	FLAG_VALID_CARD =0x04,
-	FLAG_SYSTEM_END =0x08
+	FLAG_SYSTEM_END =0x08,
+	FLAG_CARD_EXIST = 0x10
 };
 enum rfid_states{
 	WAIT_START,
 	WAIT_PLAY ,
 	WAIT_CARD ,
-	WAIT_CHECK
+	WAIT_CHECK,
+	WAIT_CONFIG,
+	WAIT_DATA
 };
 
 

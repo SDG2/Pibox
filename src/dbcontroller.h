@@ -19,6 +19,6 @@ enum SQL_RESOLUTION{
 sqlite3* db_load(char* file_dir);
 int db_check(sqlite3* db);
 int db_insert(sqlite3* db,int user_id,char* song_name);
-int db_get_song_name(sqlite3* db,int user_id,char* song_name);
+char* db_get_song_name(sqlite3* db,int user_id);
 void db_close(sqlite3* db);
 #endif /* DBCONTROLLER_H_ */
