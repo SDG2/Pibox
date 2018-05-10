@@ -78,10 +78,13 @@ typedef struct {
 #define FLAG_END 0x04
 #define FLAG_START 0x08
 
+#define FLAG_IRQ_STEPPER_CONTINUE 0x01
+#define	FLAG_IRQ_STEPPER_SELECT	0x02
+
 volatile uint8_t flag_fsm;
 volatile  uint8_t flags_player ;
 volatile  uint8_t flag_rfid;
 volatile uint8_t stepper_irq_flag;
 volatile char* song_name;
-
+volatile int num_file;
 #endif /* SRC_TIPOS_H_ */

@@ -24,8 +24,6 @@ static int TarjetaExiste(fsm_t* fsm);
 static int TarjetaConfigurada(fsm_t* fsm);
 
 int UUID_2_int();
-char* get_list_files(char* route);
-void clean_list_files(char* list_files);
 
 fsm_trans_t transition_table_rfid[] = {
 		{WAIT_START, CompruebaComienzo,WAIT_CARD,ComienzaSistema},
@@ -162,20 +160,21 @@ void BuscaTarjeta(fsm_t* fsm){
 void ConfiguraTarjeta(fsm_t* fsm){
 	printf("Configuración de Tarjeta \n");
 	menu_lcd_display("Gire el Stepper","Para configurar","la tarjeta",":D");
-	while(!(stepper_irq_flag & FLAG_IRQ_STEPPER_CONTINUE))
+	list_files_t* lista =  get_list_files("/");
+	while(!(stepper_irq_flag & FLAG_IRQ_STEPPER_CONTINUE));
 	stepper_irq_flag = 1;
 	while(!(stepper_irq_flag & FLAG_IRQ_STEPPER_SELECT)){
 		menu_display_stepper_plus(lista);
 		while(!(stepper_irq_flag & FLAG_IRQ_STEPPER_CONTINUE));
 	}
 	sqlite3* db = db_load(DB_NAME);
-//	db_insert(db,UUID_2_int(),"pene.mp3");
+	db_insert(db,UUID_2_int(),lista->name_file[num_file]);
 	db_close(db);
 }
 
 void ConfiguracionCorrecta(fsm_t* fsm){
 	printf("Configuracion Correcta \n");
-	//menu_lcd_display("Configuracion","Finalizada","d","d");
+	menu_lcd_display("Configuracion","Finalizada",":D",":D");
 }
 
 void killRFID(){
