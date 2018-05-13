@@ -8,6 +8,12 @@
 #ifndef SRC_FSM_RFID_H_
 #define SRC_FSM_RFID_H_
 
+
+
+#include <stdio.h>
+#include <pthread.h>
+#include <sched.h>
+
 #include "fsm.h"
 #include "defines.h"
 #include "tipos.h"

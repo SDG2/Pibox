@@ -49,43 +49,32 @@ void loop(void* userData){
 void attachIsr(uint8_t PIN, uint8_t ISREvent, void* handdle, void* userData ){
     printf("Entro");
     fflush(stdout);
-//    if (!bcm2835_init())
-//        return ;
+    if (!bcm2835_init())
+    	return ;
     // Set RPI pin P1-15 to be an input
-    fflush(stdout);
     bcm2835_gpio_fsel(PIN, BCM2835_GPIO_FSEL_INPT);
     //  with a pullup
     bcm2835_gpio_set_pud(PIN, BCM2835_GPIO_PUD_UP);
     // And a low detect enable
+    pthread_t thread;
     ISR_Typ_* interrupt = (ISR_Typ_*)malloc(sizeof(ISR_Typ_));
     interrupt->callback = userData;
     interrupt->event = ISREvent;
     interrupt->pin = PIN;
-//    switch(ISREvent){
-//
-//    case RISING_EDGE:
-//    	bcm2835_gpio_ren(PIN);
-//    	break;
-//    case FALLIN_EDGE:
-//      	bcm2835_gpio_fen(PIN);
-//      	break;
-//    case HIGH_DETECT:
-//      	bcm2835_gpio_hen(PIN);
-//      	break;
-//    case LOW_DETECT:
-//      	bcm2835_gpio_len(PIN);
-//      	break;
-//    case CHANGE:
-//      	bcm2835_gpio_ren(PIN);
-//      	bcm2835_gpio_fen(PIN);
-//      	break;
-//
-//    default:
-//    	break;
-//    }
+
     printf("Entro");
     fflush(stdout);
+    if(threads[PIN] != 0){
+    	printf("Error, has been created yet! \n");
+    	return;
+    }
     pthread_create(&thread,0x00, loop, interrupt);
+    threads[PIN] = thread;
 
+}
+void deleteIsr(uint8_t PIN){
+    pthread_cancel (threads [PIN]) ;
+    pthread_join   (threads [PIN], NULL) ;
+    threads [PIN] = 0 ;
 }
 

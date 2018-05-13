@@ -15,7 +15,7 @@
 
 typedef void (*call_back) (int);
 
-pthread_t thread;
+pthread_t threads[64];
 
 typedef struct ISR_Typ{
 	uint8_t pin;
@@ -34,5 +34,6 @@ enum event
 
 uint8_t atachPin;
 void attachIsr(uint8_t PIN, uint8_t ISREvent, void* handdle, void* userData );
+void deleteIsr(uint8_t PIN);
 
 #endif /* INTERRUPTSM_H_ */

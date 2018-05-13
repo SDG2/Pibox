@@ -13,6 +13,9 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
+#include <pthread.h>
+#include <sched.h>
+
 #include "mad.h"
 #include "portaudio.h"
 
@@ -50,10 +53,7 @@ typedef struct fsm_audio_controller{
 	BUFFERS_T* buffer;
 }fsm_audio_controller_t;
 
-
-
-
-
+void launchPlayer();
 
 
 #endif /* SRC_PLAYER_H_ */

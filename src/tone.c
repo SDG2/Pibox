@@ -7,13 +7,9 @@
 
 
 #include "tone.h"
-#include <stdio.h>
-#include <pthread.h>
-#include <sched.h>
 
+void toggle();
 
-#define	MAX_PINS	64
-#define	PULSE_TIME	100
 
 /*
  * WIP -> Funcion que emula la funcionalidad de Softtone
@@ -21,10 +17,10 @@
  *
  * */
 
-//thrad asociado a cada pin inicializado.
+//thread asociado
 static pthread_t pwm_thread;
 
-//Frecuencia asociada a cada pim
+//Frecuencia asociada
 static uint32_t  pin_freq;
 
 volatile uint8_t PIN;

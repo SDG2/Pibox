@@ -70,12 +70,10 @@ void lcd_byte(int bits, int mode) {
 	// High bits
 	st = bcm2835_i2c_read_register_rs(&bits_high,&datab ,1);
 	lcd_toggle_enable(bits_high);
-	state(st);
 
 	// Low bits
 	st = bcm2835_i2c_read_register_rs(&bits_low,&datab ,1);
 	lcd_toggle_enable(bits_low);
-	state(st);
 }
 
 void lcd_toggle_enable(int bits) {
@@ -83,11 +81,9 @@ void lcd_toggle_enable(int bits) {
 	bcm2835_delayMicroseconds(500);
 	uint8_t tmp = (bits | ENABLE);
 	st= bcm2835_i2c_read_register_rs(&tmp ,&datab ,1);
-	state(st);
 	bcm2835_delayMicroseconds(500);
 	tmp = (bits & ~ENABLE);
 	st = bcm2835_i2c_read_register_rs(&tmp,&datab ,1);
-	state(st);
 	bcm2835_delayMicroseconds(500);
 }
 

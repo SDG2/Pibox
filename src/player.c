@@ -24,7 +24,10 @@ void Iniciliza_player(fsm_t* userData);
 void carga_bff1(fsm_t* userData);
 void carga_bff2(fsm_t* userData);
 BUFFERS_T* new_buffer(void);
-void Final_Melodia(fsm_t* userData) ;
+void Final_Melodia(fsm_t* userData);
+void func(void* data);
+
+
 struct mad_stream mad_stream;
 struct mad_frame mad_frame;
 struct mad_synth mad_synth;
@@ -42,7 +45,6 @@ fsm_trans_t transition_table_polla[] = {
 		{ -1, NULL,-1, NULL } };
 
 static int CompruebaPlayerStart(fsm_t* userData) {
-	//printf("\t --Falh %d \n",flags_player);
 	lock(1);
 	int result = flags_player & FLAG_START;
 	unlock(1);
@@ -50,6 +52,7 @@ static int CompruebaPlayerStart(fsm_t* userData) {
 }
 
 static int Comprueba_fin_bff2(fsm_t* userData) {
+
 	lock(1);
 	int result = (flags_player & FLAG_BFF2_END)
 			&& ~(flags_player & FLAG_END);
@@ -66,6 +69,7 @@ static int Comprueba_fin_bff1(fsm_t* userData) {
 }
 
 static int CompruebaFinal(fsm_t* userData) {
+
 	lock(1);
 	int result = (flags_player & FLAG_END);
 	unlock(1);
@@ -91,20 +95,12 @@ void Iniciliza_player(fsm_t* userData) {
 		return;
 	}
 
-	char *input_stream = mmap(0, metadata.st_size, PROT_READ, MAP_SHARED, fd,
-			0);
+	const unsigned char *input_stream = mmap(0, metadata.st_size, PROT_READ, MAP_SHARED, fd, 0);
 	mad_stream_buffer(&mad_stream, input_stream, metadata.st_size);
 
 	//CARGAMOS - PROCESAMOS BFF1
-	if (mad_frame_decode(&mad_frame, &mad_stream)) {
-//		if (MAD_RECOVERABLE(mad_stream.error)) {
-//
-//		} else if (mad_stream.error == MAD_ERROR_BUFLEN) {
-//			continue;
-//		} else {
-//			break;
-//		}
-	}
+	mad_frame_decode(&mad_frame, &mad_stream);
+
 	// Synthesize PCM data of frame
 	mad_synth_frame(&mad_synth, &mad_frame);
 	output(&mad_synth.pcm, data->buffer, 0);
@@ -137,7 +133,6 @@ void Iniciliza_player(fsm_t* userData) {
 	               patestCallback,
 	               data->buffer);
 	Pa_StartStream(stream);
-
 	return;
 
 	error:
@@ -151,6 +146,7 @@ void Iniciliza_player(fsm_t* userData) {
 
 
 void carga_bff2(fsm_t* userData) {
+
 	fsm_audio_controller_t* data = (fsm_audio_controller_t*) userData;
 	flags_player&=~FLAG_BFF2_END;
 	mad_frame_decode(&mad_frame, &mad_stream);
@@ -202,26 +198,6 @@ void output(struct mad_pcm *pcm, BUFFERS_T* buffer, uint8_t cbuff) {
 }
 
 
-//void output(struct mad_pcm *pcm, BUFFERS_T* buffer, uint8_t cbuff) {
-//	register int nsamples = pcm->length;
-//	mad_fixed_t const *left_ch = pcm->samples[0], *right_ch = pcm->samples[1];
-//	int i = 0;
-//	while (nsamples--) {
-//		signed int sample_l, sample_r;
-//		sample_l =scale(*left_ch++);
-//		sample_r =scale(*right_ch++);
-//		if (cbuff == 0)
-//			*(buffer->buff1_l+i) =(((sample_l& 0xFFFF)<< 16) | (sample_r & 0xFFFF));
-//		else
-//			*(buffer->buff2_l+i) =(((sample_l& 0xFFFF) << 16) | (sample_r & 0xFFFF));
-//
-//		i++;
-//	}
-//
-//}
-
-
-
 static int patestCallback( const void *inputBuffer, void *outputBuffer,
                             unsigned long framesPerBuffer,
                             const PaStreamCallbackTimeInfo* timeInfo,
@@ -267,46 +243,6 @@ static int patestCallback( const void *inputBuffer, void *outputBuffer,
 
 }
 
-//static int patestCallback( const void *inputBuffer, void *outputBuffer,
-//                            unsigned long framesPerBuffer,
-//                            const PaStreamCallbackTimeInfo* timeInfo,
-//                            PaStreamCallbackFlags statusFlags,
-//                            void *userData )
-//{
-//	BUFFERS_T* buffer =(BUFFERS_T*) userData;
-//	int *out = (int*)outputBuffer;
-//	    unsigned long i;
-//
-//	    (void) timeInfo; /* Prevent unused variable warnings. */
-//	    (void) statusFlags;
-//	    (void) inputBuffer;
-//	    if(buffer->currentBuffer == 1){
-//	    	buffer->currentBuffer = 0;
-//	    	lock(1);
-//	    	buffer->flags |= FLAG_BFF2_END;
-//	    	unlock(1);
-//	    }else{
-//	    	buffer->currentBuffer = 1;
-//	    	lock(1);
-//	    	buffer->flags |= FLAG_BFF1_END;
-//	    	unlock(1);
-//	    }
-//	    for( i=0; i<framesPerBuffer; i++ )
-//	    {
-//
-//	    	if(buffer->currentBuffer == 0){
-//	    		*out++ = *(buffer->buff1_l +i);
-//	    	}
-//			else{
-//				*out++ = *(buffer->buff2_l +i);
-//			}
-//
-//	    }
-//	    buffer->sampleReaded++;
-//
-//	    return paContinue;
-//
-//}
 
 BUFFERS_T* new_buffer(void){
 	BUFFERS_T* new  = (BUFFERS_T*)malloc(sizeof(BUFFERS_T));
@@ -321,9 +257,7 @@ BUFFERS_T* new_buffer(void){
 	return new;
 }
 
-static inline
-
-signed int scale(mad_fixed_t sample)
+static inline signed int scale(mad_fixed_t sample) // @suppress("Unused static function")
 {
   /* round */
   sample += (1L << (MAD_F_FRACBITS - 16));
@@ -336,6 +270,34 @@ signed int scale(mad_fixed_t sample)
 
   /* quantize */
   return sample >> (MAD_F_FRACBITS + 1 - 16);
+}
+
+void launchPlayer(){
+	pthread_attr_t tattr;
+	pthread_t thread;
+	fsm_audio_controller_t* sFsm = (fsm_audio_controller_t*)malloc(sizeof(fsm_audio_controller_t));
+	sFsm->fsm = fsm_new(transition_table_polla,NULL);
+	int newprio = 99;
+	struct sched_param param;
+	/* initialized with default attributes */
+	pthread_attr_init (&tattr);
+
+	/* safe to get existing scheduling param */
+	pthread_attr_getschedparam (&tattr, &param);
+
+	/* set the priority; others are unchanged */
+	param.sched_priority = newprio;
+
+	/* setting the new scheduling param */
+	pthread_attr_setschedparam (&tattr, &param);
+	pthread_create(&thread,&tattr, func, sFsm);
+
+}
+void func(void* data){
+	fsm_audio_controller_t* sFsm = (fsm_audio_controller_t*)data;
+	while (1) {
+			fsm_fire(sFsm->fsm);
+	}
 }
 
 
