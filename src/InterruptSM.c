@@ -9,8 +9,8 @@
 #include "bcm2835.h"
 #include "poll.h"
 
-#define THRESHOLD_HIGH 30
-#define THRESHOLD_LOW  20
+#define THRESHOLD_HIGH 12
+#define THRESHOLD_LOW  7
 
 
 
@@ -21,17 +21,17 @@ void loop(void* userData){
 	int contador = 0;
 	int last_val = 0;
 	while(1){
-		if(contador == 40){
+		if(contador == 20){
 			if(suma >= THRESHOLD_HIGH){
 				if(last_val == 0 && (ptr->event == FALLIN_EDGE || ptr->event == CHANGE)){
-					printf("Rising \n");
+					//printf("Rising \n");
 					ptr->callback(RISING_EDGE);
 				}
 				last_val = 1;
 			}else if(suma <= THRESHOLD_LOW){
 				if(last_val == 1 && (ptr->event == RISING_EDGE || ptr->event == CHANGE)){
 					ptr->callback(FALLIN_EDGE);
-					printf("Falling \n");
+					//printf("Falling \n");
 				}
 				last_val = 0;
 			}
@@ -41,7 +41,6 @@ void loop(void* userData){
 		}
 		suma += bcm2835_gpio_lev(pin);
 		contador++;
-		delay(5);
 	}
 
 }
@@ -58,6 +57,23 @@ void attachIsr(uint8_t PIN, uint8_t ISREvent, void* handdle, void* userData ){
     // And a low detect enable
     pthread_t thread;
     ISR_Typ_* interrupt = (ISR_Typ_*)malloc(sizeof(ISR_Typ_));
+
+    pthread_attr_t tattr;
+    int newprio = 90;
+    struct sched_param param;
+    	/* initialized with default attributes */
+    pthread_attr_init (&tattr);
+
+    	/* safe to get existing scheduling param */
+    pthread_attr_getschedparam (&tattr, &param);
+
+    	/* set the priority; others are unchanged */
+    param.sched_priority = newprio;
+
+    /* setting the new scheduling param */
+    pthread_attr_setschedparam (&tattr, &param);
+
+
     interrupt->callback = userData;
     interrupt->event = ISREvent;
     interrupt->pin = PIN;
@@ -68,7 +84,7 @@ void attachIsr(uint8_t PIN, uint8_t ISREvent, void* handdle, void* userData ){
     	printf("Error, has been created yet! \n");
     	return;
     }
-    pthread_create(&thread,0x00, loop, interrupt);
+    pthread_create(&thread,&tattr, loop, interrupt);
     threads[PIN] = thread;
 
 }

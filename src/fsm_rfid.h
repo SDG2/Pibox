@@ -23,6 +23,7 @@ uint8_t UUID[16];
 typedef struct list_files{
 	int num_files;
 	int current_file;
+	int select_file;
 	char** name_file;
 }list_files_t;
 

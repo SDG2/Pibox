@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <dirent.h>
 #include <sqlite3.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 #include "dbcontroller.h"
@@ -33,6 +35,7 @@ void menu_display_stepper_plus(list_files_t* lista);
 char* get_next_file(list_files_t* lista);
 list_files_t* get_list_files(char* route);
 list_files_t* new_list_files(int num_files);
+int get_number_files(char* route);
 
 
 fsm_trans_t transition_table_rfid[] = {
@@ -43,22 +46,21 @@ fsm_trans_t transition_table_rfid[] = {
 		{WAIT_CHECK,TarjetaValida,WAIT_DATA,BuscaTarjeta},
 		{WAIT_DATA,TarjetaNoExiste,WAIT_PLAY,ConfiguraTarjeta},
 		{WAIT_DATA,TarjetaExiste,WAIT_PLAY,ComienzaReproduccion},
-		{WAIT_CHECK,TarjetaValida,WAIT_PLAY,ComienzaReproduccion},
 		{WAIT_PLAY,TarjetaDisponible,WAIT_PLAY,CompruebaTarjeta},
 		{WAIT_PLAY,TarjetaNoDisponible,WAIT_START,CancelaReproduccion},
 		{WAIT_PLAY,CompruebaFinalReproduccion,WAIT_START,FinalizaReproduccion},
 		{-1, NULL, -1, NULL }
 };
 
-//static int TarjetaConfigurada(fsm_t* fsm){
-//	return 1;
-//}
+static int TarjetaConfigurada(fsm_t* fsm){
+	return 1;
+}
 
 static int TarjetaNoExiste(fsm_t* fsm){
 	lock(0);
 	uint8_t tmp =  !(flag_rfid & FLAG_CARD_EXIST);
 	unlock(0);
-	printf("Tarjeta No Existe flag %d \n",flag_rfid);
+	//printf("Tarjeta No Existe flag %d \n",flag_rfid);
 	return tmp;
 }
 
@@ -66,7 +68,7 @@ static int TarjetaExiste(fsm_t* fsm){
 	lock(0);
 	uint8_t tmp = (flag_rfid & FLAG_CARD_EXIST);
 	unlock(0);
-	printf("Tarjeta Existe flag %d \n",flag_rfid);
+	//printf("Tarjeta Existe flag %d \n",flag_rfid);
 	return tmp;
 }
 
@@ -129,6 +131,8 @@ void FinalizaReproduccion(fsm_t* fsm){
 	unlock(0);
 }
 void ComienzaSistema(fsm_t* fsm){
+	printf("Arranca el RFID");
+	fflush(stdout);
 	if(RC522_Init() == STATUS_ERROR)
 		printf("ERROR! \n");
 	flag_rfid = 0;
@@ -166,24 +170,38 @@ void BuscaTarjeta(fsm_t* fsm){
 }
 
 void ConfiguraTarjeta(fsm_t* fsm){
+
+	printf("DATA -> PLAY \n");
 	printf("Configuración de Tarjeta \n");
-	menu_lcd_display("Gire el Stepper","Para configurar","la tarjeta",":D");
-	/*BORRART ESTO*/
-	sqlite3* db = db_load(DB_NAME);
-	db_insert(db,UUID_2_int(),"pene.mp3");
-	db_close(db);
+	menu_lcd_display("Gire","Para configurar","la tarjeta",":D");
 
-	/********************************/
-
+	uint8_t state = 0;
+	stepper_irq_flag = 0;
 	list_files_t* lista =  get_list_files("./");
 	while(!(stepper_irq_flag & FLAG_IRQ_STEPPER_CONTINUE)); //es bloqueante!
-	stepper_irq_flag = 1;
+	stepper_irq_flag = 0;
+	menu_display_stepper_plus(lista);
 	while(!(stepper_irq_flag & FLAG_IRQ_STEPPER_SELECT)){
-		menu_display_stepper_plus(lista);
-		while(!(stepper_irq_flag & FLAG_IRQ_STEPPER_CONTINUE));
+		lock(7);
+		if(stepper_irq_flag & FLAG_IRQ_STEPPER_CONTINUE){
+			lista->select_file++;
+			if(lista->select_file > lista->num_files){
+				lista->select_file = 1;
+			}
+			stepper_irq_flag &= ~FLAG_IRQ_STEPPER_CONTINUE;
+			state = 1;
+			printf("Fichero %d",lista->select_file);
+			fflush(stdout);
+		}
+		unlock(7);
+		if(lista->select_file%4 == 0 && state){
+			menu_display_stepper_plus(lista);
+			state = 0;
+		}
 	}
 
-	db_insert(db,UUID_2_int(),lista->name_file[num_file]);
+	sqlite3* db = db_load(DB_NAME);
+	db_insert(db,UUID_2_int(),lista->name_file[lista->select_file-1]);
 	db_close(db);
 }
 
@@ -197,32 +215,37 @@ void killRFID(){
 }
 
 void menu_display_stepper_plus(list_files_t* lista){
+	menu_lcd_display_clear();
 	menu_lcd_display(get_next_file(lista),get_next_file(lista),get_next_file(lista),get_next_file(lista));
 }
+
 
 list_files_t* get_list_files(char* route){
 	DIR *dir;
 	struct dirent *ent;
 	list_files_t* lista;
-
+	int num_files = get_number_files(route);
+	printf("nfiles = %d \n", num_files);
+	lista = new_list_files(num_files);
 	int i = 0;
-	if ((dir = opendir (route)) != NULL) {
-	  /* print all the files and directories within directory */
-		ent = readdir (dir);
-		lista = new_list_files(ent->d_reclen);
-		for(i= 0; i < ent->d_reclen ; i++) {
+ 	if ((dir = opendir (route)) != NULL) {
+ 	  /* print all the files and directories within directory */
+ 	  while ((ent = readdir (dir)) != NULL) {
+ 		 if (ent->d_type == DT_REG) {
 			printf ("%s\n", ent->d_name);
-			strcpy(lista->name_file[i],ent->d_name);
-		}
-		closedir(dir);
-	} else {
-		printf("Error no se puede abrir el directorio");
-	}
+			strcpy(lista->name_file[i++],ent->d_name);
+ 		 }
+ 	  }
+ 	  closedir(dir);
+ 	} else {
+ 		printf("Error no se puede abrir el directorio");
+}
+ 	printf("all ok \n");
 	return lista;
 }
 
 char* get_next_file(list_files_t* lista){
-	if(lista->current_file < lista->num_files)
+	if(lista->current_file < lista->num_files-1)
 		return lista->name_file[lista->current_file++];
 	lista->current_file = 0;
 	return lista->name_file[lista->current_file++];
@@ -236,7 +259,7 @@ int get_number_files(char* route){
 	DIR * dirp;
 	struct dirent * entry;
 
-	dirp = opendir("path"); /* There should be error handling after this */
+	dirp = opendir(route); /* There should be error handling after this */
 	while ((entry = readdir(dirp)) != NULL) {
 	    if (entry->d_type == DT_REG) { /* If the entry is a regular file */
 	         file_count++;
@@ -250,7 +273,8 @@ list_files_t* new_list_files(int num_files){
 	int i = 0;
 	list_files_t* lista = (list_files_t*)malloc(sizeof(list_files_t));
 	lista->num_files = num_files;
-	lista->current_file = 0;
+	lista->current_file = 1;
+	lista->select_file = 0;
 	lista->name_file = (char**)malloc(sizeof(char*)*num_files);
 	for(i = 0; i < num_files; i++){
 		lista->name_file[i] = (char*)malloc(sizeof(char*)*20);
@@ -266,7 +290,6 @@ void clean_list_files(list_files_t* lista){
 	free(lista->name_file);
 	free(lista);
 }
-
 
 int UUID_2_int(){
 	int id;

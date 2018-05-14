@@ -57,15 +57,31 @@ void menu_lcd_display_clear(){
 }
 
 void menu_lcd_display(char* line1,char* line2,char* line3, char* line4){
-	if(!LINES_LENGTH_VALID(line1,line2,line3,line4)){
-		printf("Error, una de las lineas es demasiado larga");
-		return;
+//	if(!LINES_LENGTH_VALID(line1,line2,line3,line4)){
+//		printf("Error, una de las lineas es demasiado larga");
+//		return;
+//	}
+//	strcpy(current_screen->line1,line1);
+//	strcpy(current_screen->line2,line2);
+//	strcpy(current_screen->line3,line3);
+//	strcpy(current_screen->line4,line4);
+//	write_lines();
+	if (line1 != NULL) {
+		lcdLoc(LINE1);
+		typeln(line1);
 	}
-	strcpy(current_screen->line1,line1);
-	strcpy(current_screen->line2,line2);
-	strcpy(current_screen->line3,line3);
-	strcpy(current_screen->line4,line4);
-	write_lines();
+	if (line2 != NULL) {
+		lcdLoc(LINE2);
+		typeln(line2);
+	}
+	if (line3 != NULL) {
+		lcdLoc(LINE3);
+		typeln(line3);
+	}
+	if (line4 != NULL) {
+		lcdLoc(LINE4);
+		typeln(line4);
+	}
 }
 
 

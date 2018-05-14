@@ -34,6 +34,7 @@
 
 #define FLAG_IRQ_STEPPER_CONTINUE 0x01
 #define	FLAG_IRQ_STEPPER_SELECT	0x02
+#define FLAG_IRQ_STEPPER_DIR 0x04 //0-> izq 1-> der
 
 volatile uint8_t flag_fsm;
 volatile  uint8_t flags_player ;
