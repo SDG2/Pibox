@@ -19,7 +19,7 @@
 #include "defines.h"
 
 /*defines*/
-
+//
 /*SPI*/
 //devs
 #define  spidev0 					0

@@ -58,22 +58,6 @@ void attachIsr(uint8_t PIN, uint8_t ISREvent, void* handdle, void* userData ){
     pthread_t thread;
     ISR_Typ_* interrupt = (ISR_Typ_*)malloc(sizeof(ISR_Typ_));
 
-    pthread_attr_t tattr;
-    int newprio = 90;
-    struct sched_param param;
-    	/* initialized with default attributes */
-    pthread_attr_init (&tattr);
-
-    	/* safe to get existing scheduling param */
-    pthread_attr_getschedparam (&tattr, &param);
-
-    	/* set the priority; others are unchanged */
-    param.sched_priority = newprio;
-
-    /* setting the new scheduling param */
-    pthread_attr_setschedparam (&tattr, &param);
-
-
     interrupt->callback = userData;
     interrupt->event = ISREvent;
     interrupt->pin = PIN;
@@ -84,7 +68,7 @@ void attachIsr(uint8_t PIN, uint8_t ISREvent, void* handdle, void* userData ){
     	printf("Error, has been created yet! \n");
     	return;
     }
-    pthread_create(&thread,&tattr, loop, interrupt);
+    pthread_create(&thread,NULL, loop, interrupt);
     threads[PIN] = thread;
 
 }

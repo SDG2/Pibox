@@ -7,6 +7,7 @@
 
 #include "player.h"
 #include "mutex.h"
+#include <string.h>
 
 
 static inline signed int scale(mad_fixed_t sample);
@@ -35,6 +36,7 @@ struct mad_synth mad_synth;
 PaStreamParameters outputParameters;
 PaStream *stream;
 PaError err;
+FILE *fp;
 
 fsm_trans_t transition_table_polla[] = {
 		{ WAIT_BEGIN, CompruebaPlayerStart, WAIT_BFF1, Iniciliza_player },
@@ -81,8 +83,12 @@ void Iniciliza_player(fsm_t* userData) {
 	data->buffer = new_buffer();
 	flags_player&=~FLAG_START;
 
-	char* filename = "pene.mp3";
-	FILE *fp = fopen(filename, "r");
+	char filename[64] = "./musica/";
+	strcat(filename, song_name);
+	printf("full path: %s \n", filename);
+
+
+	fp = fopen(filename, "r");
 	int fd = fileno(fp);
 
 	struct stat metadata;
@@ -170,6 +176,12 @@ void Final_Melodia(fsm_t* userData) {
 	printf("Final de la melodia \n");
 	flags_player = 0;
 	 Pa_StopStream( stream );
+	 fclose(fp);
+
+	 // Free MAD structs
+	 mad_synth_finish(&mad_synth);
+	 mad_frame_finish(&mad_frame);
+	 mad_stream_finish(&mad_stream);
 }
 
 

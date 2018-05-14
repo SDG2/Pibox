@@ -19,12 +19,13 @@
 #include "mutex.h"
 #include "menu_lcd.h"
 
+
 #define DB_NAME "COMO_TE_SALGA.db"
 
 
 
 void ConfiguraTarjeta(fsm_t* fsm);
-void ConfiguracionCorrecta(fsm_t* fsm);
+void ConfiguracionCorrecta();
 void BuscaTarjeta(fsm_t* fsm);
 static int TarjetaNoExiste(fsm_t* fsm);
 static int TarjetaExiste(fsm_t* fsm);
@@ -36,7 +37,7 @@ char* get_next_file(list_files_t* lista);
 list_files_t* get_list_files(char* route);
 list_files_t* new_list_files(int num_files);
 int get_number_files(char* route);
-
+char* UUID_2_string();
 
 fsm_trans_t transition_table_rfid[] = {
 		{WAIT_START, CompruebaComienzo,WAIT_CARD,ComienzaSistema},
@@ -106,8 +107,12 @@ void DescartaTarjeta(fsm_t* fsm){
 void LeerTarjeta(fsm_t* fsm){
 	if(RC522_Check(UUID) == STATUS_OK){
 		printf("FOUND TAG! \n");
+		fflush(stdout);
 		flag_rfid |= FLAG_VALID_CARD;
+		printf("----------->%s \n", UUID_2_string());
+		fflush(stdout);
 	}
+
 }
 void ComienzaReproduccion(fsm_t* fsm){
 	fflush(stdout);
@@ -132,6 +137,8 @@ void FinalizaReproduccion(fsm_t* fsm){
 }
 void ComienzaSistema(fsm_t* fsm){
 	printf("Arranca el RFID");
+	menu_lcd_display_clear(),
+	menu_lcd_display("PiMusicBox Player!","","","");
 	fflush(stdout);
 	if(RC522_Init() == STATUS_ERROR)
 		printf("ERROR! \n");
@@ -156,7 +163,7 @@ void BuscaTarjeta(fsm_t* fsm){
 	song_name = db_get_song_name(db,UUID_2_int());
 	printf("SALGO \n");
 	delay(10);
-	printf("PENE: %s",song_name);
+	printf("SongName: %s",song_name);
 	fflush(stdout);
 	if(song_name == NULL){
 		unlock(5);
@@ -166,6 +173,7 @@ void BuscaTarjeta(fsm_t* fsm){
 	}
 	unlock(5);
 	flag_rfid |= FLAG_CARD_EXIST;
+	menu_lcd_display("","Playing: ", song_name,"");
 	db_close(db);
 }
 
@@ -173,12 +181,12 @@ void ConfiguraTarjeta(fsm_t* fsm){
 
 	printf("DATA -> PLAY \n");
 	printf("Configuración de Tarjeta \n");
-	menu_lcd_display("Gire","Para configurar","la tarjeta",":D");
+	menu_lcd_display("NOT CONFIGURED!","turn to ","configure",":D");
 
-	uint8_t state = 0;
+
 	stepper_irq_flag = 0;
-	list_files_t* lista =  get_list_files("./");
-	while(!(stepper_irq_flag & FLAG_IRQ_STEPPER_CONTINUE)); //es bloqueante!
+	list_files_t* lista =  get_list_files("./musica");
+	while(!(stepper_irq_flag & FLAG_IRQ_STEPPER_CONTINUE));
 	stepper_irq_flag = 0;
 	menu_display_stepper_plus(lista);
 	while(!(stepper_irq_flag & FLAG_IRQ_STEPPER_SELECT)){
@@ -188,35 +196,48 @@ void ConfiguraTarjeta(fsm_t* fsm){
 			if(lista->select_file > lista->num_files){
 				lista->select_file = 1;
 			}
+			menu_display_stepper_plus(lista);
 			stepper_irq_flag &= ~FLAG_IRQ_STEPPER_CONTINUE;
 			state = 1;
 			printf("Fichero %d",lista->select_file);
 			fflush(stdout);
 		}
 		unlock(7);
-		if(lista->select_file%4 == 0 && state){
-			menu_display_stepper_plus(lista);
-			state = 0;
-		}
 	}
 
 	sqlite3* db = db_load(DB_NAME);
-	db_insert(db,UUID_2_int(),lista->name_file[lista->select_file-1]);
+	db_insert(db,UUID_2_int(),lista->name_file[lista->current_file-1]);
+	ConfiguracionCorrecta();
 	db_close(db);
 }
 
-void ConfiguracionCorrecta(fsm_t* fsm){
+void ConfiguracionCorrecta(){
 	printf("Configuracion Correcta \n");
-	menu_lcd_display("Configuracion","Finalizada",":D",":D");
+	menu_lcd_display_clear();
+	menu_lcd_display("Finalizado!"," Retire la","tarjeta",":D");
 }
 
 void killRFID(){
-
+	pthread_cancel (thread) ;
+	pthread_join   (thread, NULL) ;
 }
+
+
 
 void menu_display_stepper_plus(list_files_t* lista){
 	menu_lcd_display_clear();
-	menu_lcd_display(get_next_file(lista),get_next_file(lista),get_next_file(lista),get_next_file(lista));
+	if(stepper_irq_flag & FLAG_IRQ_STEPPER_DIR)
+		lista->current_file-=2;
+
+
+	printf("Posicion %d \n",lista->current_file);
+	fflush(stdout);
+	char line1[20] = ">";
+	strcat(line1,get_next_file(lista));
+	int nextIndex = lista->current_file;
+	menu_lcd_display(line1,get_next_file(lista),get_next_file(lista),get_next_file(lista));
+	lista->current_file = nextIndex;
+
 }
 
 
@@ -245,9 +266,12 @@ list_files_t* get_list_files(char* route){
 }
 
 char* get_next_file(list_files_t* lista){
-	if(lista->current_file < lista->num_files-1)
-		return lista->name_file[lista->current_file++];
-	lista->current_file = 0;
+
+
+	if(lista->current_file >=  lista->num_files ||  lista->current_file < 0)
+		lista->current_file = 0;
+
+	printf("current pos: %d \n",lista->current_file);
 	return lista->name_file[lista->current_file++];
 }
 char* get_last_file(list_files_t* lista){
@@ -273,8 +297,8 @@ list_files_t* new_list_files(int num_files){
 	int i = 0;
 	list_files_t* lista = (list_files_t*)malloc(sizeof(list_files_t));
 	lista->num_files = num_files;
-	lista->current_file = 1;
-	lista->select_file = 0;
+	lista->current_file = 0;
+	lista->select_file = 1;
 	lista->name_file = (char**)malloc(sizeof(char*)*num_files);
 	for(i = 0; i < num_files; i++){
 		lista->name_file[i] = (char*)malloc(sizeof(char*)*20);
@@ -292,13 +316,20 @@ void clean_list_files(list_files_t* lista){
 }
 
 int UUID_2_int(){
-	int id;
+	unsigned int id;
 	int i = 0;
 	for(i = 0; i < 8; i++){
 		id = (id<<8) | UUID[i];
 	}
 	return id;
 }
+char* UUID_2_string(){
+	char id[20];
+	sprintf( id,"ID:%X%X%X%X%X%X%X%X", UUID[0], UUID[1], UUID[2], UUID[2], UUID[4], UUID[5], UUID[6], UUID[7]);
+	printf(",,,,,,,,,,,,,,,,%s \n", id);
+	return id;
+}
+
 
 
 
