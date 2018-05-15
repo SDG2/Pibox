@@ -22,7 +22,7 @@
 
 
 
-#define DB_NAME "COMO_TE_SALGA.db"
+#define DB_NAME "canciones_db.db"
 #define PIN_A 17
 #define PIN_B 27
 #define PIN_C 22
@@ -59,10 +59,17 @@ fsm_trans_t transition_table_rfid[] = {
 		{-1, NULL, -1, NULL }
 };
 
+//TODO: Eliminar
 static int TarjetaConfigurada(fsm_t* fsm){
 	return 1;
 }
 
+/**
+ * @brief Condici贸n de paso si no existe tarjeta en la base de datos
+ * 
+ * @param fsm Maquina de estados
+ * @return int Condici贸n cumplida o no
+ */
 static int TarjetaNoExiste(fsm_t* fsm){
 	lock(0);
 	uint8_t tmp =  !(flag_rfid & FLAG_CARD_EXIST);
@@ -71,54 +78,76 @@ static int TarjetaNoExiste(fsm_t* fsm){
 	return tmp;
 }
 
+/**
+ * @brief Condici贸n de paso si  existe tarjeta en la base de datos
+ * 
+ * @param fsm Maquina de estados
+ * @return int Condici贸n cumplida o no
+ */
 static int TarjetaExiste(fsm_t* fsm){
 	lock(0);
 	uint8_t tmp = (flag_rfid & FLAG_CARD_EXIST);
 	unlock(0);
-	//printf("Tarjeta Existe flag %d \n",flag_rfid);
 	return tmp;
 }
-
-
+/**
+ * @brief Funcion de arranque del sistema devuelve siempre 1
+ * 
+ * @param fsm 
+ * @return int, siempre 1 
+ */
 int CompruebaComienzo(fsm_t* fsm){
 	return 1;
 }
 
 int CompruebaFinalReproduccion(fsm_t* fsm){
-	return flag_rfid & FLAG_SYSTEM_END;
+	lock(0);
+	uint8_t tmp = (flag_rfid & FLAG_SYSTEM_END);
+	unlock(0);
+	return tmp;
 }
 
 int TarjetaDisponible(fsm_t* fsm){
-	return flag_rfid & FLAG_CARD_IN;
-	//return 1;
+	lock(0);
+	uint8_t tmp = (flag_rfid & FLAG_CARD_IN);
+	unlock(0);
+	return tmp;
 }
 int TarjetaNoDisponible(fsm_t* fsm){
-	return !(flag_rfid & FLAG_CARD_IN);
-	//return 0;
+	lock(0);
+	uint8_t tmp = !(flag_rfid & FLAG_CARD_IN);
+	unlock(0);
+	return tmp;
 }
 int TarjetaValida(fsm_t* fsm){
-	printf("Flag: %d \n", flag_rfid);
-	return flag_rfid & FLAG_VALID_CARD;
+	lock(0);
+	uint8_t tmp = flag_rfid & FLAG_VALID_CARD;
+	unlock(0);
+	return tmp;
 }
 int TarjetaNoValida(fsm_t* fsm){
-	return !(flag_rfid & FLAG_VALID_CARD);
+	lock(0);
+	uint8_t tmp = !(flag_rfid & FLAG_VALID_CARD);
+	unlock(0);
+	return tmp;
 }
 
 void EsperaTargeta(fsm_t* fsm){
 	return;
 }
 void DescartaTarjeta(fsm_t* fsm){
-	flag_rfid &= ~FLAG_CARD_IN;
+	lock(0);
+	flag_rfid &= ~FLAG_CARD_IN;	
+	unlock(0);
 }
 void LeerTarjeta(fsm_t* fsm){
 	if(RC522_Check(UUID) == STATUS_OK){
 		printf("FOUND TAG! \n");
 		fflush(stdout);
 		flag_rfid |= FLAG_VALID_CARD;
-		fflush(stdout);
 	}
-
 }
+
 void ComienzaReproduccion(fsm_t* fsm){
 	fflush(stdout);
 	lock(0);
@@ -133,8 +162,9 @@ void CancelaReproduccion(fsm_t* fsm){
 	unlock(0);
 }
 void CompruebaTarjeta(fsm_t* fsm){
-
+	return;
 }
+
 void FinalizaReproduccion(fsm_t* fsm){
 	lock(0);
 	flags_player |= FLAG_END;
@@ -185,7 +215,7 @@ void BuscaTarjeta(fsm_t* fsm){
 void ConfiguraTarjeta(fsm_t* fsm){
 
 	printf("DATA -> PLAY \n");
-	printf("Configuraci髇 de Tarjeta \n");
+	printf("Configuraci锟絥 de Tarjeta \n");
 
 	attachIsr(PIN_A, CHANGE, NULL, ISR);
 	attachIsr(PIN_B, CHANGE, NULL, ISR);
@@ -370,9 +400,7 @@ void ISR (int event) {
 }
 
 void select_mode(int event){
-
 	lock(7);
 	stepper_irq_flag |= FLAG_IRQ_STEPPER_SELECT;
 	unlock(7);
-
 }
