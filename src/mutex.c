@@ -9,10 +9,18 @@
 
 static pthread_mutex_t piMutexes [10] ;
 
+/**
+ * @brief Bloquea el hilo actual
+ * @param key inidice del hilo a bloquear
+ */
 void lock (int key)
 {
   pthread_mutex_lock(&piMutexes[key]) ;
 }
+/**
+ * @brief desloquea el hilo actual
+ * @param key inidice del hilo a desbloquear
+ */
 
 void unlock (int key)
 {

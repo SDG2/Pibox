@@ -8,6 +8,7 @@
 #ifndef MUTEX_H_
 #define MUTEX_H_
 
+//prototypes
 
 void lock (int key);
 void unlock (int key);

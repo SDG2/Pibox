@@ -8,8 +8,8 @@
 #ifndef SRC_PLAYER_H_
 #define SRC_PLAYER_H_
 
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
@@ -25,35 +25,39 @@
 #define SAMPLE_RATE 44100
 #define FRAMES_PER_BUFFER 1152
 
-
-
-enum fsm_pene{
+// variables
+enum fsm_states
+{
 	WAIT_BEGIN,
 	WAIT_BFF1,
 	WAIT_BFF2
 };
 
-typedef struct BUFFERS{
-	int* buff1_r;
-	int* buff2_r;
+//types
+//strucutra de buffers
+typedef struct BUFFERS
+{
+	int *buff1_r;
+	int *buff2_r;
 
-	int* buff1_l;
-	int* buff2_l;
+	int *buff1_l;
+	int *buff2_l;
 
 	uint8_t currentBuffer;
 	int lengthBuffer;
 	int sampleReaded;
 
 	volatile uint8_t flags;
-}BUFFERS_T;
+} BUFFERS_T;
+//Tipo fsm
+typedef struct fsm_audio_controller
+{
+	fsm_t *fsm;
+	TipoSistema *tipo_sistema;
+	BUFFERS_T *buffer;
+} fsm_audio_controller_t;
 
-typedef struct fsm_audio_controller{
-	fsm_t* fsm;
-	TipoSistema* tipo_sistema;
-	BUFFERS_T* buffer;
-}fsm_audio_controller_t;
-
+//prototypes
 void launchPlayer();
-
 
 #endif /* SRC_PLAYER_H_ */
