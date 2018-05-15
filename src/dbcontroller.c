@@ -10,12 +10,18 @@
 #include <stdio.h>
 #include <string.h>
 
+
+/*
+ * Plantillas de Querys SQL usadas en las consultas a la base de datos
+ * */
 #define SQL_QUERY_CREATE_DB "CREATE TABLE %s(USERID INT PRIMARY KEY     NOT NULL,SONG           TEXT    NOT NULL);"
 #define SQL_QUERY_INSERT_DB "INSERT INTO %s (USERID,SONG) VALUES (%d,'%s'); "
 #define SQL_QUERY_CHECK_DB "SELECT name FROM sqlite_master WHERE type='table' AND name='%s';"
 #define SQL_QUERY_SELECT_DB "SELECT SONG FROM %s WHERE USERID = %d;"
 #define SQL_QUERY_GET_NUMBER_OF_ELEMENTS "SELECT count(*) FROM %s WHERE USERID = %d;"
+/*Prototipo del nombre de la tabla a consultar*/
 #define SQL_TABLE_NAME "TARJETAS"
+/*Tamaño maximo de query que admite la librería de conexion*/
 #define SQL_QUERY_MAX_SIZE 500
 
 /*
@@ -30,7 +36,9 @@ static int callback(void *data, int argc, char **argv, char **azColName);
 static int db_callback_get_song_name(void *data_in, int argc, char **argv, char **azColName);
 static int db_callback_get_num_of_elm(void *data_in, int argc, char **argv, char **azColName);
 
-
+/* Carga la base de datos en memoria
+ * Devuelve un puntero al manejador de la misma
+ * */
 sqlite3* db_load(char* file_dir){
 	sqlite3* db;
 	int rc;
@@ -39,6 +47,9 @@ sqlite3* db_load(char* file_dir){
 		return NULL;
 	}
 	fprintf(stdout,"Base de datos abierta \n");
+	/*Funcion de persistencia para que siempre que haya una base de datos
+	 * se compruebe que sea correcta
+	 * */
 	db_create_tables(db);
 	return db;
 }
@@ -61,23 +72,40 @@ int db_check(sqlite3* db){
 	free(sql);
 	return SQL_OPERATION_OK;
 }
-
+/*
+ * Comprueba si es una base de datos nueva
+ * y en caso de serlo crea las tablas necesarias
+ * */
 void db_create_tables(sqlite3* db){
 	int rc;
 	char* sql = (char*)malloc(SQL_QUERY_MAX_SIZE*sizeof(char));
 	char* zErrMsg = 0;
 	//Formateamos la query con sprintf para permitir genericos
 	sprintf(sql,SQL_QUERY_CREATE_DB,SQL_TABLE_NAME);
-	rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+	/*
+	 * Si la query me da error, es porque esa tabla ya existe,
+	 * por lo que la creacion se ignora y no afecta a los datos
+	 * */
+	rc = sqlite3_exec(db, sql, NULL, 0, &zErrMsg);
 	if (rc != SQLITE_OK) {
+		//Si tengo error, la base ya tiene la tabla
 		fprintf(stderr, "Base de datos con datos, no creo tablas\n Por si acaso printeo el error %s \n", zErrMsg);
+		//Libero memoria del error
 		sqlite3_free(zErrMsg);
 	} else {
+		/* Si no tengo error al inicializar la base de datos
+		 * he creado una nueva, por lo que debo formatear las tablas
+		 * acorde a lo esperado por la tarjeta
+		 */
 		fprintf(stdout, "Base de datos nueva, creo las tablas\n");
 	}
+	//Libero memoria de la query
 	free(sql);
 }
 
+/*
+ * Ejecuta una query de
+ * */
 int db_insert(sqlite3* db,int user_id,char* song_name){
 	char *zErrMsg = 0;
 	int rc;
@@ -142,19 +170,7 @@ void db_close(sqlite3* db){
 /*
  * Callback Functions from SQLQuerys
  * */
-static int callback(void *data, int argc, char **argv, char **azColName){
-   int i;
-   fprintf(stdout, "%s: ", (const char*)data);
 
-//   for(i = 0; i<argc; i++){
-//      printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
-//   }
-   for(i = 0; i < argc; i++){
-	   printf("\n Resutado %s \n",argv[i]);
-   }
-   printf("\n");
-   return 0;
-}
 
 static int db_callback_get_num_of_elm(void *data_in, int argc, char **argv, char **azColName){
 	char* name =  (char*)data_in;

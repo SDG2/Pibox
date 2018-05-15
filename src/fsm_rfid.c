@@ -18,9 +18,14 @@
 #include "fsm_rfid.h"
 #include "mutex.h"
 #include "menu_lcd.h"
+#include "InterruptSM.h"
+
 
 
 #define DB_NAME "COMO_TE_SALGA.db"
+#define PIN_A 17
+#define PIN_B 27
+#define PIN_C 22
 
 
 
@@ -37,7 +42,8 @@ char* get_next_file(list_files_t* lista);
 list_files_t* get_list_files(char* route);
 list_files_t* new_list_files(int num_files);
 int get_number_files(char* route);
-char* UUID_2_string();
+void ISR (int event);
+void select_mode(int event);
 
 fsm_trans_t transition_table_rfid[] = {
 		{WAIT_START, CompruebaComienzo,WAIT_CARD,ComienzaSistema},
@@ -109,7 +115,6 @@ void LeerTarjeta(fsm_t* fsm){
 		printf("FOUND TAG! \n");
 		fflush(stdout);
 		flag_rfid |= FLAG_VALID_CARD;
-		printf("----------->%s \n", UUID_2_string());
 		fflush(stdout);
 	}
 
@@ -181,6 +186,11 @@ void ConfiguraTarjeta(fsm_t* fsm){
 
 	printf("DATA -> PLAY \n");
 	printf("Configuración de Tarjeta \n");
+
+	attachIsr(PIN_A, CHANGE, NULL, ISR);
+	attachIsr(PIN_B, CHANGE, NULL, ISR);
+	attachIsr(PIN_C, FALLIN_EDGE, NULL, select_mode);
+
 	menu_lcd_display("NOT CONFIGURED!","turn to ","configure",":D");
 
 
@@ -198,7 +208,7 @@ void ConfiguraTarjeta(fsm_t* fsm){
 			}
 			menu_display_stepper_plus(lista);
 			stepper_irq_flag &= ~FLAG_IRQ_STEPPER_CONTINUE;
-			state = 1;
+
 			printf("Fichero %d",lista->select_file);
 			fflush(stdout);
 		}
@@ -213,13 +223,15 @@ void ConfiguraTarjeta(fsm_t* fsm){
 
 void ConfiguracionCorrecta(){
 	printf("Configuracion Correcta \n");
+	deleteIsr(PIN_A);
+	deleteIsr(PIN_B);
+	deleteIsr(PIN_C);
 	menu_lcd_display_clear();
 	menu_lcd_display("Finalizado!"," Retire la","tarjeta",":D");
 }
 
 void killRFID(){
 	pthread_cancel (thread) ;
-	pthread_join   (thread, NULL) ;
 }
 
 
@@ -323,13 +335,44 @@ int UUID_2_int(){
 	}
 	return id;
 }
-char* UUID_2_string(){
-	char id[20];
-	sprintf( id,"ID:%X%X%X%X%X%X%X%X", UUID[0], UUID[1], UUID[2], UUID[2], UUID[4], UUID[5], UUID[6], UUID[7]);
-	printf(",,,,,,,,,,,,,,,,%s \n", id);
-	return id;
+
+
+int seqA;
+int seqB;
+
+void ISR (int event) {
+
+	int A_val = bcm2835_gpio_lev(PIN_A);
+    int B_val = bcm2835_gpio_lev(PIN_B);
+
+    seqA <<= 1;
+    seqA |= A_val;
+
+    seqB <<= 1;
+    seqB |= B_val;
+
+    seqA &= 0b00001111;
+    seqB &= 0b00001111;
+
+    if (seqA == 0b00001001 && seqB == 0b00000011) {
+    	stepper_irq_flag |= FLAG_IRQ_STEPPER_CONTINUE;
+    	stepper_irq_flag |= FLAG_IRQ_STEPPER_DIR;
+    	printf("He girado \n");
+    	fflush(stdout);
+    }
+
+    if (seqA == 0b00000011 && seqB == 0b00001001) {
+    	stepper_irq_flag |= FLAG_IRQ_STEPPER_CONTINUE;
+    	stepper_irq_flag &=~FLAG_IRQ_STEPPER_DIR;
+    	printf("He girado \n");
+    	fflush(stdout);
+    }
 }
 
+void select_mode(int event){
 
+	lock(7);
+	stepper_irq_flag |= FLAG_IRQ_STEPPER_SELECT;
+	unlock(7);
 
-
+}

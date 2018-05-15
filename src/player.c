@@ -125,7 +125,7 @@ void Iniciliza_player(fsm_t* userData) {
 
 	outputParameters.channelCount = 2; /* stereo output */
 	outputParameters.sampleFormat = paInt32; /* 32 bit floating point output */
-	outputParameters.suggestedLatency = 0.050;//Pa_GetDeviceInfo(outputParameters.device)->defaultLowOutputLatency;
+	outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowOutputLatency;
 	outputParameters.hostApiSpecificStreamInfo = NULL;
 
 
