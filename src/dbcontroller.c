@@ -154,7 +154,6 @@ int db_insert(sqlite3* db,int user_id,char* song_name){
  * @param user_id Id de la tarjeta
  * @return char* nombre de la canción, NULL 
  */
-
 char* db_get_song_name(sqlite3* db,int user_id){
 	char *zErrMsg = 0;
 	int rc;
@@ -187,10 +186,20 @@ char* db_get_song_name(sqlite3* db,int user_id){
 	return name;
 }
 
+
+/**
+ * @brief Libera memoria del reservado para el nombre de la cancion
+ * Binding de la función free
+ * @param name string del que se quiere liberar memoria 
+ */
 void db_free_song_name(char* name){
 	free(name);
 }
-
+/**
+ * @brief Cierra la base de datos y libera la memoria asignada al puntero
+ * 
+ * @param db 
+ */
 void db_close(sqlite3* db){
 	sqlite3_close(db);
 }
@@ -200,7 +209,15 @@ void db_close(sqlite3* db){
  * Callback Functions from SQLQuerys
  * */
 
-
+/**
+ * @brief Función de callback para la query de contar numero de elementos
+ * 
+ * @param data_in parametro de la funcion, se escribirá 0 o 1 en si existe el elemento
+ * @param argc Numero de columnas que coinciden con la query
+ * @param argv Vector de resultados
+ * @param azColName Nombre de cada columna resultado
+ * @return int Interno de Sqlite3, 0 -> ejecucion correcta
+ */
 static int db_callback_get_num_of_elm(void *data_in, int argc, char **argv, char **azColName){
 	char* name =  (char*)data_in;
 	printf("Entro en cb de contar %d",*(argv[0]));
@@ -214,10 +231,18 @@ static int db_callback_get_num_of_elm(void *data_in, int argc, char **argv, char
    return 0;
 }
 
+/**
+ * @brief Función de callback para la query de leer el nombre de la cancion asociada
+ * @param data_in parametro de la funcion, se escribe el nombre encontrado en la DB
+ * @param argc Numero de columnas que coinciden con la query
+ * @param argv Vector de resultados
+ * @param azColName Nombre de cada columna resultado
+ * @return int Interno de Sqlite3, 0 -> ejecucion correcta
+ */
+
 static int db_callback_get_song_name(void *data_in, int argc, char **argv, char **azColName){
    char* name =  (char*)data_in;
-   printf("Entro en la callback de la db \n");
-   fflush(stdout);
+   //Solo puede haber un resultado, cada tarjeta es unica y solo se añade una vez
    strcpy(name,argv[0]);
    printf("La cancion es: %s",name);
    fflush(stdout);

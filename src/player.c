@@ -86,7 +86,7 @@ void Iniciliza_player(fsm_t* userData) {
 	char filename[64] = "./musica/";
 	strcat(filename, song_name);
 	printf("full path: %s \n", filename);
-
+	free(song_name);
 
 	fp = fopen(filename, "r");
 	int fd = fileno(fp);
