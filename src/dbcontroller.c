@@ -170,7 +170,7 @@ char* db_get_song_name(sqlite3* db,int user_id){
 	}
 	fprintf(stdout, "Lectura correcta de la base de datos\n");
 	if(*(name) == 0x30){
-		free(name);
+		db_free_song_name(name);
 		return NULL;
 	}
 	sprintf(sql,SQL_QUERY_SELECT_DB,SQL_TABLE_NAME,user_id);
