@@ -124,8 +124,13 @@ void Iniciliza_player(fsm_t *userData)
 	char filename[64] = "./musica/"; //ruta parcial dle fichero
 	strcat(filename, song_name);
 	printf("full path: %s \n", filename);
+<<<<<<< HEAD
 
 	//abro el fichero
+=======
+	free(song_name);
+
+>>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 	fp = fopen(filename, "r");
 	int fd = fileno(fp); //obtengo puntero
 
@@ -166,9 +171,14 @@ void Iniciliza_player(fsm_t *userData)
 		goto error;
 	}
 
+<<<<<<< HEAD
 	//Parametros de reproduccion
 	outputParameters.channelCount = 2;		 // stereo
 	outputParameters.sampleFormat = paInt32; // 32 bit (tipo de muestras )
+=======
+	outputParameters.channelCount = 2; /* stereo output */
+	outputParameters.sampleFormat = paInt32; /* 32 bit floating point output */
+>>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 	outputParameters.suggestedLatency = Pa_GetDeviceInfo(outputParameters.device)->defaultLowOutputLatency;
 	outputParameters.hostApiSpecificStreamInfo = NULL;
 

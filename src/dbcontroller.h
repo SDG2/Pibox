@@ -10,6 +10,11 @@
 
 #include <sqlite3.h>
 
+
+/**
+ * @brief Enum de resultados posibles de ejecución
+ * 
+ */
 enum SQL_RESOLUTION{
 	SQL_OPERATION_OK,
 	SQL_OPERATION_ERR

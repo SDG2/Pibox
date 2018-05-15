@@ -21,7 +21,11 @@
 #define SQL_QUERY_GET_NUMBER_OF_ELEMENTS "SELECT count(*) FROM %s WHERE USERID = %d;"
 /*Prototipo del nombre de la tabla a consultar*/
 #define SQL_TABLE_NAME "TARJETAS"
+<<<<<<< HEAD
 /*Tama駉 maximo de query que admite la librer韆 de conexion*/
+=======
+/*Tama锟給 maximo de query que admite la librer锟絘 de conexion*/
+>>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 #define SQL_QUERY_MAX_SIZE 500
 
 /*
@@ -54,6 +58,12 @@ sqlite3* db_load(char* file_dir){
 	return db;
 }
 
+/**
+ * @brief Ejecuta una query para ver si existe la tabla con el valor especificado
+ * 
+ * @param db Sqlite3 puntero de la estructura cargada
+ * @return int controll code
+ */
 int db_check(sqlite3* db){
 	int rc;
 	char* sql = (char*)malloc(SQL_QUERY_MAX_SIZE*sizeof(char));
@@ -72,9 +82,24 @@ int db_check(sqlite3* db){
 	free(sql);
 	return SQL_OPERATION_OK;
 }
+<<<<<<< HEAD
 /*
  * Comprueba si es una base de datos nueva
  * y en caso de serlo crea las tablas necesarias
+=======
+
+/**
+ * @brief Comprueba si es una base de datos nueva y en caso de serlo crea las tablas necesarias
+ * La funcion comprueba si existen la tabla especificada intentando hacer
+ * la query de creaci贸n, si dicha query se ha ejecutado correctamente, quiere decir
+ * que la base de datos es nueva, por lo que se crean las tablas necesarias para
+ * adecuarla al modelo de datos. Si la ejecuci贸n da error, quiere decir que la base de datos
+ * ya exist铆a y no tienen que sobreescribirse las tablas
+ * @param db Sqlite3 puntero de la estructura cargada
+ */
+/*
+ * 
+>>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
  * */
 void db_create_tables(sqlite3* db){
 	int rc;
@@ -103,9 +128,20 @@ void db_create_tables(sqlite3* db){
 	free(sql);
 }
 
+<<<<<<< HEAD
 /*
  * Ejecuta una query de
  * */
+=======
+/**
+ * @brief Ejecuta la query para insertar en la base de datos 
+ * 
+ * @param db Sqlite3 puntero de la estructura cargada
+ * @param user_id Id que se quiere almacenar
+ * @param song_name Nombre del fichero asociado al ID
+ * @return int Codigo de control
+ */
+>>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 int db_insert(sqlite3* db,int user_id,char* song_name){
 	char *zErrMsg = 0;
 	int rc;
@@ -126,6 +162,14 @@ int db_insert(sqlite3* db,int user_id,char* song_name){
 	return SQL_OPERATION_OK;
 }
 
+/**
+ * @brief Ejecuta la query de busqueda del nombre de la canci贸n dado un ID
+ * Hace una query de busqueda del fichero que esta asociado a un ID
+ * 
+ * @param db Sqlite3 puntero de la estructura cargada 
+ * @param user_id Id de la tarjeta
+ * @return char* nombre de la canci贸n, NULL 
+ */
 char* db_get_song_name(sqlite3* db,int user_id){
 	char *zErrMsg = 0;
 	int rc;
@@ -142,7 +186,7 @@ char* db_get_song_name(sqlite3* db,int user_id){
 	}
 	fprintf(stdout, "Lectura correcta de la base de datos\n");
 	if(*(name) == 0x30){
-		free(name);
+		db_free_song_name(name);
 		return NULL;
 	}
 	sprintf(sql,SQL_QUERY_SELECT_DB,SQL_TABLE_NAME,user_id);
@@ -158,10 +202,20 @@ char* db_get_song_name(sqlite3* db,int user_id){
 	return name;
 }
 
+
+/**
+ * @brief Libera memoria del reservado para el nombre de la cancion
+ * Binding de la funci贸n free
+ * @param name string del que se quiere liberar memoria 
+ */
 void db_free_song_name(char* name){
 	free(name);
 }
-
+/**
+ * @brief Cierra la base de datos y libera la memoria asignada al puntero
+ * 
+ * @param db 
+ */
 void db_close(sqlite3* db){
 	sqlite3_close(db);
 }
@@ -170,8 +224,20 @@ void db_close(sqlite3* db){
 /*
  * Callback Functions from SQLQuerys
  * */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 
+/**
+ * @brief Funci贸n de callback para la query de contar numero de elementos
+ * 
+ * @param data_in parametro de la funcion, se escribir谩 0 o 1 en si existe el elemento
+ * @param argc Numero de columnas que coinciden con la query
+ * @param argv Vector de resultados
+ * @param azColName Nombre de cada columna resultado
+ * @return int Interno de Sqlite3, 0 -> ejecucion correcta
+ */
 static int db_callback_get_num_of_elm(void *data_in, int argc, char **argv, char **azColName){
 	char* name =  (char*)data_in;
 	printf("Entro en cb de contar %d",*(argv[0]));
@@ -185,10 +251,18 @@ static int db_callback_get_num_of_elm(void *data_in, int argc, char **argv, char
    return 0;
 }
 
+/**
+ * @brief Funci贸n de callback para la query de leer el nombre de la cancion asociada
+ * @param data_in parametro de la funcion, se escribe el nombre encontrado en la DB
+ * @param argc Numero de columnas que coinciden con la query
+ * @param argv Vector de resultados
+ * @param azColName Nombre de cada columna resultado
+ * @return int Interno de Sqlite3, 0 -> ejecucion correcta
+ */
+
 static int db_callback_get_song_name(void *data_in, int argc, char **argv, char **azColName){
    char* name =  (char*)data_in;
-   printf("Entro en la callback de la db \n");
-   fflush(stdout);
+   //Solo puede haber un resultado, cada tarjeta es unica y solo se a帽ade una vez
    strcpy(name,argv[0]);
    printf("La cancion es: %s",name);
    fflush(stdout);
