@@ -15,16 +15,9 @@
 int k = 0;
 
 void callback(int event);
-<<<<<<< HEAD
 
 int main(void)
 {
-=======
-
-int main(void){
-
-	attachIsr(18, CHANGE, NULL, callback);
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 
 	attachIsr(18, CHANGE, NULL, callback);	//creo interrupcion para el optoacoplador
 
@@ -64,13 +57,3 @@ void callback(int event)
 		unlock(1);
 	}
 }
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318

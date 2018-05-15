@@ -8,8 +8,13 @@
 
 #include "RC522.h"
 
+//private variables
 const uint8_t antenna_Gain[] = {18, 23, 18, 23, 33,38,43,48};
-
+/**
+ * @brief Inicia el driver de spi e inicializa los registros del soc RC522
+ * 
+ * @return Status_t resultado de la operación 
+ */
 Status_t RC522_Init(void) {
 	Status_t state = STATUS_OK;
 	#ifdef SPI_DEV

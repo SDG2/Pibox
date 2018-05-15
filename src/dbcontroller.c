@@ -21,11 +21,7 @@
 #define SQL_QUERY_GET_NUMBER_OF_ELEMENTS "SELECT count(*) FROM %s WHERE USERID = %d;"
 /*Prototipo del nombre de la tabla a consultar*/
 #define SQL_TABLE_NAME "TARJETAS"
-<<<<<<< HEAD
-/*TamaÒo maximo de query que admite la librerÌa de conexion*/
-=======
 /*TamaÔøΩo maximo de query que admite la librerÔøΩa de conexion*/
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 #define SQL_QUERY_MAX_SIZE 500
 
 /*
@@ -82,11 +78,6 @@ int db_check(sqlite3* db){
 	free(sql);
 	return SQL_OPERATION_OK;
 }
-<<<<<<< HEAD
-/*
- * Comprueba si es una base de datos nueva
- * y en caso de serlo crea las tablas necesarias
-=======
 
 /**
  * @brief Comprueba si es una base de datos nueva y en caso de serlo crea las tablas necesarias
@@ -99,7 +90,6 @@ int db_check(sqlite3* db){
  */
 /*
  * 
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
  * */
 void db_create_tables(sqlite3* db){
 	int rc;
@@ -128,11 +118,6 @@ void db_create_tables(sqlite3* db){
 	free(sql);
 }
 
-<<<<<<< HEAD
-/*
- * Ejecuta una query de
- * */
-=======
 /**
  * @brief Ejecuta la query para insertar en la base de datos 
  * 
@@ -141,7 +126,6 @@ void db_create_tables(sqlite3* db){
  * @param song_name Nombre del fichero asociado al ID
  * @return int Codigo de control
  */
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 int db_insert(sqlite3* db,int user_id,char* song_name){
 	char *zErrMsg = 0;
 	int rc;
@@ -224,10 +208,6 @@ void db_close(sqlite3* db){
 /*
  * Callback Functions from SQLQuerys
  * */
-<<<<<<< HEAD
-
-=======
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 
 /**
  * @brief Funci√≥n de callback para la query de contar numero de elementos

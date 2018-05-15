@@ -16,24 +16,12 @@
 #include "mutex.h"
 #include "menu_lcd.h"
 #include "InterruptSM.h"
-<<<<<<< HEAD
-
-=======
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 
 #define DB_NAME "canciones_db.db"
 #define PIN_A 17
 #define PIN_B 27
 #define PIN_C 22
 
-<<<<<<< HEAD
-#define DB_NAME "COMO_TE_SALGA.db"
-#define PIN_A 17
-#define PIN_B 27
-#define PIN_C 22
-
-
-=======
 /**
  * @brief Variable privada con el UUID de la ultima tarjeta
  */
@@ -42,7 +30,6 @@ uint8_t UUID[16];
  * @brief Indica si la maquina de estados ha sido creada ya o no
  */
 int maquina_creada = 0;
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 
 void ConfiguraTarjeta(fsm_t *fsm);
 void ConfiguracionCorrecta();
@@ -52,21 +39,12 @@ static int TarjetaExiste(fsm_t *fsm);
 //static int TarjetaConfigurada(fsm_t* fsm);
 
 int UUID_2_int();
-<<<<<<< HEAD
-void menu_display_stepper_plus(list_files_t* lista);
-char* get_next_file(list_files_t* lista);
-list_files_t* get_list_files(char* route);
-list_files_t* new_list_files(int num_files);
-int get_number_files(char* route);
-void ISR (int event);
-=======
 void menu_display_stepper_plus(list_files_t *lista);
 char *get_next_file(list_files_t *lista);
 list_files_t *get_list_files(char *route);
 list_files_t *new_list_files(int num_files);
 int get_number_files(char *route);
 void ISR(int event);
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 void select_mode(int event);
 
 fsm_trans_t transition_table_rfid[] = {
@@ -224,10 +202,6 @@ void LeerTarjeta(fsm_t *fsm)
 		printf("FOUND TAG! \n");
 		fflush(stdout);
 		flag_rfid |= FLAG_VALID_CARD;
-<<<<<<< HEAD
-		fflush(stdout);
-=======
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 	}
 }
 /**
@@ -291,7 +265,7 @@ void ComienzaSistema(fsm_t *fsm)
 	//Reset de todos los flags
 	lock(0);
 	flag_rfid = 0;
-	unlock(0)
+	unlock(0);
 }
 /**
  * @brief Funcion de loop infinito de la maquina de estados
@@ -369,16 +343,6 @@ void ConfiguraTarjeta(fsm_t *fsm)
 {
 
 	printf("DATA -> PLAY \n");
-<<<<<<< HEAD
-	printf("Configuración de Tarjeta \n");
-
-	attachIsr(PIN_A, CHANGE, NULL, ISR);
-	attachIsr(PIN_B, CHANGE, NULL, ISR);
-	attachIsr(PIN_C, FALLIN_EDGE, NULL, select_mode);
-
-	menu_lcd_display("NOT CONFIGURED!","turn to ","configure",":D");
-
-=======
 	printf("Configuraciï¿½n de Tarjeta \n");
 	//Inicializa las interrupciones del Encoder
 	attachIsr(PIN_A, CHANGE, NULL, ISR);
@@ -386,7 +350,6 @@ void ConfiguraTarjeta(fsm_t *fsm)
 	attachIsr(PIN_C, FALLIN_EDGE, NULL, select_mode);
 	//Imprime la captura inicial
 	menu_lcd_display("NOT CONFIGURED!", "turn to ", "configure", ":D");
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 
 	stepper_irq_flag = 0;
 	//Cargo lista de archivos del directorio con la musica
@@ -416,11 +379,7 @@ void ConfiguraTarjeta(fsm_t *fsm)
 			menu_display_stepper_plus(lista);
 			stepper_irq_flag &= ~FLAG_IRQ_STEPPER_CONTINUE;
 
-<<<<<<< HEAD
-			printf("Fichero %d",lista->select_file);
-=======
 			printf("Fichero %d", lista->select_file);
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 			fflush(stdout);
 		}
 		unlock(7);
@@ -446,16 +405,6 @@ void ConfiguracionCorrecta()
 	menu_lcd_display_clear();
 	menu_lcd_display("Finalizado!", " Retire la", "tarjeta", ":D");
 }
-<<<<<<< HEAD
-
-void killRFID(){
-	pthread_cancel (thread) ;
-}
-
-
-
-void menu_display_stepper_plus(list_files_t* lista){
-=======
 /**
  * @brief Mata la maquina de estados del rfid
  * 
@@ -475,7 +424,6 @@ void killRFID()
  */
 void menu_display_stepper_plus(list_files_t *lista)
 {
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 	menu_lcd_display_clear();
 	if (stepper_irq_flag & FLAG_IRQ_STEPPER_DIR)
 		lista->current_file -= 2;
@@ -629,51 +577,9 @@ int UUID_2_int()
 	}
 	return id;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 
-int seqA;
-int seqB;
 
-void ISR (int event) {
-
-	int A_val = bcm2835_gpio_lev(PIN_A);
-    int B_val = bcm2835_gpio_lev(PIN_B);
-
-<<<<<<< HEAD
-    seqA <<= 1;
-    seqA |= A_val;
-
-    seqB <<= 1;
-    seqB |= B_val;
-
-    seqA &= 0b00001111;
-    seqB &= 0b00001111;
-
-    if (seqA == 0b00001001 && seqB == 0b00000011) {
-    	stepper_irq_flag |= FLAG_IRQ_STEPPER_CONTINUE;
-    	stepper_irq_flag |= FLAG_IRQ_STEPPER_DIR;
-    	printf("He girado \n");
-    	fflush(stdout);
-    }
-
-    if (seqA == 0b00000011 && seqB == 0b00001001) {
-    	stepper_irq_flag |= FLAG_IRQ_STEPPER_CONTINUE;
-    	stepper_irq_flag &=~FLAG_IRQ_STEPPER_DIR;
-    	printf("He girado \n");
-    	fflush(stdout);
-    }
-}
-
-void select_mode(int event){
-
-	lock(7);
-	stepper_irq_flag |= FLAG_IRQ_STEPPER_SELECT;
-	unlock(7);
-
-=======
 /*******************************************
 * Funciones de callback de las interrupciones
 ********************************************/
@@ -726,5 +632,4 @@ void select_mode(int event)
 	lock(7);
 	stepper_irq_flag |= FLAG_IRQ_STEPPER_SELECT;
 	unlock(7);
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 }

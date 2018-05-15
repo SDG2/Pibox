@@ -88,15 +88,8 @@ void attachIsr(uint8_t PIN, uint8_t ISREvent, void *handdle, void *userData)
 	pthread_create(&thread, NULL, loop, interrupt);
 	threads[PIN] = thread;
 }
-<<<<<<< HEAD
 void deleteIsr(uint8_t PIN)
 {
 	pthread_cancel(threads[PIN]);
 	threads[PIN] = 0;
-=======
-void deleteIsr(uint8_t PIN){
-    pthread_cancel (threads [PIN]) ;
-    //pthread_join   (threads [PIN], NULL) ;
-    threads [PIN] = 0 ;
->>>>>>> 9897aa258c918eb9a9d3d73f185380f5fea06318
 }
