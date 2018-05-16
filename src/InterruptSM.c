@@ -52,6 +52,7 @@ void loop(void *userData)
 		contador++;
 	}
 }
+
 /**
  * @brief Crea la interrupcion 
  * Crea un hilo donde se lanza una funcion que analizara el estado del pin para detectar cambios en el
@@ -74,6 +75,15 @@ void attachIsr(uint8_t PIN, uint8_t ISREvent, void *handdle, void *userData)
 	pthread_t thread;
 	ISR_Typ_ *interrupt = (ISR_Typ_ *)malloc(sizeof(ISR_Typ_));
 
+	pthread_attr_t tattr;
+	int newprio = 50;
+	struct sched_param param;
+
+	pthread_attr_init(&tattr);
+	pthread_attr_getschedparam(&tattr, &param);
+	param.sched_priority = newprio;
+	pthread_attr_setschedparam(&tattr, &param);
+
 	interrupt->callback = userData;
 	interrupt->event = ISREvent;
 	interrupt->pin = PIN;
@@ -85,7 +95,7 @@ void attachIsr(uint8_t PIN, uint8_t ISREvent, void *handdle, void *userData)
 		printf("Error, has been created yet! \n");
 		return;
 	}
-	pthread_create(&thread, NULL, loop, interrupt);
+	pthread_create(&thread, &tattr, loop, interrupt);
 	threads[PIN] = thread;
 }
 void deleteIsr(uint8_t PIN)

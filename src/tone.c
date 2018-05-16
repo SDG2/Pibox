@@ -8,7 +8,12 @@
 #include "tone.h"
 
 void toggle();
+void bipCallBack();
 
+
+
+tmr_t* keyTimer;
+uint8_t success;
 /*
  * WIP -> Funcion que emula la funcionalidad de Softtone
  * usando la libreria propia del soc de la raspberry
@@ -42,7 +47,7 @@ void tone_init(uint8_t P)
 	}
 	pthread_attr_t tattr;
 	int ret;
-	int newprio = 50;
+	int newprio = 30;
 	struct sched_param param;
 	/* initialized with default attributes */
 	ret = pthread_attr_init(&tattr);
@@ -80,9 +85,9 @@ void tone_stop(void)
 	if (pwm_thread != 0)
 	{
 		pthread_cancel(pwm_thread);
-		pthread_join(pwm_thread, NULL);
 		bcm2835_gpio_write(PIN, LOW);
 	}
+	pwm_thread = 0;
 }
 
 /*
@@ -108,4 +113,22 @@ void toggle()
 			bcm2835_delayMicroseconds(halfPeriod);
 		}
 	}
+}
+
+void bip(int pin, int freq){
+	success = 0;
+	printf("bip \n");
+	keyTimer = tmr_new(bipCallBack);
+	tone_init(pin);
+	tone_write(freq);
+	tmr_startms(keyTimer, 200);
+	while(!success);
+}
+
+void bipCallBack(){
+	printf("killed bip! \n");
+	tone_stop();
+	tmr_destroy(keyTimer);
+	success = 1;
+
 }

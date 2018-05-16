@@ -16,6 +16,7 @@
 #include "mutex.h"
 #include "menu_lcd.h"
 #include "InterruptSM.h"
+#include "tone.h"
 
 #define DB_NAME "canciones_db.db"
 #define PIN_A 17
@@ -404,6 +405,7 @@ void ConfiguracionCorrecta()
 	deleteIsr(PIN_C);
 	menu_lcd_display_clear();
 	menu_lcd_display("Finalizado!", " Retire la", "tarjeta", ":D");
+	bip(16, 500);
 }
 /**
  * @brief Mata la maquina de estados del rfid
@@ -612,6 +614,7 @@ void ISR(int event)
 		stepper_irq_flag |= FLAG_IRQ_STEPPER_DIR;
 		printf("He girado \n");
 		fflush(stdout);
+		bip(16, 1000);
 	}
 	//Compruebo si la secuencia coincide con las de un giro a izquierda
 	if (seqA == 0b00000011 && seqB == 0b00001001)
@@ -620,6 +623,7 @@ void ISR(int event)
 		stepper_irq_flag &= ~FLAG_IRQ_STEPPER_DIR;
 		printf("He girado \n");
 		fflush(stdout);
+		bip(16, 1000);
 	}
 }
 /**
@@ -632,4 +636,5 @@ void select_mode(int event)
 	lock(7);
 	stepper_irq_flag |= FLAG_IRQ_STEPPER_SELECT;
 	unlock(7);
+	bip(16, 1000);
 }
