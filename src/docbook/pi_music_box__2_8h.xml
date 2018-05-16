@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="pi_music_box__2_8h">
+    <title>piMusicBox_2.h File Reference</title>
+    <programlisting>#include &lt;stdio.h&gt;</programlisting>
+    <programlisting>#include &lt;stdlib.h&gt;</programlisting>
+    <programlisting>#include &lt;string.h&gt;</programlisting>
+    <programlisting>#include &lt;time.h&gt;</programlisting>
+    <programlisting>#include &lt;portaudio.h&gt;</programlisting>
+    <programlisting>#include &quot;defines.h&quot;</programlisting>
+    <programlisting>#include &quot;tipos.h&quot;</programlisting>
+    <programlisting>#include &quot;bcm2835.h&quot;</programlisting>
+    <programlisting>#include &quot;tone.h&quot;</programlisting>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/piMusicBox_2.h</para>
+    </simplesect>
+</section>

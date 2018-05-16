@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interrupt_s_m_8h">
+    <title>InterruptSM.h File Reference</title>
+    <programlisting>#include &lt;pthread.h&gt;</programlisting>
+    <programlisting>#include &lt;sched.h&gt;</programlisting>
+    <programlisting>#include &lt;stdint.h&gt;</programlisting>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="struct_i_s_r___typ">ISR_Typ</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Enumerations</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para><literallayout>enum <link linkend="_interrupt_s_m_8h_1a3b65133bb9997cd1ccf311af0927fc9e">event</link> {
+<link linkend="_interrupt_s_m_8h_1a3b65133bb9997cd1ccf311af0927fc9eaad4144f5191f08b249b3f4dcce4cf9e3">FALLIN_EDGE</link>,
+<link linkend="_interrupt_s_m_8h_1a3b65133bb9997cd1ccf311af0927fc9ea86445853271053ed37f404b9ca4fa434">RISING_EDGE</link>,
+<link linkend="_interrupt_s_m_8h_1a3b65133bb9997cd1ccf311af0927fc9eafe3b416683ca47506b73ba760e1e3f21">LOW_DETECT</link>,
+<link linkend="_interrupt_s_m_8h_1a3b65133bb9997cd1ccf311af0927fc9eae103a33b4689661d4923ff4031a5df9a">HIGH_DETECT</link>,
+<link linkend="_interrupt_s_m_8h_1a3b65133bb9997cd1ccf311af0927fc9eaada6cf2b086af8fd5f84e946d2bd145d">CHANGE</link>
+}</literallayout>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Typedefs</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef void(*  <link linkend="_interrupt_s_m_8h_1a25782dadcd5c0986f623661a27d786ee">call_back</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="struct_i_s_r___typ">ISR_Typ</link>  <link linkend="_interrupt_s_m_8h_1a2cfb857f1bbc13cc759c5acb4288a326">ISR_Typ_</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>pthread_t <link linkend="_interrupt_s_m_8h_1ac3f434fdbe5f3b95f5ccc7b2e4b3f2b2">threads</link><para><emphasis>Hilos de las interrupciones.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="_interrupt_s_m_8h_1a0094a05bcb5523f77617ad79a600230b">atachPin</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_interrupt_s_m_8h_1af169ed2cb7b858f9c2e7eeeee874f033">attachIsr</link> (
+uint8_t PIN, uint8_t ISREvent, void * handdle, void * userData)<para><emphasis>Crea la interrupcion 
+Crea un hilo donde se lanza una funcion que analizara el estado del pin para detectar cambios en el.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_interrupt_s_m_8h_1a411bdf6367b78a102b483d9ba31b9781">deleteIsr</link> (
+uint8_t PIN)<para><emphasis>Elimina la interrupcion del pin especificado.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/InterruptSM.h</para>
+    </simplesect>
+</section>

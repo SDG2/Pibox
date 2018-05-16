@@ -1,0 +1,284 @@
+\hypertarget{tipos_8h}{}\section{tipos.\+h File Reference}
+\label{tipos_8h}\index{tipos.\+h@{tipos.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_tipo_sistema}{Tipo\+Sistema}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tipos_8h_a54fbed14166bd85ddaa5cc14c0418056}{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+A\+RT}}~0x01
+\item 
+\#define \mbox{\hyperlink{tipos_8h_a49cd5c683d683358648c1ed376921164}{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+OP}}~0x02
+\item 
+\#define \mbox{\hyperlink{tipos_8h_a3eadda9aca624337721a0b24c8bbc4b4}{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+E\+ND}}~0x04
+\item 
+\#define \mbox{\hyperlink{tipos_8h_acfe1f8af71e20a363dcd804b00b6d051}{F\+L\+A\+G\+\_\+\+N\+O\+T\+A\+\_\+\+T\+I\+M\+E\+O\+UT}}~0x08
+\item 
+\#define \mbox{\hyperlink{tipos_8h_acde2387d60aae5a988585eecb3745533}{F\+L\+A\+G\+\_\+\+Q\+U\+IT}}~0x10
+\item 
+\#define \mbox{\hyperlink{tipos_8h_a5a6130f17926438ce73bb72f285e0294}{F\+L\+A\+G\+\_\+\+B\+F\+F1\+\_\+\+E\+ND}}~0x01
+\begin{DoxyCompactList}\small\item\em Flag de fin de buffer1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{tipos_8h_a6f5aa8963b525ed0622aeecf844064ba}{F\+L\+A\+G\+\_\+\+B\+F\+F2\+\_\+\+E\+ND}}~0x02
+\begin{DoxyCompactList}\small\item\em Flag de fin de buffer2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{tipos_8h_abe8b7d04534b17feedbf65d3d40a28ef}{F\+L\+A\+G\+\_\+\+E\+ND}}~0x04
+\begin{DoxyCompactList}\small\item\em Flag fin de cancion. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{tipos_8h_aca7482b8a25290ec56826ad3b8d6bf19}{F\+L\+A\+G\+\_\+\+S\+T\+A\+RT}}~0x08
+\begin{DoxyCompactList}\small\item\em Flag de inicio de player. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{tipos_8h_a631e1e6829ddf66f6ec53f6ab5fc2554}{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+C\+O\+N\+T\+I\+N\+UE}}~0x01
+\begin{DoxyCompactList}\small\item\em Flag de movimiento detectado. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{tipos_8h_a134bddded9af8032a0493fb55a84d41e}{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+S\+E\+L\+E\+CT}}~0x02
+\begin{DoxyCompactList}\small\item\em Flag de pulsacion de selecion detectado. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{tipos_8h_a45c907a60e8bc57bc7228754eae71b25}{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+D\+IR}}~0x04
+\begin{DoxyCompactList}\small\item\em Flag de direccion de movimiento 0-\/$>$ izq 1-\/$>$ der. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile uint8\+\_\+t \mbox{\hyperlink{tipos_8h_a068f27002f901dca30a2f9decdcc940b}{flag\+\_\+fsm}}
+\begin{DoxyCompactList}\small\item\em flag de la maquina \end{DoxyCompactList}\item 
+volatile uint8\+\_\+t \mbox{\hyperlink{tipos_8h_a8d6cbadfb1878d67dffef9647ba5fe05}{flags\+\_\+player}}
+\begin{DoxyCompactList}\small\item\em flags del player \end{DoxyCompactList}\item 
+volatile uint8\+\_\+t \mbox{\hyperlink{tipos_8h_a23e04a79e83a0bb62dc3d6be4e0d1b92}{flag\+\_\+rfid}}
+\begin{DoxyCompactList}\small\item\em flags del rfid \end{DoxyCompactList}\item 
+volatile uint8\+\_\+t \mbox{\hyperlink{tipos_8h_adbd4507c3dcdd7bd3aafd49ad3aba4cd}{stepper\+\_\+irq\+\_\+flag}}
+\begin{DoxyCompactList}\small\item\em flags del encoder \end{DoxyCompactList}\item 
+volatile char $\ast$ \mbox{\hyperlink{tipos_8h_aad2bf680e32d8de23ad37cb9980150c0}{song\+\_\+name}}
+\begin{DoxyCompactList}\small\item\em numbre del fichero \end{DoxyCompactList}\item 
+volatile int \mbox{\hyperlink{tipos_8h_a3e0851617790c67a6b05d8721e5f8a96}{num\+\_\+file}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{tipos_8h_a5a6130f17926438ce73bb72f285e0294}\label{tipos_8h_a5a6130f17926438ce73bb72f285e0294}} 
+\index{tipos.\+h@{tipos.\+h}!F\+L\+A\+G\+\_\+\+B\+F\+F1\+\_\+\+E\+ND@{F\+L\+A\+G\+\_\+\+B\+F\+F1\+\_\+\+E\+ND}}
+\index{F\+L\+A\+G\+\_\+\+B\+F\+F1\+\_\+\+E\+ND@{F\+L\+A\+G\+\_\+\+B\+F\+F1\+\_\+\+E\+ND}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+A\+G\+\_\+\+B\+F\+F1\+\_\+\+E\+ND}{FLAG\_BFF1\_END}}
+{\footnotesize\ttfamily \#define F\+L\+A\+G\+\_\+\+B\+F\+F1\+\_\+\+E\+ND~0x01}
+
+
+
+Flag de fin de buffer1. 
+
+
+
+Definition at line 29 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_a6f5aa8963b525ed0622aeecf844064ba}\label{tipos_8h_a6f5aa8963b525ed0622aeecf844064ba}} 
+\index{tipos.\+h@{tipos.\+h}!F\+L\+A\+G\+\_\+\+B\+F\+F2\+\_\+\+E\+ND@{F\+L\+A\+G\+\_\+\+B\+F\+F2\+\_\+\+E\+ND}}
+\index{F\+L\+A\+G\+\_\+\+B\+F\+F2\+\_\+\+E\+ND@{F\+L\+A\+G\+\_\+\+B\+F\+F2\+\_\+\+E\+ND}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+A\+G\+\_\+\+B\+F\+F2\+\_\+\+E\+ND}{FLAG\_BFF2\_END}}
+{\footnotesize\ttfamily \#define F\+L\+A\+G\+\_\+\+B\+F\+F2\+\_\+\+E\+ND~0x02}
+
+
+
+Flag de fin de buffer2. 
+
+
+
+Definition at line 30 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_abe8b7d04534b17feedbf65d3d40a28ef}\label{tipos_8h_abe8b7d04534b17feedbf65d3d40a28ef}} 
+\index{tipos.\+h@{tipos.\+h}!F\+L\+A\+G\+\_\+\+E\+ND@{F\+L\+A\+G\+\_\+\+E\+ND}}
+\index{F\+L\+A\+G\+\_\+\+E\+ND@{F\+L\+A\+G\+\_\+\+E\+ND}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+A\+G\+\_\+\+E\+ND}{FLAG\_END}}
+{\footnotesize\ttfamily \#define F\+L\+A\+G\+\_\+\+E\+ND~0x04}
+
+
+
+Flag fin de cancion. 
+
+
+
+Definition at line 31 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_a631e1e6829ddf66f6ec53f6ab5fc2554}\label{tipos_8h_a631e1e6829ddf66f6ec53f6ab5fc2554}} 
+\index{tipos.\+h@{tipos.\+h}!F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+C\+O\+N\+T\+I\+N\+UE@{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+C\+O\+N\+T\+I\+N\+UE}}
+\index{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+C\+O\+N\+T\+I\+N\+UE@{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+C\+O\+N\+T\+I\+N\+UE}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+C\+O\+N\+T\+I\+N\+UE}{FLAG\_IRQ\_STEPPER\_CONTINUE}}
+{\footnotesize\ttfamily \#define F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+C\+O\+N\+T\+I\+N\+UE~0x01}
+
+
+
+Flag de movimiento detectado. 
+
+
+
+Definition at line 35 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_a45c907a60e8bc57bc7228754eae71b25}\label{tipos_8h_a45c907a60e8bc57bc7228754eae71b25}} 
+\index{tipos.\+h@{tipos.\+h}!F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+D\+IR@{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+D\+IR}}
+\index{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+D\+IR@{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+D\+IR}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+D\+IR}{FLAG\_IRQ\_STEPPER\_DIR}}
+{\footnotesize\ttfamily \#define F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+D\+IR~0x04}
+
+
+
+Flag de direccion de movimiento 0-\/$>$ izq 1-\/$>$ der. 
+
+
+
+Definition at line 37 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_a134bddded9af8032a0493fb55a84d41e}\label{tipos_8h_a134bddded9af8032a0493fb55a84d41e}} 
+\index{tipos.\+h@{tipos.\+h}!F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+S\+E\+L\+E\+CT@{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+S\+E\+L\+E\+CT}}
+\index{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+S\+E\+L\+E\+CT@{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+S\+E\+L\+E\+CT}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+S\+E\+L\+E\+CT}{FLAG\_IRQ\_STEPPER\_SELECT}}
+{\footnotesize\ttfamily \#define F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+S\+E\+L\+E\+CT~0x02}
+
+
+
+Flag de pulsacion de selecion detectado. 
+
+
+
+Definition at line 36 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_acfe1f8af71e20a363dcd804b00b6d051}\label{tipos_8h_acfe1f8af71e20a363dcd804b00b6d051}} 
+\index{tipos.\+h@{tipos.\+h}!F\+L\+A\+G\+\_\+\+N\+O\+T\+A\+\_\+\+T\+I\+M\+E\+O\+UT@{F\+L\+A\+G\+\_\+\+N\+O\+T\+A\+\_\+\+T\+I\+M\+E\+O\+UT}}
+\index{F\+L\+A\+G\+\_\+\+N\+O\+T\+A\+\_\+\+T\+I\+M\+E\+O\+UT@{F\+L\+A\+G\+\_\+\+N\+O\+T\+A\+\_\+\+T\+I\+M\+E\+O\+UT}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+A\+G\+\_\+\+N\+O\+T\+A\+\_\+\+T\+I\+M\+E\+O\+UT}{FLAG\_NOTA\_TIMEOUT}}
+{\footnotesize\ttfamily \#define F\+L\+A\+G\+\_\+\+N\+O\+T\+A\+\_\+\+T\+I\+M\+E\+O\+UT~0x08}
+
+
+
+Definition at line 25 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_a3eadda9aca624337721a0b24c8bbc4b4}\label{tipos_8h_a3eadda9aca624337721a0b24c8bbc4b4}} 
+\index{tipos.\+h@{tipos.\+h}!F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+E\+ND@{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+E\+ND}}
+\index{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+E\+ND@{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+E\+ND}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+E\+ND}{FLAG\_PLAYER\_END}}
+{\footnotesize\ttfamily \#define F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+E\+ND~0x04}
+
+
+
+Definition at line 24 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_a54fbed14166bd85ddaa5cc14c0418056}\label{tipos_8h_a54fbed14166bd85ddaa5cc14c0418056}} 
+\index{tipos.\+h@{tipos.\+h}!F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+A\+RT@{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+A\+RT}}
+\index{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+A\+RT@{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+A\+RT}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+A\+RT}{FLAG\_PLAYER\_START}}
+{\footnotesize\ttfamily \#define F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+A\+RT~0x01}
+
+
+
+Definition at line 22 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_a49cd5c683d683358648c1ed376921164}\label{tipos_8h_a49cd5c683d683358648c1ed376921164}} 
+\index{tipos.\+h@{tipos.\+h}!F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+OP@{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+OP}}
+\index{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+OP@{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+OP}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+OP}{FLAG\_PLAYER\_STOP}}
+{\footnotesize\ttfamily \#define F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+OP~0x02}
+
+
+
+Definition at line 23 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_acde2387d60aae5a988585eecb3745533}\label{tipos_8h_acde2387d60aae5a988585eecb3745533}} 
+\index{tipos.\+h@{tipos.\+h}!F\+L\+A\+G\+\_\+\+Q\+U\+IT@{F\+L\+A\+G\+\_\+\+Q\+U\+IT}}
+\index{F\+L\+A\+G\+\_\+\+Q\+U\+IT@{F\+L\+A\+G\+\_\+\+Q\+U\+IT}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+A\+G\+\_\+\+Q\+U\+IT}{FLAG\_QUIT}}
+{\footnotesize\ttfamily \#define F\+L\+A\+G\+\_\+\+Q\+U\+IT~0x10}
+
+
+
+Definition at line 26 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_aca7482b8a25290ec56826ad3b8d6bf19}\label{tipos_8h_aca7482b8a25290ec56826ad3b8d6bf19}} 
+\index{tipos.\+h@{tipos.\+h}!F\+L\+A\+G\+\_\+\+S\+T\+A\+RT@{F\+L\+A\+G\+\_\+\+S\+T\+A\+RT}}
+\index{F\+L\+A\+G\+\_\+\+S\+T\+A\+RT@{F\+L\+A\+G\+\_\+\+S\+T\+A\+RT}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{F\+L\+A\+G\+\_\+\+S\+T\+A\+RT}{FLAG\_START}}
+{\footnotesize\ttfamily \#define F\+L\+A\+G\+\_\+\+S\+T\+A\+RT~0x08}
+
+
+
+Flag de inicio de player. 
+
+
+
+Definition at line 32 of file tipos.\+h.
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{tipos_8h_a068f27002f901dca30a2f9decdcc940b}\label{tipos_8h_a068f27002f901dca30a2f9decdcc940b}} 
+\index{tipos.\+h@{tipos.\+h}!flag\+\_\+fsm@{flag\+\_\+fsm}}
+\index{flag\+\_\+fsm@{flag\+\_\+fsm}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{flag\+\_\+fsm}{flag\_fsm}}
+{\footnotesize\ttfamily volatile uint8\+\_\+t flag\+\_\+fsm}
+
+
+
+flag de la maquina 
+
+
+
+Definition at line 39 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_a23e04a79e83a0bb62dc3d6be4e0d1b92}\label{tipos_8h_a23e04a79e83a0bb62dc3d6be4e0d1b92}} 
+\index{tipos.\+h@{tipos.\+h}!flag\+\_\+rfid@{flag\+\_\+rfid}}
+\index{flag\+\_\+rfid@{flag\+\_\+rfid}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{flag\+\_\+rfid}{flag\_rfid}}
+{\footnotesize\ttfamily volatile uint8\+\_\+t flag\+\_\+rfid}
+
+
+
+flags del rfid 
+
+
+
+Definition at line 41 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_a8d6cbadfb1878d67dffef9647ba5fe05}\label{tipos_8h_a8d6cbadfb1878d67dffef9647ba5fe05}} 
+\index{tipos.\+h@{tipos.\+h}!flags\+\_\+player@{flags\+\_\+player}}
+\index{flags\+\_\+player@{flags\+\_\+player}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{flags\+\_\+player}{flags\_player}}
+{\footnotesize\ttfamily volatile uint8\+\_\+t flags\+\_\+player}
+
+
+
+flags del player 
+
+
+
+Definition at line 40 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_a3e0851617790c67a6b05d8721e5f8a96}\label{tipos_8h_a3e0851617790c67a6b05d8721e5f8a96}} 
+\index{tipos.\+h@{tipos.\+h}!num\+\_\+file@{num\+\_\+file}}
+\index{num\+\_\+file@{num\+\_\+file}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{num\+\_\+file}{num\_file}}
+{\footnotesize\ttfamily volatile int num\+\_\+file}
+
+
+
+Definition at line 44 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_aad2bf680e32d8de23ad37cb9980150c0}\label{tipos_8h_aad2bf680e32d8de23ad37cb9980150c0}} 
+\index{tipos.\+h@{tipos.\+h}!song\+\_\+name@{song\+\_\+name}}
+\index{song\+\_\+name@{song\+\_\+name}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{song\+\_\+name}{song\_name}}
+{\footnotesize\ttfamily volatile char$\ast$ song\+\_\+name}
+
+
+
+numbre del fichero 
+
+
+
+Definition at line 43 of file tipos.\+h.
+
+\mbox{\Hypertarget{tipos_8h_adbd4507c3dcdd7bd3aafd49ad3aba4cd}\label{tipos_8h_adbd4507c3dcdd7bd3aafd49ad3aba4cd}} 
+\index{tipos.\+h@{tipos.\+h}!stepper\+\_\+irq\+\_\+flag@{stepper\+\_\+irq\+\_\+flag}}
+\index{stepper\+\_\+irq\+\_\+flag@{stepper\+\_\+irq\+\_\+flag}!tipos.\+h@{tipos.\+h}}
+\subsubsection{\texorpdfstring{stepper\+\_\+irq\+\_\+flag}{stepper\_irq\_flag}}
+{\footnotesize\ttfamily volatile uint8\+\_\+t stepper\+\_\+irq\+\_\+flag}
+
+
+
+flags del encoder 
+
+
+
+Definition at line 42 of file tipos.\+h.
+

@@ -1,0 +1,520 @@
+\hypertarget{player_8c}{}\section{player.\+c File Reference}
+\label{player_8c}\index{player.\+c@{player.\+c}}
+{\ttfamily \#include \char`\"{}player.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mutex.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{player_8c_a6543a6b8f195f8e69d69b1469b5df684}{output}} (struct mad\+\_\+pcm $\ast$pcm, \mbox{\hyperlink{player_8h_a60a77fbaea5edcaf4415b0adad33f411}{B\+U\+F\+F\+E\+R\+S\+\_\+T}} $\ast$buffer, uint8\+\_\+t cbuff)
+\begin{DoxyCompactList}\small\item\em Carga los frame en el buffer Funcion auxiliar que carga los datos del frame en buffer que corresponda en el momento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8c_a1c8c89eacab2ed372e4d30dc9e0273a1}{Iniciliza\+\_\+player}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$user\+Data)
+\begin{DoxyCompactList}\small\item\em Inicia el las estrucuturas necesarias Inicia los estructuras de decodificacion y reproduccion necesarias. Tambien carga el primer frame decodificado+ en el buffer 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8c_aa629f23f878d63dcd5dd0108005b0a65}{carga\+\_\+bff1}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$user\+Data)
+\begin{DoxyCompactList}\small\item\em Carga el buffer 1 Decodifica y sintetisa un frame y lo almacena en el buffer 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8c_ad593e0d8b51cc348a46a6758a5d5ae8f}{carga\+\_\+bff2}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$user\+Data)
+\begin{DoxyCompactList}\small\item\em Carga el buffer 2 Decodifica y sintetisa un frame y lo almacena en el buffer 2. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{player_8h_a60a77fbaea5edcaf4415b0adad33f411}{B\+U\+F\+F\+E\+R\+S\+\_\+T}} $\ast$ \mbox{\hyperlink{player_8c_a2785a1798732ee5c03e3842d4fa34c17}{new\+\_\+buffer}} (void)
+\begin{DoxyCompactList}\small\item\em Crea una estructura de buffers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8c_a6ee3bed43be4ae93f907bb988f083bad}{Final\+\_\+\+Melodia}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$user\+Data)
+\begin{DoxyCompactList}\small\item\em Finaliza la melodia Limpia la estructuras utilizadas y cierra los ficheros. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8c_ad7bce7c24e3cde69be4bb4d140df3e2d}{func}} (void $\ast$data)
+\begin{DoxyCompactList}\small\item\em funcion de loop del fsm \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8c_afbf824fb6586d8a0b33e4ddfe27331ee}{launch\+Player}} ()
+\begin{DoxyCompactList}\small\item\em inicia el reproductor de audio Crea la maquina de estados y la lanza en un hilo de alta prioridad para garantizar tiempo real \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct mad\+\_\+stream \mbox{\hyperlink{player_8c_a026e5e50625546e80eaa4c9af14fca88}{mad\+\_\+stream}}
+\begin{DoxyCompactList}\small\item\em Estructura de stream de audio. \end{DoxyCompactList}\item 
+struct mad\+\_\+frame \mbox{\hyperlink{player_8c_a521fb372f3556f5fb8bf4e6846dcd372}{mad\+\_\+frame}}
+\begin{DoxyCompactList}\small\item\em Estructura de informacion del frame decodificado. \end{DoxyCompactList}\item 
+struct mad\+\_\+synth \mbox{\hyperlink{player_8c_ab3c5fa6c50f63c63fc65bbad2214b6db}{mad\+\_\+synth}}
+\begin{DoxyCompactList}\small\item\em Estructura de sintesis de frame. \end{DoxyCompactList}\item 
+Pa\+Stream\+Parameters \mbox{\hyperlink{player_8c_aca1655299687074746b35ca16a14c261}{output\+Parameters}}
+\begin{DoxyCompactList}\small\item\em Estructura de parametros del driver de audio. \end{DoxyCompactList}\item 
+Pa\+Stream $\ast$ \mbox{\hyperlink{player_8c_aa2fbdaf8db29dee4b723a45b890cd92a}{stream}}
+\begin{DoxyCompactList}\small\item\em Estructura de Stream de reproduccion. \end{DoxyCompactList}\item 
+Pa\+Error \mbox{\hyperlink{player_8c_abdb12f1e5e522d413d39613e89635c7c}{err}}
+\begin{DoxyCompactList}\small\item\em Variable de error. \end{DoxyCompactList}\item 
+F\+I\+LE $\ast$ \mbox{\hyperlink{player_8c_aa065f30aa9f5f9a42132c82c787ee70b}{fp}}
+\begin{DoxyCompactList}\small\item\em Puntero a fichero. Contendrá el fichero .mp3. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{fsm_8h_a6b1de28e7a9f91913bb0499e2584b5ac}{fsm\+\_\+trans\+\_\+t}} \mbox{\hyperlink{player_8c_a50ad1938e7f7998ac655bf59a6c1b30b}{transition\+\_\+table\+\_\+player}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{player_8c_aa629f23f878d63dcd5dd0108005b0a65}\label{player_8c_aa629f23f878d63dcd5dd0108005b0a65}} 
+\index{player.\+c@{player.\+c}!carga\+\_\+bff1@{carga\+\_\+bff1}}
+\index{carga\+\_\+bff1@{carga\+\_\+bff1}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{carga\+\_\+bff1()}{carga\_bff1()}}
+{\footnotesize\ttfamily void carga\+\_\+bff1 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{user\+Data }\end{DoxyParamCaption})}
+
+
+
+Carga el buffer 1 Decodifica y sintetisa un frame y lo almacena en el buffer 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Data} & Estructura de datos de usuario \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 218 of file player.\+c.
+
+
+\begin{DoxyCode}
+219 \{
+220     \mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}} *data = (\mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}} *)
+      userData;
+221     \mbox{\hyperlink{tipos_8h_a8d6cbadfb1878d67dffef9647ba5fe05}{flags\_player}} &= ~\mbox{\hyperlink{tipos_8h_a5a6130f17926438ce73bb72f285e0294}{FLAG\_BFF1\_END}};
+222     mad\_frame\_decode(&\mbox{\hyperlink{player_8c_a521fb372f3556f5fb8bf4e6846dcd372}{mad\_frame}}, &\mbox{\hyperlink{player_8c_a026e5e50625546e80eaa4c9af14fca88}{mad\_stream}});
+223     \textcolor{comment}{// Synthesize PCM data of frame}
+224     mad\_synth\_frame(&\mbox{\hyperlink{player_8c_ab3c5fa6c50f63c63fc65bbad2214b6db}{mad\_synth}}, &\mbox{\hyperlink{player_8c_a521fb372f3556f5fb8bf4e6846dcd372}{mad\_frame}});
+225     \mbox{\hyperlink{player_8c_a6543a6b8f195f8e69d69b1469b5df684}{output}}(&\mbox{\hyperlink{player_8c_ab3c5fa6c50f63c63fc65bbad2214b6db}{mad\_synth}}.pcm, data->\mbox{\hyperlink{structfsm__audio__controller_a395b225759de943e9aba55fac03923e6}{buffer}}, 0);
+226 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{player_8c_ad593e0d8b51cc348a46a6758a5d5ae8f}\label{player_8c_ad593e0d8b51cc348a46a6758a5d5ae8f}} 
+\index{player.\+c@{player.\+c}!carga\+\_\+bff2@{carga\+\_\+bff2}}
+\index{carga\+\_\+bff2@{carga\+\_\+bff2}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{carga\+\_\+bff2()}{carga\_bff2()}}
+{\footnotesize\ttfamily void carga\+\_\+bff2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{user\+Data }\end{DoxyParamCaption})}
+
+
+
+Carga el buffer 2 Decodifica y sintetisa un frame y lo almacena en el buffer 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Data} & Estructura de datos de usuario \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 203 of file player.\+c.
+
+
+\begin{DoxyCode}
+204 \{
+205 
+206     \mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}} *data = (\mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}} *)
+      userData;
+207     \mbox{\hyperlink{tipos_8h_a8d6cbadfb1878d67dffef9647ba5fe05}{flags\_player}} &= ~\mbox{\hyperlink{tipos_8h_a6f5aa8963b525ed0622aeecf844064ba}{FLAG\_BFF2\_END}};
+208     mad\_frame\_decode(&\mbox{\hyperlink{player_8c_a521fb372f3556f5fb8bf4e6846dcd372}{mad\_frame}}, &\mbox{\hyperlink{player_8c_a026e5e50625546e80eaa4c9af14fca88}{mad\_stream}});
+209     \textcolor{comment}{// Synthesize PCM data of frame}
+210     mad\_synth\_frame(&\mbox{\hyperlink{player_8c_ab3c5fa6c50f63c63fc65bbad2214b6db}{mad\_synth}}, &\mbox{\hyperlink{player_8c_a521fb372f3556f5fb8bf4e6846dcd372}{mad\_frame}});
+211     \mbox{\hyperlink{player_8c_a6543a6b8f195f8e69d69b1469b5df684}{output}}(&\mbox{\hyperlink{player_8c_ab3c5fa6c50f63c63fc65bbad2214b6db}{mad\_synth}}.pcm, data->\mbox{\hyperlink{structfsm__audio__controller_a395b225759de943e9aba55fac03923e6}{buffer}}, 1);
+212 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{player_8c_a6ee3bed43be4ae93f907bb988f083bad}\label{player_8c_a6ee3bed43be4ae93f907bb988f083bad}} 
+\index{player.\+c@{player.\+c}!Final\+\_\+\+Melodia@{Final\+\_\+\+Melodia}}
+\index{Final\+\_\+\+Melodia@{Final\+\_\+\+Melodia}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{Final\+\_\+\+Melodia()}{Final\_Melodia()}}
+{\footnotesize\ttfamily void Final\+\_\+\+Melodia (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{user\+Data }\end{DoxyParamCaption})}
+
+
+
+Finaliza la melodia Limpia la estructuras utilizadas y cierra los ficheros. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Data} & Estructura de datos de usuario \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 234 of file player.\+c.
+
+
+\begin{DoxyCode}
+235 \{
+236     printf(\textcolor{stringliteral}{"Final de la melodia \(\backslash\)n"});
+237     \mbox{\hyperlink{tipos_8h_a8d6cbadfb1878d67dffef9647ba5fe05}{flags\_player}} = 0;
+238     Pa\_StopStream(\mbox{\hyperlink{player_8c_aa2fbdaf8db29dee4b723a45b890cd92a}{stream}});
+239     fclose(\mbox{\hyperlink{player_8c_aa065f30aa9f5f9a42132c82c787ee70b}{fp}});
+240 
+241     \textcolor{comment}{// Free MAD structs}
+242     mad\_synth\_finish(&\mbox{\hyperlink{player_8c_ab3c5fa6c50f63c63fc65bbad2214b6db}{mad\_synth}});
+243     mad\_frame\_finish(&\mbox{\hyperlink{player_8c_a521fb372f3556f5fb8bf4e6846dcd372}{mad\_frame}});
+244     mad\_stream\_finish(&\mbox{\hyperlink{player_8c_a026e5e50625546e80eaa4c9af14fca88}{mad\_stream}});
+245 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{player_8c_ad7bce7c24e3cde69be4bb4d140df3e2d}\label{player_8c_ad7bce7c24e3cde69be4bb4d140df3e2d}} 
+\index{player.\+c@{player.\+c}!func@{func}}
+\index{func@{func}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{func()}{func()}}
+{\footnotesize\ttfamily void func (\begin{DoxyParamCaption}\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+funcion de loop del fsm 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 408 of file player.\+c.
+
+
+\begin{DoxyCode}
+409 \{
+410     \mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}} *sFsm = (\mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}} *)
+      data;
+411     \textcolor{keywordflow}{while} (1)
+412     \{
+413         \mbox{\hyperlink{fsm_8c_ab819883cf2f1ddfab600f96057d74169}{fsm\_fire}}(sFsm->\mbox{\hyperlink{structfsm__audio__controller_ac266ea0b7c96d1a0656ed46a9d3add6e}{fsm}});
+414     \}
+415 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{player_8c_a1c8c89eacab2ed372e4d30dc9e0273a1}\label{player_8c_a1c8c89eacab2ed372e4d30dc9e0273a1}} 
+\index{player.\+c@{player.\+c}!Iniciliza\+\_\+player@{Iniciliza\+\_\+player}}
+\index{Iniciliza\+\_\+player@{Iniciliza\+\_\+player}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{Iniciliza\+\_\+player()}{Iniciliza\_player()}}
+{\footnotesize\ttfamily void Iniciliza\+\_\+player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{user\+Data }\end{DoxyParamCaption})}
+
+
+
+Inicia el las estrucuturas necesarias Inicia los estructuras de decodificacion y reproduccion necesarias. Tambien carga el primer frame decodificado+ en el buffer 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Data} & Estructura de datos de usuario \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 116 of file player.\+c.
+
+
+\begin{DoxyCode}
+117 \{
+118 
+119     \mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}} *data = (\mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}} *)
+      userData; \textcolor{comment}{//Cargo datos de usuario}
+120     data->\mbox{\hyperlink{structfsm__audio__controller_a395b225759de943e9aba55fac03923e6}{buffer}} = \mbox{\hyperlink{player_8c_a2785a1798732ee5c03e3842d4fa34c17}{new\_buffer}}();                                       \textcolor{comment}{//Creo el la
+       estructura de buffers}
+121     \mbox{\hyperlink{tipos_8h_a8d6cbadfb1878d67dffef9647ba5fe05}{flags\_player}} &= ~\mbox{\hyperlink{tipos_8h_aca7482b8a25290ec56826ad3b8d6bf19}{FLAG\_START}};
+122 
+123     \textcolor{comment}{//Cargo el fichero seleccionado en memoria}
+124     \textcolor{keywordtype}{char} filename[64] = \textcolor{stringliteral}{"./musica/"}; \textcolor{comment}{//ruta parcial dle fichero}
+125     strcat(filename, \mbox{\hyperlink{tipos_8h_aad2bf680e32d8de23ad37cb9980150c0}{song\_name}});
+126     printf(\textcolor{stringliteral}{"full path: %s \(\backslash\)n"}, filename);
+127     free(\mbox{\hyperlink{tipos_8h_aad2bf680e32d8de23ad37cb9980150c0}{song\_name}});
+128 
+129     \mbox{\hyperlink{player_8c_aa065f30aa9f5f9a42132c82c787ee70b}{fp}} = fopen(filename, \textcolor{stringliteral}{"r"});
+130     \textcolor{keywordtype}{int} fd = fileno(\mbox{\hyperlink{player_8c_aa065f30aa9f5f9a42132c82c787ee70b}{fp}}); \textcolor{comment}{//obtengo puntero}
+131 
+132     \textcolor{keyword}{struct }stat metadata; \textcolor{comment}{//estructua de informacion de fichero}
+133 
+134     \textcolor{comment}{//compruebo que se ha cargado correctamente}
+135     \textcolor{keywordflow}{if} (fstat(fd, &metadata) >= 0)
+136     \{
+137         printf(\textcolor{stringliteral}{"File size %d bytes\(\backslash\)n"}, (\textcolor{keywordtype}{int})metadata.st\_size);
+138     \}
+139     \textcolor{keywordflow}{else}
+140     \{
+141         printf(\textcolor{stringliteral}{"Failed to stat %s\(\backslash\)n"}, filename);
+142         fclose(\mbox{\hyperlink{player_8c_aa065f30aa9f5f9a42132c82c787ee70b}{fp}});
+143         \textcolor{keywordflow}{return};
+144     \}
+145     \textcolor{comment}{//mapeo el fichero}
+146     \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} *input\_stream = mmap(0, metadata.st\_size, PROT\_READ, MAP\_SHARED, fd, 0);
+147     mad\_stream\_buffer(&\mbox{\hyperlink{player_8c_a026e5e50625546e80eaa4c9af14fca88}{mad\_stream}}, input\_stream, metadata.st\_size);
+148 
+149     \textcolor{comment}{//CARGAMOS - PROCESAMOS BFF1}
+150     mad\_frame\_decode(&\mbox{\hyperlink{player_8c_a521fb372f3556f5fb8bf4e6846dcd372}{mad\_frame}}, &\mbox{\hyperlink{player_8c_a026e5e50625546e80eaa4c9af14fca88}{mad\_stream}});
+151 
+152     \textcolor{comment}{//sistesis de frame}
+153     mad\_synth\_frame(&\mbox{\hyperlink{player_8c_ab3c5fa6c50f63c63fc65bbad2214b6db}{mad\_synth}}, &\mbox{\hyperlink{player_8c_a521fb372f3556f5fb8bf4e6846dcd372}{mad\_frame}});
+154     \mbox{\hyperlink{player_8c_a6543a6b8f195f8e69d69b1469b5df684}{output}}(&\mbox{\hyperlink{player_8c_ab3c5fa6c50f63c63fc65bbad2214b6db}{mad\_synth}}.pcm, data->\mbox{\hyperlink{structfsm__audio__controller_a395b225759de943e9aba55fac03923e6}{buffer}}, 0);
+155     \mbox{\hyperlink{tipos_8h_a8d6cbadfb1878d67dffef9647ba5fe05}{flags\_player}} |= \mbox{\hyperlink{tipos_8h_a6f5aa8963b525ed0622aeecf844064ba}{FLAG\_BFF2\_END}};
+156 
+157     \textcolor{comment}{//Iniciamos el driver de audio}
+158     \mbox{\hyperlink{player_8c_abdb12f1e5e522d413d39613e89635c7c}{err}} = Pa\_Initialize();
+159     \textcolor{keywordflow}{if} (\mbox{\hyperlink{player_8c_abdb12f1e5e522d413d39613e89635c7c}{err}} != paNoError)
+160         \textcolor{keywordflow}{goto} error;
+161     \textcolor{comment}{//Cargmaos los dispositivos de reproduccion disponibles del sistema. nos quedamos con el por defecto}
+162     \mbox{\hyperlink{player_8c_aca1655299687074746b35ca16a14c261}{outputParameters}}.device = Pa\_GetDefaultOutputDevice(); \textcolor{comment}{/* default output device */}
+163     \textcolor{keywordflow}{if} (\mbox{\hyperlink{player_8c_aca1655299687074746b35ca16a14c261}{outputParameters}}.device == paNoDevice)
+164     \{
+165         fprintf(stderr, \textcolor{stringliteral}{"Error: No default output device.\(\backslash\)n"});
+166         \textcolor{keywordflow}{goto} error;
+167     \}
+168 
+169     \textcolor{comment}{//Parametros de reproduccion}
+170     \mbox{\hyperlink{player_8c_aca1655299687074746b35ca16a14c261}{outputParameters}}.channelCount = 2;       \textcolor{comment}{// stereo}
+171     \mbox{\hyperlink{player_8c_aca1655299687074746b35ca16a14c261}{outputParameters}}.sampleFormat = paInt32; \textcolor{comment}{// 32 bit (tipo de muestras )}
+172     \mbox{\hyperlink{player_8c_aca1655299687074746b35ca16a14c261}{outputParameters}}.suggestedLatency = Pa\_GetDeviceInfo(
+      \mbox{\hyperlink{player_8c_aca1655299687074746b35ca16a14c261}{outputParameters}}.device)->defaultLowOutputLatency;
+173     \mbox{\hyperlink{player_8c_aca1655299687074746b35ca16a14c261}{outputParameters}}.hostApiSpecificStreamInfo = NULL;
+174 
+175     \textcolor{comment}{//Abro el stream de repducción}
+176     Pa\_OpenStream(
+177         &\mbox{\hyperlink{player_8c_aa2fbdaf8db29dee4b723a45b890cd92a}{stream}},
+178         NULL, \textcolor{comment}{// no input}
+179         &\mbox{\hyperlink{player_8c_aca1655299687074746b35ca16a14c261}{outputParameters}},
+180         \mbox{\hyperlink{player_8h_a4b76a0c2859cfd819a343a780070ee2b}{SAMPLE\_RATE}},    \textcolor{comment}{//velocidad de muestreo}
+181         \mbox{\hyperlink{player_8h_af4f62216aa14e0407faa6631e9ec4c62}{FRAMES\_PER\_BUFFER}}, \textcolor{comment}{//Tamaño del frame, por defecto 1152 (especificacion mpeg layer
+       3)}
+182         paClipOff,         \textcolor{comment}{//sin solapamiento}
+183         patestCallback, \textcolor{comment}{//funcion de callback}
+184         data->\mbox{\hyperlink{structfsm__audio__controller_a395b225759de943e9aba55fac03923e6}{buffer}});
+185 
+186     \textcolor{comment}{//iniciamos el stream de audio}
+187     Pa\_StartStream(\mbox{\hyperlink{player_8c_aa2fbdaf8db29dee4b723a45b890cd92a}{stream}});
+188     \textcolor{keywordflow}{return};
+189 
+190 error:
+191     Pa\_Terminate();
+192     fprintf(stderr, \textcolor{stringliteral}{"An error occured while using the portaudio stream\(\backslash\)n"});
+193     fprintf(stderr, \textcolor{stringliteral}{"Error number: %d\(\backslash\)n"}, \mbox{\hyperlink{player_8c_abdb12f1e5e522d413d39613e89635c7c}{err}});
+194     fprintf(stderr, \textcolor{stringliteral}{"Error message: %s\(\backslash\)n"}, Pa\_GetErrorText(\mbox{\hyperlink{player_8c_abdb12f1e5e522d413d39613e89635c7c}{err}}));
+195     \textcolor{keywordflow}{return};
+196 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{player_8c_afbf824fb6586d8a0b33e4ddfe27331ee}\label{player_8c_afbf824fb6586d8a0b33e4ddfe27331ee}} 
+\index{player.\+c@{player.\+c}!launch\+Player@{launch\+Player}}
+\index{launch\+Player@{launch\+Player}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{launch\+Player()}{launchPlayer()}}
+{\footnotesize\ttfamily void launch\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+inicia el reproductor de audio Crea la maquina de estados y la lanza en un hilo de alta prioridad para garantizar tiempo real 
+
+
+
+Definition at line 380 of file player.\+c.
+
+
+\begin{DoxyCode}
+381 \{
+382     \mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}} *sFsm = (\mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}} *)
+      malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}}));
+383     sFsm->\mbox{\hyperlink{structfsm__audio__controller_ac266ea0b7c96d1a0656ed46a9d3add6e}{fsm}} = \mbox{\hyperlink{fsm_8c_a5a5f1422455f99b9d1c2d74d04537de7}{fsm\_new}}(\mbox{\hyperlink{player_8c_a50ad1938e7f7998ac655bf59a6c1b30b}{transition\_table\_player}}, NULL);
+384 
+385     pthread\_attr\_t tattr;
+386     pthread\_t \mbox{\hyperlink{fsm__rfid_8h_a01f75a9ad916f63a94e06a27635ba278}{thread}};
+387     \textcolor{keywordtype}{int} newprio = 99;
+388     \textcolor{keyword}{struct }sched\_param param;
+389     \textcolor{comment}{/* initialized with default attributes */}
+390     pthread\_attr\_init(&tattr);
+391 
+392     \textcolor{comment}{/* safe to get existing scheduling param */}
+393     pthread\_attr\_getschedparam(&tattr, &param);
+394 
+395     \textcolor{comment}{/* set the priority; others are unchanged */}
+396     param.sched\_priority = newprio;
+397 
+398     \textcolor{comment}{/* setting the new scheduling param */}
+399     pthread\_attr\_setschedparam(&tattr, &param);
+400     pthread\_create(&\mbox{\hyperlink{fsm__rfid_8h_a01f75a9ad916f63a94e06a27635ba278}{thread}}, &tattr, \mbox{\hyperlink{player_8c_ad7bce7c24e3cde69be4bb4d140df3e2d}{func}}, sFsm);
+401 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{player_8c_a2785a1798732ee5c03e3842d4fa34c17}\label{player_8c_a2785a1798732ee5c03e3842d4fa34c17}} 
+\index{player.\+c@{player.\+c}!new\+\_\+buffer@{new\+\_\+buffer}}
+\index{new\+\_\+buffer@{new\+\_\+buffer}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{new\+\_\+buffer()}{new\_buffer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{player_8h_a60a77fbaea5edcaf4415b0adad33f411}{B\+U\+F\+F\+E\+R\+S\+\_\+T}} $\ast$ new\+\_\+buffer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Crea una estructura de buffers. 
+
+\begin{DoxyReturn}{Returns}
+B\+U\+F\+F\+E\+R\+S\+\_\+\+T$\ast$ Puntero a la estructura creada 
+\end{DoxyReturn}
+
+
+Definition at line 347 of file player.\+c.
+
+
+\begin{DoxyCode}
+348 \{
+349     \mbox{\hyperlink{struct_b_u_f_f_e_r_s}{BUFFERS\_T}} *\textcolor{keyword}{new} = (\mbox{\hyperlink{struct_b_u_f_f_e_r_s}{BUFFERS\_T}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_b_u_f_f_e_r_s}{BUFFERS\_T}}));
+350     \textcolor{keyword}{new}->\mbox{\hyperlink{struct_b_u_f_f_e_r_s_a39eefabe09b3b120d69fbaa4b6b005ce}{buff1\_l}} = (\textcolor{keywordtype}{int} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}) * \mbox{\hyperlink{player_8h_af4f62216aa14e0407faa6631e9ec4c62}{FRAMES\_PER\_BUFFER}});
+351     \textcolor{keyword}{new}->buff1\_r = (\textcolor{keywordtype}{int} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}) * \mbox{\hyperlink{player_8h_af4f62216aa14e0407faa6631e9ec4c62}{FRAMES\_PER\_BUFFER}});
+352     \textcolor{keyword}{new}->buff2\_l = (\textcolor{keywordtype}{int} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}) * \mbox{\hyperlink{player_8h_af4f62216aa14e0407faa6631e9ec4c62}{FRAMES\_PER\_BUFFER}});
+353     \textcolor{keyword}{new}->buff2\_r = (\textcolor{keywordtype}{int} *)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}) * \mbox{\hyperlink{player_8h_af4f62216aa14e0407faa6631e9ec4c62}{FRAMES\_PER\_BUFFER}});
+354     \textcolor{keyword}{new}->currentBuffer = 1;
+355     \textcolor{keyword}{new}->lengthBuffer = \mbox{\hyperlink{player_8h_af4f62216aa14e0407faa6631e9ec4c62}{FRAMES\_PER\_BUFFER}};
+356     \textcolor{keyword}{new}->sampleReaded = 0;
+357     \textcolor{keyword}{new}->flags = 0;
+358     \textcolor{keywordflow}{return} \textcolor{keyword}{new};
+359 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{player_8c_a6543a6b8f195f8e69d69b1469b5df684}\label{player_8c_a6543a6b8f195f8e69d69b1469b5df684}} 
+\index{player.\+c@{player.\+c}!output@{output}}
+\index{output@{output}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{output()}{output()}}
+{\footnotesize\ttfamily void output (\begin{DoxyParamCaption}\item[{struct mad\+\_\+pcm $\ast$}]{pcm,  }\item[{\mbox{\hyperlink{player_8h_a60a77fbaea5edcaf4415b0adad33f411}{B\+U\+F\+F\+E\+R\+S\+\_\+T}} $\ast$}]{buffer,  }\item[{uint8\+\_\+t}]{cbuff }\end{DoxyParamCaption})}
+
+
+
+Carga los frame en el buffer Funcion auxiliar que carga los datos del frame en buffer que corresponda en el momento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pcm} & Estructura de datos con mas muestras pcm del frame ya sintetizadas \\
+\hline
+{\em buffer} & Estructura del buffer de reproducción \\
+\hline
+{\em cbuff} & indice del buffer actual en el que hay que escribir \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 255 of file player.\+c.
+
+
+\begin{DoxyCode}
+256 \{
+257     \textcolor{keyword}{register} \textcolor{keywordtype}{int} nsamples = pcm->length;                                       \textcolor{comment}{//longitud del frame}
+258     mad\_fixed\_t \textcolor{keyword}{const} *left\_ch = pcm->samples[0], *right\_ch = pcm->samples[1]; \textcolor{comment}{//punteros a buffer pcm}
+259     \textcolor{keywordtype}{int} i = 0;
+260     \textcolor{comment}{//cargo los buffers correspondientes a los dos canales}
+261     \textcolor{keywordflow}{while} (nsamples--)
+262     \{
+263         \textcolor{keywordtype}{signed} \textcolor{keywordtype}{int} sample;
+264         sample = *left\_ch++;
+265         \textcolor{keywordflow}{if} (cbuff == 0)
+266             *(buffer->\mbox{\hyperlink{struct_b_u_f_f_e_r_s_a39eefabe09b3b120d69fbaa4b6b005ce}{buff1\_l}} + i) = sample;
+267         \textcolor{keywordflow}{else}
+268             *(buffer->\mbox{\hyperlink{struct_b_u_f_f_e_r_s_a4b72ec787f878bb4946eb99959a9eee1}{buff2\_l}} + i) = sample;
+269 
+270         sample = *right\_ch++;
+271         \textcolor{keywordflow}{if} (cbuff == 0)
+272             *(buffer->\mbox{\hyperlink{struct_b_u_f_f_e_r_s_ad31aa70b56496218b2a23ff3515a1cd6}{buff1\_r}} + i) = sample;
+273         \textcolor{keywordflow}{else}
+274             *(buffer->\mbox{\hyperlink{struct_b_u_f_f_e_r_s_a41f147f529b8c09dd8287a029d373b44}{buff2\_r}} + i) = sample;
+275 
+276         i++;
+277     \}
+278 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{player_8c_abdb12f1e5e522d413d39613e89635c7c}\label{player_8c_abdb12f1e5e522d413d39613e89635c7c}} 
+\index{player.\+c@{player.\+c}!err@{err}}
+\index{err@{err}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{err}{err}}
+{\footnotesize\ttfamily Pa\+Error err}
+
+
+
+Variable de error. 
+
+
+
+Definition at line 37 of file player.\+c.
+
+\mbox{\Hypertarget{player_8c_aa065f30aa9f5f9a42132c82c787ee70b}\label{player_8c_aa065f30aa9f5f9a42132c82c787ee70b}} 
+\index{player.\+c@{player.\+c}!fp@{fp}}
+\index{fp@{fp}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{fp}{fp}}
+{\footnotesize\ttfamily F\+I\+LE$\ast$ fp}
+
+
+
+Puntero a fichero. Contendrá el fichero .mp3. 
+
+
+
+Definition at line 38 of file player.\+c.
+
+\mbox{\Hypertarget{player_8c_a521fb372f3556f5fb8bf4e6846dcd372}\label{player_8c_a521fb372f3556f5fb8bf4e6846dcd372}} 
+\index{player.\+c@{player.\+c}!mad\+\_\+frame@{mad\+\_\+frame}}
+\index{mad\+\_\+frame@{mad\+\_\+frame}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{mad\+\_\+frame}{mad\_frame}}
+{\footnotesize\ttfamily struct mad\+\_\+frame mad\+\_\+frame}
+
+
+
+Estructura de informacion del frame decodificado. 
+
+
+
+Definition at line 32 of file player.\+c.
+
+\mbox{\Hypertarget{player_8c_a026e5e50625546e80eaa4c9af14fca88}\label{player_8c_a026e5e50625546e80eaa4c9af14fca88}} 
+\index{player.\+c@{player.\+c}!mad\+\_\+stream@{mad\+\_\+stream}}
+\index{mad\+\_\+stream@{mad\+\_\+stream}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{mad\+\_\+stream}{mad\_stream}}
+{\footnotesize\ttfamily struct mad\+\_\+stream mad\+\_\+stream}
+
+
+
+Estructura de stream de audio. 
+
+
+
+Definition at line 31 of file player.\+c.
+
+\mbox{\Hypertarget{player_8c_ab3c5fa6c50f63c63fc65bbad2214b6db}\label{player_8c_ab3c5fa6c50f63c63fc65bbad2214b6db}} 
+\index{player.\+c@{player.\+c}!mad\+\_\+synth@{mad\+\_\+synth}}
+\index{mad\+\_\+synth@{mad\+\_\+synth}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{mad\+\_\+synth}{mad\_synth}}
+{\footnotesize\ttfamily struct mad\+\_\+synth mad\+\_\+synth}
+
+
+
+Estructura de sintesis de frame. 
+
+
+
+Definition at line 33 of file player.\+c.
+
+\mbox{\Hypertarget{player_8c_aca1655299687074746b35ca16a14c261}\label{player_8c_aca1655299687074746b35ca16a14c261}} 
+\index{player.\+c@{player.\+c}!output\+Parameters@{output\+Parameters}}
+\index{output\+Parameters@{output\+Parameters}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{output\+Parameters}{outputParameters}}
+{\footnotesize\ttfamily Pa\+Stream\+Parameters output\+Parameters}
+
+
+
+Estructura de parametros del driver de audio. 
+
+
+
+Definition at line 35 of file player.\+c.
+
+\mbox{\Hypertarget{player_8c_aa2fbdaf8db29dee4b723a45b890cd92a}\label{player_8c_aa2fbdaf8db29dee4b723a45b890cd92a}} 
+\index{player.\+c@{player.\+c}!stream@{stream}}
+\index{stream@{stream}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{stream}{stream}}
+{\footnotesize\ttfamily Pa\+Stream$\ast$ stream}
+
+
+
+Estructura de Stream de reproduccion. 
+
+
+
+Definition at line 36 of file player.\+c.
+
+\mbox{\Hypertarget{player_8c_a50ad1938e7f7998ac655bf59a6c1b30b}\label{player_8c_a50ad1938e7f7998ac655bf59a6c1b30b}} 
+\index{player.\+c@{player.\+c}!transition\+\_\+table\+\_\+player@{transition\+\_\+table\+\_\+player}}
+\index{transition\+\_\+table\+\_\+player@{transition\+\_\+table\+\_\+player}!player.\+c@{player.\+c}}
+\subsubsection{\texorpdfstring{transition\+\_\+table\+\_\+player}{transition\_table\_player}}
+{\footnotesize\ttfamily \mbox{\hyperlink{fsm_8h_a6b1de28e7a9f91913bb0499e2584b5ac}{fsm\+\_\+trans\+\_\+t}} transition\+\_\+table\+\_\+player\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{\mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954acb28ec9add78d971b8f7fc412b4a7de9}{WAIT\_BEGIN}}, CompruebaPlayerStart, \mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954afaef777c0ac17885046d5f9ddf9c3f82}{WAIT\_BFF1}}, 
+      \mbox{\hyperlink{player_8c_a1c8c89eacab2ed372e4d30dc9e0273a1}{Iniciliza\_player}}\},
+    \{\mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954afaef777c0ac17885046d5f9ddf9c3f82}{WAIT\_BFF1}}, CompruebaFinal, \mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954acb28ec9add78d971b8f7fc412b4a7de9}{WAIT\_BEGIN}}, \mbox{\hyperlink{player_8c_a6ee3bed43be4ae93f907bb988f083bad}{Final\_Melodia}}\},
+    \{\mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954afaef777c0ac17885046d5f9ddf9c3f82}{WAIT\_BFF1}}, Comprueba\_fin\_bff2, \mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954af0c637f0ad86422e319ed7b9759e6090}{WAIT\_BFF2}}, \mbox{\hyperlink{player_8c_ad593e0d8b51cc348a46a6758a5d5ae8f}{carga\_bff2}}\},
+    \{\mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954af0c637f0ad86422e319ed7b9759e6090}{WAIT\_BFF2}}, CompruebaFinal, \mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954acb28ec9add78d971b8f7fc412b4a7de9}{WAIT\_BEGIN}}, \mbox{\hyperlink{player_8c_a6ee3bed43be4ae93f907bb988f083bad}{Final\_Melodia}}\},
+    \{\mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954af0c637f0ad86422e319ed7b9759e6090}{WAIT\_BFF2}}, Comprueba\_fin\_bff1, \mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954afaef777c0ac17885046d5f9ddf9c3f82}{WAIT\_BFF1}}, \mbox{\hyperlink{player_8c_aa629f23f878d63dcd5dd0108005b0a65}{carga\_bff1}}\},
+    \{-1, NULL, -1, NULL\}\}
+\end{DoxyCode}
+
+
+Definition at line 41 of file player.\+c.
+

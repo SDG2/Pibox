@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['sample_5frate',['SAMPLE_RATE',['../player_8h.html#a4b76a0c2859cfd819a343a780070ee2b',1,'player.h']]],
+  ['samplereaded',['sampleReaded',['../struct_b_u_f_f_e_r_s.html#ac6bbdc3545a0dbf8a4f7e405ce2adf3d',1,'BUFFERS']]],
+  ['select_5ffile',['select_file',['../structlist__files.html#ab8e9545f9cf8e60731a881b07d37a134',1,'list_files']]],
+  ['select_5fmode',['select_mode',['../fsm__rfid_8c.html#a7d4c8489d18eb87542e04359532017f2',1,'fsm_rfid.c']]],
+  ['seqa',['seqA',['../fsm__rfid_8c.html#aefd9aadc5bca10986d4506c0b045be65',1,'fsm_rfid.c']]],
+  ['seqb',['seqB',['../fsm__rfid_8c.html#a7f153a44052f2c810d14272facac0f82',1,'fsm_rfid.c']]],
+  ['song_5fname',['song_name',['../tipos_8h.html#aad2bf680e32d8de23ad37cb9980150c0',1,'tipos.h']]],
+  ['sql_5foperation_5ferr',['SQL_OPERATION_ERR',['../dbcontroller_8h.html#a90971f93a64656d6b2a9fc4006d00fbeae580ff302465f1a990d401d94cfbeff1',1,'dbcontroller.h']]],
+  ['sql_5foperation_5fok',['SQL_OPERATION_OK',['../dbcontroller_8h.html#a90971f93a64656d6b2a9fc4006d00fbeaf0913fa0529636ee554e74e2609eaa9f',1,'dbcontroller.h']]],
+  ['sql_5fquery_5fcheck_5fdb',['SQL_QUERY_CHECK_DB',['../dbcontroller_8c.html#a3c0fc6001c2c245be160b4451f821628',1,'dbcontroller.c']]],
+  ['sql_5fquery_5fcreate_5fdb',['SQL_QUERY_CREATE_DB',['../dbcontroller_8c.html#a836373917e3d6bda1253864bf828aebe',1,'dbcontroller.c']]],
+  ['sql_5fquery_5fget_5fnumber_5fof_5felements',['SQL_QUERY_GET_NUMBER_OF_ELEMENTS',['../dbcontroller_8c.html#a7876ba4ce4e52f3fed2bb99103797743',1,'dbcontroller.c']]],
+  ['sql_5fquery_5finsert_5fdb',['SQL_QUERY_INSERT_DB',['../dbcontroller_8c.html#a9977a338cb4096715d937611fb8f686d',1,'dbcontroller.c']]],
+  ['sql_5fquery_5fmax_5fsize',['SQL_QUERY_MAX_SIZE',['../dbcontroller_8c.html#a50d7e91699c53cf3aa53a6161a57d493',1,'dbcontroller.c']]],
+  ['sql_5fquery_5fselect_5fdb',['SQL_QUERY_SELECT_DB',['../dbcontroller_8c.html#a14c45fad51df03c9f7ed915b076601dc',1,'dbcontroller.c']]],
+  ['sql_5fresolution',['SQL_RESOLUTION',['../dbcontroller_8h.html#a90971f93a64656d6b2a9fc4006d00fbe',1,'dbcontroller.h']]],
+  ['sql_5ftable_5fname',['SQL_TABLE_NAME',['../dbcontroller_8c.html#a51ad2def95c93dfce02566ae6d54dc65',1,'dbcontroller.c']]],
+  ['stepper_5firq_5fflag',['stepper_irq_flag',['../tipos_8h.html#adbd4507c3dcdd7bd3aafd49ad3aba4cd',1,'tipos.h']]],
+  ['stream',['stream',['../player_8c.html#aa2fbdaf8db29dee4b723a45b890cd92a',1,'player.c']]]
+];

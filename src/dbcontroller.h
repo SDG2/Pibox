@@ -16,8 +16,8 @@
  * 
  */
 enum SQL_RESOLUTION{
-	SQL_OPERATION_OK,
-	SQL_OPERATION_ERR
+	SQL_OPERATION_OK, ///< Operacion correcta
+	SQL_OPERATION_ERR ///< Operacion erronea
 };
 
 

@@ -1,0 +1,626 @@
+\begin{theindex}
+
+  \item {atach\+Pin}
+    \subitem {Interrupt\+S\+M.\+h}, \hyperpage{65}
+  \item {attach\+Isr}
+    \subitem {Interrupt\+S\+M.\+c}, \hyperpage{61}
+    \subitem {Interrupt\+S\+M.\+h}, \hyperpage{64}
+
+  \indexspace
+
+  \item {B\+U\+F\+F\+E\+R\+S\+\_\+T}
+    \subitem {player.\+h}, \hyperpage{80}
+  \item {B\+U\+F\+F\+E\+RS}, \hyperpage{5}
+    \subitem {buff1\+\_\+l}, \hyperpage{6}
+    \subitem {buff1\+\_\+r}, \hyperpage{6}
+    \subitem {buff2\+\_\+l}, \hyperpage{6}
+    \subitem {buff2\+\_\+r}, \hyperpage{6}
+    \subitem {current\+Buffer}, \hyperpage{6}
+    \subitem {flags}, \hyperpage{6}
+    \subitem {length\+Buffer}, \hyperpage{7}
+    \subitem {sample\+Readed}, \hyperpage{7}
+  \item {bcm\+\_\+spi}
+    \subitem {defines.\+h}, \hyperpage{25}
+  \item {buff1\+\_\+l}
+    \subitem {B\+U\+F\+F\+E\+RS}, \hyperpage{6}
+  \item {buff1\+\_\+r}
+    \subitem {B\+U\+F\+F\+E\+RS}, \hyperpage{6}
+  \item {buff2\+\_\+l}
+    \subitem {B\+U\+F\+F\+E\+RS}, \hyperpage{6}
+  \item {buff2\+\_\+r}
+    \subitem {B\+U\+F\+F\+E\+RS}, \hyperpage{6}
+  \item {buffer}
+    \subitem {fsm\+\_\+audio\+\_\+controller}, \hyperpage{9}
+  \item {Busca\+Tarjeta}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{32}
+
+  \indexspace
+
+  \item {C\+A\+N\+C\+I\+O\+N\+\_\+\+A\+C\+A\+B\+A\+DA}
+    \subitem {defines.\+h}, \hyperpage{25}
+  \item {C\+A\+N\+C\+I\+O\+N\+\_\+\+N\+O\+A\+C\+A\+B\+A\+DA}
+    \subitem {defines.\+h}, \hyperpage{26}
+  \item {call\+\_\+back}
+    \subitem {Interrupt\+S\+M.\+h}, \hyperpage{63}
+  \item {callback}
+    \subitem {I\+S\+R\+\_\+\+Typ}, \hyperpage{11}
+    \subitem {pi\+Music\+Box\+\_\+2.\+c}, \hyperpage{69}
+  \item {Cancela\+Reproduccion}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{33}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{52}
+  \item {carga\+\_\+bff1}
+    \subitem {player.\+c}, \hyperpage{72}
+  \item {carga\+\_\+bff2}
+    \subitem {player.\+c}, \hyperpage{72}
+  \item {clean\+\_\+list\+\_\+files}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{33}
+  \item {Comienza\+Reproduccion}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{34}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{53}
+  \item {Comienza\+Sistema}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{34}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{53}
+  \item {Comprueba\+Comienzo}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{35}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{54}
+  \item {Comprueba\+Final\+Reproduccion}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{35}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{54}
+  \item {Comprueba\+Tarjeta}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{36}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{54}
+  \item {Configura\+Tarjeta}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{36}
+  \item {Configuracion\+Correcta}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{36}
+  \item {current\+\_\+file}
+    \subitem {list\+\_\+files}, \hyperpage{12}
+  \item {current\+\_\+state}
+    \subitem {fsm\+\_\+}, \hyperpage{8}
+  \item {current\+Buffer}
+    \subitem {B\+U\+F\+F\+E\+RS}, \hyperpage{6}
+
+  \indexspace
+
+  \item {D\+B\+\_\+\+N\+A\+ME}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{32}
+  \item {db\+\_\+check}
+    \subitem {dbcontroller.\+c}, \hyperpage{17}
+    \subitem {dbcontroller.\+h}, \hyperpage{22}
+  \item {db\+\_\+close}
+    \subitem {dbcontroller.\+c}, \hyperpage{17}
+    \subitem {dbcontroller.\+h}, \hyperpage{23}
+  \item {db\+\_\+create\+\_\+tables}
+    \subitem {dbcontroller.\+c}, \hyperpage{18}
+  \item {db\+\_\+free\+\_\+song\+\_\+name}
+    \subitem {dbcontroller.\+c}, \hyperpage{19}
+  \item {db\+\_\+get\+\_\+song\+\_\+name}
+    \subitem {dbcontroller.\+c}, \hyperpage{19}
+    \subitem {dbcontroller.\+h}, \hyperpage{23}
+  \item {db\+\_\+insert}
+    \subitem {dbcontroller.\+c}, \hyperpage{20}
+    \subitem {dbcontroller.\+h}, \hyperpage{24}
+  \item {db\+\_\+load}
+    \subitem {dbcontroller.\+c}, \hyperpage{21}
+    \subitem {dbcontroller.\+h}, \hyperpage{25}
+  \item {dbcontroller.\+c}, \hyperpage{15}
+    \subitem {db\+\_\+check}, \hyperpage{17}
+    \subitem {db\+\_\+close}, \hyperpage{17}
+    \subitem {db\+\_\+create\+\_\+tables}, \hyperpage{18}
+    \subitem {db\+\_\+free\+\_\+song\+\_\+name}, \hyperpage{19}
+    \subitem {db\+\_\+get\+\_\+song\+\_\+name}, \hyperpage{19}
+    \subitem {db\+\_\+insert}, \hyperpage{20}
+    \subitem {db\+\_\+load}, \hyperpage{21}
+    \subitem {S\+Q\+L\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+C\+H\+E\+C\+K\+\_\+\+DB}, 
+		\hyperpage{16}
+    \subitem {S\+Q\+L\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+C\+R\+E\+A\+T\+E\+\_\+\+DB}, 
+		\hyperpage{16}
+    \subitem {S\+Q\+L\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+G\+E\+T\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+E\+L\+E\+M\+E\+N\+TS}, 
+		\hyperpage{16}
+    \subitem {S\+Q\+L\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+I\+N\+S\+E\+R\+T\+\_\+\+DB}, 
+		\hyperpage{16}
+    \subitem {S\+Q\+L\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+M\+A\+X\+\_\+\+S\+I\+ZE}, 
+		\hyperpage{16}
+    \subitem {S\+Q\+L\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+\+DB}, 
+		\hyperpage{16}
+    \subitem {S\+Q\+L\+\_\+\+T\+A\+B\+L\+E\+\_\+\+N\+A\+ME}, 
+		\hyperpage{17}
+  \item {dbcontroller.\+h}, \hyperpage{21}
+    \subitem {db\+\_\+check}, \hyperpage{22}
+    \subitem {db\+\_\+close}, \hyperpage{23}
+    \subitem {db\+\_\+get\+\_\+song\+\_\+name}, \hyperpage{23}
+    \subitem {db\+\_\+insert}, \hyperpage{24}
+    \subitem {db\+\_\+load}, \hyperpage{25}
+    \subitem {S\+Q\+L\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON}, 
+		\hyperpage{22}
+  \item {defines.\+h}, \hyperpage{25}
+    \subitem {bcm\+\_\+spi}, \hyperpage{25}
+    \subitem {C\+A\+N\+C\+I\+O\+N\+\_\+\+A\+C\+A\+B\+A\+DA}, 
+		\hyperpage{25}
+    \subitem {C\+A\+N\+C\+I\+O\+N\+\_\+\+N\+O\+A\+C\+A\+B\+A\+DA}, 
+		\hyperpage{26}
+    \subitem {P\+I\+N\+\_\+\+P\+WM}, \hyperpage{26}
+    \subitem {use\+\_\+bcm}, \hyperpage{26}
+  \item {delete\+Isr}
+    \subitem {Interrupt\+S\+M.\+c}, \hyperpage{61}
+    \subitem {Interrupt\+S\+M.\+h}, \hyperpage{65}
+  \item {Descarta\+Tarjeta}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{37}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{55}
+  \item {dest\+\_\+state}
+    \subitem {fsm\+\_\+trans\+\_\+}, \hyperpage{10}
+
+  \indexspace
+
+  \item {err}
+    \subitem {player.\+c}, \hyperpage{77}
+  \item {Espera\+Targeta}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{39}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{55}
+  \item {event}
+    \subitem {I\+S\+R\+\_\+\+Typ}, \hyperpage{11}
+    \subitem {Interrupt\+S\+M.\+h}, \hyperpage{64}
+
+  \indexspace
+
+  \item {F\+L\+A\+G\+\_\+\+B\+F\+F1\+\_\+\+E\+ND}
+    \subitem {tipos.\+h}, \hyperpage{82}
+  \item {F\+L\+A\+G\+\_\+\+B\+F\+F2\+\_\+\+E\+ND}
+    \subitem {tipos.\+h}, \hyperpage{82}
+  \item {F\+L\+A\+G\+\_\+\+E\+ND}
+    \subitem {tipos.\+h}, \hyperpage{83}
+  \item {F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+C\+O\+N\+T\+I\+N\+UE}
+    \subitem {tipos.\+h}, \hyperpage{83}
+  \item {F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+D\+IR}
+    \subitem {tipos.\+h}, \hyperpage{83}
+  \item {F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+S\+E\+L\+E\+CT}
+    \subitem {tipos.\+h}, \hyperpage{83}
+  \item {F\+L\+A\+G\+\_\+\+N\+O\+T\+A\+\_\+\+T\+I\+M\+E\+O\+UT}
+    \subitem {tipos.\+h}, \hyperpage{83}
+  \item {F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+E\+ND}
+    \subitem {tipos.\+h}, \hyperpage{84}
+  \item {F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+A\+RT}
+    \subitem {tipos.\+h}, \hyperpage{84}
+  \item {F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+OP}
+    \subitem {tipos.\+h}, \hyperpage{84}
+  \item {F\+L\+A\+G\+\_\+\+Q\+U\+IT}
+    \subitem {tipos.\+h}, \hyperpage{84}
+  \item {F\+L\+A\+G\+\_\+\+S\+T\+A\+RT}
+    \subitem {tipos.\+h}, \hyperpage{84}
+  \item {F\+R\+A\+M\+E\+S\+\_\+\+P\+E\+R\+\_\+\+B\+U\+F\+F\+ER}
+    \subitem {player.\+h}, \hyperpage{79}
+  \item {Final\+\_\+\+Melodia}
+    \subitem {player.\+c}, \hyperpage{73}
+  \item {Finaliza\+Reproduccion}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{39}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{56}
+  \item {flag\+\_\+fsm}
+    \subitem {tipos.\+h}, \hyperpage{85}
+  \item {flag\+\_\+rfid}
+    \subitem {tipos.\+h}, \hyperpage{85}
+  \item {flags}
+    \subitem {B\+U\+F\+F\+E\+RS}, \hyperpage{6}
+  \item {flags\+\_\+player}
+    \subitem {tipos.\+h}, \hyperpage{85}
+  \item {flags\+\_\+rfid}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{51}
+  \item {fp}
+    \subitem {player.\+c}, \hyperpage{77}
+  \item {fsm}
+    \subitem {fsm\+\_\+audio\+\_\+controller}, \hyperpage{9}
+  \item {fsm.\+c}, \hyperpage{26}
+    \subitem {fsm\+\_\+delete}, \hyperpage{26}
+    \subitem {fsm\+\_\+fire}, \hyperpage{27}
+    \subitem {fsm\+\_\+new}, \hyperpage{27}
+  \item {fsm.\+h}, \hyperpage{27}
+    \subitem {fsm\+\_\+delete}, \hyperpage{29}
+    \subitem {fsm\+\_\+fire}, \hyperpage{29}
+    \subitem {fsm\+\_\+input\+\_\+func\+\_\+t}, \hyperpage{28}
+    \subitem {fsm\+\_\+new}, \hyperpage{29}
+    \subitem {fsm\+\_\+output\+\_\+func\+\_\+t}, \hyperpage{28}
+    \subitem {fsm\+\_\+t}, \hyperpage{28}
+    \subitem {fsm\+\_\+trans\+\_\+t}, \hyperpage{28}
+  \item {fsm\+\_\+}, \hyperpage{7}
+    \subitem {current\+\_\+state}, \hyperpage{8}
+    \subitem {tt}, \hyperpage{8}
+    \subitem {user\+\_\+data}, \hyperpage{8}
+  \item {fsm\+\_\+audio\+\_\+controller}, \hyperpage{8}
+    \subitem {buffer}, \hyperpage{9}
+    \subitem {fsm}, \hyperpage{9}
+    \subitem {tipo\+\_\+sistema}, \hyperpage{9}
+  \item {fsm\+\_\+audio\+\_\+controller\+\_\+t}
+    \subitem {player.\+h}, \hyperpage{80}
+  \item {fsm\+\_\+delete}
+    \subitem {fsm.\+c}, \hyperpage{26}
+    \subitem {fsm.\+h}, \hyperpage{29}
+  \item {fsm\+\_\+fire}
+    \subitem {fsm.\+c}, \hyperpage{27}
+    \subitem {fsm.\+h}, \hyperpage{29}
+  \item {fsm\+\_\+input\+\_\+func\+\_\+t}
+    \subitem {fsm.\+h}, \hyperpage{28}
+  \item {fsm\+\_\+new}
+    \subitem {fsm.\+c}, \hyperpage{27}
+    \subitem {fsm.\+h}, \hyperpage{29}
+  \item {fsm\+\_\+output\+\_\+func\+\_\+t}
+    \subitem {fsm.\+h}, \hyperpage{28}
+  \item {fsm\+\_\+rfid}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{59}
+  \item {fsm\+\_\+rfid.\+c}, \hyperpage{30}
+    \subitem {Busca\+Tarjeta}, \hyperpage{32}
+    \subitem {Cancela\+Reproduccion}, \hyperpage{33}
+    \subitem {clean\+\_\+list\+\_\+files}, \hyperpage{33}
+    \subitem {Comienza\+Reproduccion}, \hyperpage{34}
+    \subitem {Comienza\+Sistema}, \hyperpage{34}
+    \subitem {Comprueba\+Comienzo}, \hyperpage{35}
+    \subitem {Comprueba\+Final\+Reproduccion}, \hyperpage{35}
+    \subitem {Comprueba\+Tarjeta}, \hyperpage{36}
+    \subitem {Configura\+Tarjeta}, \hyperpage{36}
+    \subitem {Configuracion\+Correcta}, \hyperpage{36}
+    \subitem {D\+B\+\_\+\+N\+A\+ME}, \hyperpage{32}
+    \subitem {Descarta\+Tarjeta}, \hyperpage{37}
+    \subitem {Espera\+Targeta}, \hyperpage{39}
+    \subitem {Finaliza\+Reproduccion}, \hyperpage{39}
+    \subitem {get\+\_\+last\+\_\+file}, \hyperpage{40}
+    \subitem {get\+\_\+list\+\_\+files}, \hyperpage{40}
+    \subitem {get\+\_\+next\+\_\+file}, \hyperpage{41}
+    \subitem {get\+\_\+number\+\_\+files}, \hyperpage{41}
+    \subitem {I\+SR}, \hyperpage{42}
+    \subitem {kill\+R\+F\+ID}, \hyperpage{43}
+    \subitem {launch\+R\+F\+ID}, \hyperpage{43}
+    \subitem {Leer\+Tarjeta}, \hyperpage{43}
+    \subitem {lp}, \hyperpage{44}
+    \subitem {maquina\+\_\+creada}, \hyperpage{48}
+    \subitem {menu\+\_\+display\+\_\+stepper\+\_\+plus}, \hyperpage{44}
+    \subitem {new\+\_\+list\+\_\+files}, \hyperpage{45}
+    \subitem {P\+I\+N\+\_\+A}, \hyperpage{32}
+    \subitem {P\+I\+N\+\_\+B}, \hyperpage{32}
+    \subitem {P\+I\+N\+\_\+C}, \hyperpage{32}
+    \subitem {select\+\_\+mode}, \hyperpage{45}
+    \subitem {seqA}, \hyperpage{48}
+    \subitem {seqB}, \hyperpage{49}
+    \subitem {Tarjeta\+Disponible}, \hyperpage{46}
+    \subitem {Tarjeta\+No\+Disponible}, \hyperpage{46}
+    \subitem {Tarjeta\+No\+Valida}, \hyperpage{47}
+    \subitem {Tarjeta\+Valida}, \hyperpage{47}
+    \subitem {transition\+\_\+table\+\_\+rfid}, \hyperpage{49}
+    \subitem {U\+U\+I\+D\+\_\+2\+\_\+int}, \hyperpage{48}
+    \subitem {U\+U\+ID}, \hyperpage{49}
+  \item {fsm\+\_\+rfid.\+h}, \hyperpage{50}
+    \subitem {Cancela\+Reproduccion}, \hyperpage{52}
+    \subitem {Comienza\+Reproduccion}, \hyperpage{53}
+    \subitem {Comienza\+Sistema}, \hyperpage{53}
+    \subitem {Comprueba\+Comienzo}, \hyperpage{54}
+    \subitem {Comprueba\+Final\+Reproduccion}, \hyperpage{54}
+    \subitem {Comprueba\+Tarjeta}, \hyperpage{54}
+    \subitem {Descarta\+Tarjeta}, \hyperpage{55}
+    \subitem {Espera\+Targeta}, \hyperpage{55}
+    \subitem {Finaliza\+Reproduccion}, \hyperpage{56}
+    \subitem {flags\+\_\+rfid}, \hyperpage{51}
+    \subitem {fsm\+\_\+rfid}, \hyperpage{59}
+    \subitem {launch\+R\+F\+ID}, \hyperpage{56}
+    \subitem {Leer\+Tarjeta}, \hyperpage{56}
+    \subitem {list\+\_\+files\+\_\+t}, \hyperpage{51}
+    \subitem {rfid\+\_\+states}, \hyperpage{52}
+    \subitem {Tarjeta\+Disponible}, \hyperpage{57}
+    \subitem {Tarjeta\+No\+Disponible}, \hyperpage{57}
+    \subitem {Tarjeta\+No\+Valida}, \hyperpage{58}
+    \subitem {Tarjeta\+Valida}, \hyperpage{58}
+    \subitem {thread}, \hyperpage{59}
+    \subitem {U\+U\+ID}, \hyperpage{59}
+  \item {fsm\+\_\+states}
+    \subitem {player.\+h}, \hyperpage{80}
+  \item {fsm\+\_\+t}
+    \subitem {fsm.\+h}, \hyperpage{28}
+  \item {fsm\+\_\+trans\+\_\+}, \hyperpage{9}
+    \subitem {dest\+\_\+state}, \hyperpage{10}
+    \subitem {in}, \hyperpage{10}
+    \subitem {orig\+\_\+state}, \hyperpage{10}
+    \subitem {out}, \hyperpage{10}
+  \item {fsm\+\_\+trans\+\_\+t}
+    \subitem {fsm.\+h}, \hyperpage{28}
+  \item {func}
+    \subitem {player.\+c}, \hyperpage{73}
+
+  \indexspace
+
+  \item {get\+\_\+last\+\_\+file}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{40}
+  \item {get\+\_\+list\+\_\+files}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{40}
+  \item {get\+\_\+next\+\_\+file}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{41}
+  \item {get\+\_\+number\+\_\+files}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{41}
+
+  \indexspace
+
+  \item {I\+S\+R\+\_\+\+Typ}, \hyperpage{11}
+    \subitem {callback}, \hyperpage{11}
+    \subitem {event}, \hyperpage{11}
+    \subitem {pin}, \hyperpage{11}
+  \item {I\+S\+R\+\_\+\+Typ\+\_\+}
+    \subitem {Interrupt\+S\+M.\+h}, \hyperpage{63}
+  \item {I\+SR}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{42}
+  \item {in}
+    \subitem {fsm\+\_\+trans\+\_\+}, \hyperpage{10}
+  \item {Iniciliza\+\_\+player}
+    \subitem {player.\+c}, \hyperpage{74}
+  \item {Interrupt\+S\+M.\+c}, \hyperpage{60}
+    \subitem {attach\+Isr}, \hyperpage{61}
+    \subitem {delete\+Isr}, \hyperpage{61}
+    \subitem {loop}, \hyperpage{62}
+    \subitem {T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+H\+I\+GH}, 
+		\hyperpage{60}
+    \subitem {T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+L\+OW}, \hyperpage{60}
+  \item {Interrupt\+S\+M.\+h}, \hyperpage{63}
+    \subitem {atach\+Pin}, \hyperpage{65}
+    \subitem {attach\+Isr}, \hyperpage{64}
+    \subitem {call\+\_\+back}, \hyperpage{63}
+    \subitem {delete\+Isr}, \hyperpage{65}
+    \subitem {event}, \hyperpage{64}
+    \subitem {I\+S\+R\+\_\+\+Typ\+\_\+}, \hyperpage{63}
+    \subitem {threads}, \hyperpage{65}
+
+  \indexspace
+
+  \item {k}
+    \subitem {pi\+Music\+Box\+\_\+2.\+c}, \hyperpage{70}
+  \item {kill\+R\+F\+ID}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{43}
+
+  \indexspace
+
+  \item {launch\+Player}
+    \subitem {player.\+c}, \hyperpage{75}
+    \subitem {player.\+h}, \hyperpage{81}
+  \item {launch\+R\+F\+ID}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{43}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{56}
+  \item {Leer\+Tarjeta}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{43}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{56}
+  \item {length\+Buffer}
+    \subitem {B\+U\+F\+F\+E\+RS}, \hyperpage{7}
+  \item {list\+\_\+files}, \hyperpage{12}
+    \subitem {current\+\_\+file}, \hyperpage{12}
+    \subitem {name\+\_\+file}, \hyperpage{12}
+    \subitem {num\+\_\+files}, \hyperpage{12}
+    \subitem {select\+\_\+file}, \hyperpage{13}
+  \item {list\+\_\+files\+\_\+t}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{51}
+  \item {lock}
+    \subitem {mutex.\+c}, \hyperpage{66}
+    \subitem {mutex.\+h}, \hyperpage{68}
+  \item {loop}
+    \subitem {Interrupt\+S\+M.\+c}, \hyperpage{62}
+  \item {lp}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{44}
+
+  \indexspace
+
+  \item {mad\+\_\+frame}
+    \subitem {player.\+c}, \hyperpage{77}
+  \item {mad\+\_\+stream}
+    \subitem {player.\+c}, \hyperpage{77}
+  \item {mad\+\_\+synth}
+    \subitem {player.\+c}, \hyperpage{77}
+  \item {main}
+    \subitem {pi\+Music\+Box\+\_\+2.\+c}, \hyperpage{70}
+  \item {maquina\+\_\+creada}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{48}
+  \item {menu\+\_\+display\+\_\+stepper\+\_\+plus}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{44}
+  \item {mutex.\+c}, \hyperpage{66}
+    \subitem {lock}, \hyperpage{66}
+    \subitem {unlock}, \hyperpage{66}
+  \item {mutex.\+h}, \hyperpage{68}
+    \subitem {lock}, \hyperpage{68}
+    \subitem {unlock}, \hyperpage{68}
+
+  \indexspace
+
+  \item {name\+\_\+file}
+    \subitem {list\+\_\+files}, \hyperpage{12}
+  \item {new\+\_\+buffer}
+    \subitem {player.\+c}, \hyperpage{75}
+  \item {new\+\_\+list\+\_\+files}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{45}
+  \item {num\+\_\+file}
+    \subitem {tipos.\+h}, \hyperpage{85}
+  \item {num\+\_\+files}
+    \subitem {list\+\_\+files}, \hyperpage{12}
+
+  \indexspace
+
+  \item {orig\+\_\+state}
+    \subitem {fsm\+\_\+trans\+\_\+}, \hyperpage{10}
+  \item {out}
+    \subitem {fsm\+\_\+trans\+\_\+}, \hyperpage{10}
+  \item {output}
+    \subitem {player.\+c}, \hyperpage{76}
+  \item {output\+Parameters}
+    \subitem {player.\+c}, \hyperpage{78}
+
+  \indexspace
+
+  \item {P\+I\+N\+\_\+\+P\+WM}
+    \subitem {defines.\+h}, \hyperpage{26}
+  \item {P\+I\+N\+\_\+A}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{32}
+  \item {P\+I\+N\+\_\+B}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{32}
+  \item {P\+I\+N\+\_\+C}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{32}
+  \item {P\+IN}
+    \subitem {tone.\+c}, \hyperpage{88}
+  \item {pi\+Music\+Box\+\_\+2.\+c}, \hyperpage{69}
+    \subitem {callback}, \hyperpage{69}
+    \subitem {k}, \hyperpage{70}
+    \subitem {main}, \hyperpage{70}
+  \item {pi\+Music\+Box\+\_\+2.\+h}, \hyperpage{71}
+  \item {pin}
+    \subitem {I\+S\+R\+\_\+\+Typ}, \hyperpage{11}
+  \item {player.\+c}, \hyperpage{71}
+    \subitem {carga\+\_\+bff1}, \hyperpage{72}
+    \subitem {carga\+\_\+bff2}, \hyperpage{72}
+    \subitem {err}, \hyperpage{77}
+    \subitem {Final\+\_\+\+Melodia}, \hyperpage{73}
+    \subitem {fp}, \hyperpage{77}
+    \subitem {func}, \hyperpage{73}
+    \subitem {Iniciliza\+\_\+player}, \hyperpage{74}
+    \subitem {launch\+Player}, \hyperpage{75}
+    \subitem {mad\+\_\+frame}, \hyperpage{77}
+    \subitem {mad\+\_\+stream}, \hyperpage{77}
+    \subitem {mad\+\_\+synth}, \hyperpage{77}
+    \subitem {new\+\_\+buffer}, \hyperpage{75}
+    \subitem {output}, \hyperpage{76}
+    \subitem {output\+Parameters}, \hyperpage{78}
+    \subitem {stream}, \hyperpage{78}
+    \subitem {transition\+\_\+table\+\_\+player}, \hyperpage{78}
+  \item {player.\+h}, \hyperpage{79}
+    \subitem {B\+U\+F\+F\+E\+R\+S\+\_\+T}, \hyperpage{80}
+    \subitem {F\+R\+A\+M\+E\+S\+\_\+\+P\+E\+R\+\_\+\+B\+U\+F\+F\+ER}, 
+		\hyperpage{79}
+    \subitem {fsm\+\_\+audio\+\_\+controller\+\_\+t}, \hyperpage{80}
+    \subitem {fsm\+\_\+states}, \hyperpage{80}
+    \subitem {launch\+Player}, \hyperpage{81}
+    \subitem {S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE}, \hyperpage{80}
+
+  \indexspace
+
+  \item {rfid\+\_\+states}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{52}
+
+  \indexspace
+
+  \item {S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE}
+    \subitem {player.\+h}, \hyperpage{80}
+  \item {S\+Q\+L\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+C\+H\+E\+C\+K\+\_\+\+DB}
+    \subitem {dbcontroller.\+c}, \hyperpage{16}
+  \item {S\+Q\+L\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+C\+R\+E\+A\+T\+E\+\_\+\+DB}
+    \subitem {dbcontroller.\+c}, \hyperpage{16}
+  \item {S\+Q\+L\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+G\+E\+T\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+E\+L\+E\+M\+E\+N\+TS}
+    \subitem {dbcontroller.\+c}, \hyperpage{16}
+  \item {S\+Q\+L\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+I\+N\+S\+E\+R\+T\+\_\+\+DB}
+    \subitem {dbcontroller.\+c}, \hyperpage{16}
+  \item {S\+Q\+L\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+M\+A\+X\+\_\+\+S\+I\+ZE}
+    \subitem {dbcontroller.\+c}, \hyperpage{16}
+  \item {S\+Q\+L\+\_\+\+Q\+U\+E\+R\+Y\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+\+DB}
+    \subitem {dbcontroller.\+c}, \hyperpage{16}
+  \item {S\+Q\+L\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON}
+    \subitem {dbcontroller.\+h}, \hyperpage{22}
+  \item {S\+Q\+L\+\_\+\+T\+A\+B\+L\+E\+\_\+\+N\+A\+ME}
+    \subitem {dbcontroller.\+c}, \hyperpage{17}
+  \item {sample\+Readed}
+    \subitem {B\+U\+F\+F\+E\+RS}, \hyperpage{7}
+  \item {select\+\_\+file}
+    \subitem {list\+\_\+files}, \hyperpage{13}
+  \item {select\+\_\+mode}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{45}
+  \item {seqA}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{48}
+  \item {seqB}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{49}
+  \item {song\+\_\+name}
+    \subitem {tipos.\+h}, \hyperpage{85}
+  \item {stepper\+\_\+irq\+\_\+flag}
+    \subitem {tipos.\+h}, \hyperpage{85}
+  \item {stream}
+    \subitem {player.\+c}, \hyperpage{78}
+
+  \indexspace
+
+  \item {T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+H\+I\+GH}
+    \subitem {Interrupt\+S\+M.\+c}, \hyperpage{60}
+  \item {T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+L\+OW}
+    \subitem {Interrupt\+S\+M.\+c}, \hyperpage{60}
+  \item {Tarjeta\+Disponible}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{46}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{57}
+  \item {Tarjeta\+No\+Disponible}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{46}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{57}
+  \item {Tarjeta\+No\+Valida}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{47}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{58}
+  \item {Tarjeta\+Valida}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{47}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{58}
+  \item {thread}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{59}
+  \item {threads}
+    \subitem {Interrupt\+S\+M.\+h}, \hyperpage{65}
+  \item {tipo\+\_\+sistema}
+    \subitem {fsm\+\_\+audio\+\_\+controller}, \hyperpage{9}
+  \item {Tipo\+Sistema}, \hyperpage{13}
+  \item {tipos.\+h}, \hyperpage{81}
+    \subitem {F\+L\+A\+G\+\_\+\+B\+F\+F1\+\_\+\+E\+ND}, \hyperpage{82}
+    \subitem {F\+L\+A\+G\+\_\+\+B\+F\+F2\+\_\+\+E\+ND}, \hyperpage{82}
+    \subitem {F\+L\+A\+G\+\_\+\+E\+ND}, \hyperpage{83}
+    \subitem {F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+C\+O\+N\+T\+I\+N\+UE}, 
+		\hyperpage{83}
+    \subitem {F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+D\+IR}, 
+		\hyperpage{83}
+    \subitem {F\+L\+A\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+T\+E\+P\+P\+E\+R\+\_\+\+S\+E\+L\+E\+CT}, 
+		\hyperpage{83}
+    \subitem {F\+L\+A\+G\+\_\+\+N\+O\+T\+A\+\_\+\+T\+I\+M\+E\+O\+UT}, 
+		\hyperpage{83}
+    \subitem {F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+E\+ND}, 
+		\hyperpage{84}
+    \subitem {F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+A\+RT}, 
+		\hyperpage{84}
+    \subitem {F\+L\+A\+G\+\_\+\+P\+L\+A\+Y\+E\+R\+\_\+\+S\+T\+OP}, 
+		\hyperpage{84}
+    \subitem {F\+L\+A\+G\+\_\+\+Q\+U\+IT}, \hyperpage{84}
+    \subitem {F\+L\+A\+G\+\_\+\+S\+T\+A\+RT}, \hyperpage{84}
+    \subitem {flag\+\_\+fsm}, \hyperpage{85}
+    \subitem {flag\+\_\+rfid}, \hyperpage{85}
+    \subitem {flags\+\_\+player}, \hyperpage{85}
+    \subitem {num\+\_\+file}, \hyperpage{85}
+    \subitem {song\+\_\+name}, \hyperpage{85}
+    \subitem {stepper\+\_\+irq\+\_\+flag}, \hyperpage{85}
+  \item {toggle}
+    \subitem {tone.\+c}, \hyperpage{86}
+  \item {tone.\+c}, \hyperpage{86}
+    \subitem {P\+IN}, \hyperpage{88}
+    \subitem {toggle}, \hyperpage{86}
+    \subitem {tone\+\_\+init}, \hyperpage{86}
+    \subitem {tone\+\_\+stop}, \hyperpage{87}
+    \subitem {tone\+\_\+write}, \hyperpage{87}
+  \item {tone.\+h}, \hyperpage{88}
+    \subitem {tone\+\_\+init}, \hyperpage{88}
+    \subitem {tone\+\_\+stop}, \hyperpage{89}
+    \subitem {tone\+\_\+write}, \hyperpage{89}
+  \item {tone\+\_\+init}
+    \subitem {tone.\+c}, \hyperpage{86}
+    \subitem {tone.\+h}, \hyperpage{88}
+  \item {tone\+\_\+stop}
+    \subitem {tone.\+c}, \hyperpage{87}
+    \subitem {tone.\+h}, \hyperpage{89}
+  \item {tone\+\_\+write}
+    \subitem {tone.\+c}, \hyperpage{87}
+    \subitem {tone.\+h}, \hyperpage{89}
+  \item {transition\+\_\+table\+\_\+player}
+    \subitem {player.\+c}, \hyperpage{78}
+  \item {transition\+\_\+table\+\_\+rfid}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{49}
+  \item {tt}
+    \subitem {fsm\+\_\+}, \hyperpage{8}
+
+  \indexspace
+
+  \item {U\+U\+I\+D\+\_\+2\+\_\+int}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{48}
+  \item {U\+U\+ID}
+    \subitem {fsm\+\_\+rfid.\+c}, \hyperpage{49}
+    \subitem {fsm\+\_\+rfid.\+h}, \hyperpage{59}
+  \item {unlock}
+    \subitem {mutex.\+c}, \hyperpage{66}
+    \subitem {mutex.\+h}, \hyperpage{68}
+  \item {use\+\_\+bcm}
+    \subitem {defines.\+h}, \hyperpage{26}
+  \item {user\+\_\+data}
+    \subitem {fsm\+\_\+}, \hyperpage{8}
+
+\end{theindex}

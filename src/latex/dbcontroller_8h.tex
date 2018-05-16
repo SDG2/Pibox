@@ -1,0 +1,263 @@
+\hypertarget{dbcontroller_8h}{}\section{dbcontroller.\+h File Reference}
+\label{dbcontroller_8h}\index{dbcontroller.\+h@{dbcontroller.\+h}}
+{\ttfamily \#include $<$sqlite3.\+h$>$}\newline
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbe}{S\+Q\+L\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON}} \{ \mbox{\hyperlink{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbeaf0913fa0529636ee554e74e2609eaa9f}{S\+Q\+L\+\_\+\+O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+OK}}, 
+\mbox{\hyperlink{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbeae580ff302465f1a990d401d94cfbeff1}{S\+Q\+L\+\_\+\+O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+E\+RR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum de resultados posibles de ejecución. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+sqlite3 $\ast$ \mbox{\hyperlink{dbcontroller_8h_a6c03e23326b03a2084159378345e6fcf}{db\+\_\+load}} (char $\ast$file\+\_\+dir)
+\item 
+int \mbox{\hyperlink{dbcontroller_8h_a8b76145fe43a8536318fe3494b1d78ee}{db\+\_\+check}} (sqlite3 $\ast$db)
+\begin{DoxyCompactList}\small\item\em Ejecuta una query para ver si existe la tabla con el valor especificado. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{dbcontroller_8h_a8954e818fd457eb22674fcf86b086f6a}{db\+\_\+insert}} (sqlite3 $\ast$db, int user\+\_\+id, char $\ast$\mbox{\hyperlink{tipos_8h_aad2bf680e32d8de23ad37cb9980150c0}{song\+\_\+name}})
+\begin{DoxyCompactList}\small\item\em Ejecuta la query para insertar en la base de datos. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{dbcontroller_8h_afa05bc6d059b49ba25da7afa536e29a9}{db\+\_\+get\+\_\+song\+\_\+name}} (sqlite3 $\ast$db, int user\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Ejecuta la query de busqueda del nombre de la canción dado un ID Hace una query de busqueda del fichero que esta asociado a un ID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dbcontroller_8h_ae07af262c608d2e3de291268d923d24a}{db\+\_\+close}} (sqlite3 $\ast$db)
+\begin{DoxyCompactList}\small\item\em Cierra la base de datos y libera la memoria asignada al puntero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbe}\label{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbe}} 
+\index{dbcontroller.\+h@{dbcontroller.\+h}!S\+Q\+L\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON@{S\+Q\+L\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON}}
+\index{S\+Q\+L\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON@{S\+Q\+L\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON}!dbcontroller.\+h@{dbcontroller.\+h}}
+\subsubsection{\texorpdfstring{S\+Q\+L\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON}{SQL\_RESOLUTION}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbe}{S\+Q\+L\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+ON}}}
+
+
+
+Enum de resultados posibles de ejecución. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+Q\+L\+\_\+\+O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+OK@{S\+Q\+L\+\_\+\+O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+OK}!dbcontroller.\+h@{dbcontroller.\+h}}\index{dbcontroller.\+h@{dbcontroller.\+h}!S\+Q\+L\+\_\+\+O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+OK@{S\+Q\+L\+\_\+\+O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+OK}}}\mbox{\Hypertarget{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbeaf0913fa0529636ee554e74e2609eaa9f}\label{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbeaf0913fa0529636ee554e74e2609eaa9f}} 
+S\+Q\+L\+\_\+\+O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+OK&Operacion correcta. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+Q\+L\+\_\+\+O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+E\+RR@{S\+Q\+L\+\_\+\+O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+E\+RR}!dbcontroller.\+h@{dbcontroller.\+h}}\index{dbcontroller.\+h@{dbcontroller.\+h}!S\+Q\+L\+\_\+\+O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+E\+RR@{S\+Q\+L\+\_\+\+O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+E\+RR}}}\mbox{\Hypertarget{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbeae580ff302465f1a990d401d94cfbeff1}\label{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbeae580ff302465f1a990d401d94cfbeff1}} 
+S\+Q\+L\+\_\+\+O\+P\+E\+R\+A\+T\+I\+O\+N\+\_\+\+E\+RR&Operacion erronea. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 18 of file dbcontroller.\+h.
+
+
+\begin{DoxyCode}
+18                    \{
+19     \mbox{\hyperlink{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbeaf0913fa0529636ee554e74e2609eaa9f}{SQL\_OPERATION\_OK}}, 
+20     \mbox{\hyperlink{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbeae580ff302465f1a990d401d94cfbeff1}{SQL\_OPERATION\_ERR}} 
+21 \};
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{dbcontroller_8h_a8b76145fe43a8536318fe3494b1d78ee}\label{dbcontroller_8h_a8b76145fe43a8536318fe3494b1d78ee}} 
+\index{dbcontroller.\+h@{dbcontroller.\+h}!db\+\_\+check@{db\+\_\+check}}
+\index{db\+\_\+check@{db\+\_\+check}!dbcontroller.\+h@{dbcontroller.\+h}}
+\subsubsection{\texorpdfstring{db\+\_\+check()}{db\_check()}}
+{\footnotesize\ttfamily int db\+\_\+check (\begin{DoxyParamCaption}\item[{sqlite3 $\ast$}]{db }\end{DoxyParamCaption})}
+
+
+
+Ejecuta una query para ver si existe la tabla con el valor especificado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & Sqlite3 puntero de la estructura cargada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int controll code 
+\end{DoxyReturn}
+
+
+Definition at line 63 of file dbcontroller.\+c.
+
+
+\begin{DoxyCode}
+63                          \{
+64     \textcolor{keywordtype}{int} rc;
+65     \textcolor{keywordtype}{char}* sql = (\textcolor{keywordtype}{char}*)malloc(\mbox{\hyperlink{dbcontroller_8c_a50d7e91699c53cf3aa53a6161a57d493}{SQL\_QUERY\_MAX\_SIZE}}*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));
+66     \textcolor{keywordtype}{char}* zErrMsg = 0;
+67     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* data = \textcolor{stringliteral}{"Callback function called"};
+68     sprintf(sql,\mbox{\hyperlink{dbcontroller_8c_a3c0fc6001c2c245be160b4451f821628}{SQL\_QUERY\_CHECK\_DB}},\mbox{\hyperlink{dbcontroller_8c_a51ad2def95c93dfce02566ae6d54dc65}{SQL\_TABLE\_NAME}});
+69 
+70     rc = sqlite3\_exec(db, sql, \mbox{\hyperlink{pi_music_box__2_8c_a5559b6f8334054ad27750eb1b4dee6ce}{callback}}, (\textcolor{keywordtype}{void}*) data, &zErrMsg);
+71     \textcolor{keywordflow}{if} (rc != SQLITE\_OK) \{
+72         fprintf(stderr, \textcolor{stringliteral}{"Error query busqueda tablas: %s"}, zErrMsg);
+73         sqlite3\_free(zErrMsg);
+74         \textcolor{keywordflow}{return} \mbox{\hyperlink{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbeae580ff302465f1a990d401d94cfbeff1}{SQL\_OPERATION\_ERR}};
+75     \} \textcolor{keywordflow}{else} \{
+76         fprintf(stdout, \textcolor{stringliteral}{"Todo correcto buscando tablas\(\backslash\)n"});
+77     \}
+78     free(sql);
+79     \textcolor{keywordflow}{return} \mbox{\hyperlink{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbeaf0913fa0529636ee554e74e2609eaa9f}{SQL\_OPERATION\_OK}};
+80 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{dbcontroller_8h_ae07af262c608d2e3de291268d923d24a}\label{dbcontroller_8h_ae07af262c608d2e3de291268d923d24a}} 
+\index{dbcontroller.\+h@{dbcontroller.\+h}!db\+\_\+close@{db\+\_\+close}}
+\index{db\+\_\+close@{db\+\_\+close}!dbcontroller.\+h@{dbcontroller.\+h}}
+\subsubsection{\texorpdfstring{db\+\_\+close()}{db\_close()}}
+{\footnotesize\ttfamily void db\+\_\+close (\begin{DoxyParamCaption}\item[{sqlite3 $\ast$}]{db }\end{DoxyParamCaption})}
+
+
+
+Cierra la base de datos y libera la memoria asignada al puntero. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 203 of file dbcontroller.\+c.
+
+
+\begin{DoxyCode}
+203                           \{
+204     sqlite3\_close(db);
+205 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{dbcontroller_8h_afa05bc6d059b49ba25da7afa536e29a9}\label{dbcontroller_8h_afa05bc6d059b49ba25da7afa536e29a9}} 
+\index{dbcontroller.\+h@{dbcontroller.\+h}!db\+\_\+get\+\_\+song\+\_\+name@{db\+\_\+get\+\_\+song\+\_\+name}}
+\index{db\+\_\+get\+\_\+song\+\_\+name@{db\+\_\+get\+\_\+song\+\_\+name}!dbcontroller.\+h@{dbcontroller.\+h}}
+\subsubsection{\texorpdfstring{db\+\_\+get\+\_\+song\+\_\+name()}{db\_get\_song\_name()}}
+{\footnotesize\ttfamily char$\ast$ db\+\_\+get\+\_\+song\+\_\+name (\begin{DoxyParamCaption}\item[{sqlite3 $\ast$}]{db,  }\item[{int}]{user\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Ejecuta la query de busqueda del nombre de la canción dado un ID Hace una query de busqueda del fichero que esta asociado a un ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & Sqlite3 puntero de la estructura cargada \\
+\hline
+{\em user\+\_\+id} & Id de la tarjeta \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ nombre de la canción, N\+U\+LL 
+\end{DoxyReturn}
+
+
+Definition at line 157 of file dbcontroller.\+c.
+
+
+\begin{DoxyCode}
+157                                                \{
+158     \textcolor{keywordtype}{char} *zErrMsg = 0;
+159     \textcolor{keywordtype}{int} rc;
+160     \textcolor{keywordtype}{char}* sql = (\textcolor{keywordtype}{char}*) malloc(\mbox{\hyperlink{dbcontroller_8c_a50d7e91699c53cf3aa53a6161a57d493}{SQL\_QUERY\_MAX\_SIZE}} * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));
+161     \textcolor{keywordtype}{char}* name = (\textcolor{keywordtype}{char}*)malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char})*200);
+162     sprintf(sql,\mbox{\hyperlink{dbcontroller_8c_a7876ba4ce4e52f3fed2bb99103797743}{SQL\_QUERY\_GET\_NUMBER\_OF\_ELEMENTS}},
+      \mbox{\hyperlink{dbcontroller_8c_a51ad2def95c93dfce02566ae6d54dc65}{SQL\_TABLE\_NAME}},user\_id);
+163     printf(\textcolor{stringliteral}{"%s"},sql);
+164     rc = sqlite3\_exec(db, sql, db\_callback\_get\_num\_of\_elm, name, &zErrMsg);
+165     \textcolor{keywordflow}{if} (rc != SQLITE\_OK) \{
+166         fprintf(stderr, \textcolor{stringliteral}{"SQL error: %s\(\backslash\)n"}, zErrMsg);
+167         sqlite3\_free(zErrMsg);
+168         free(sql);
+169         \textcolor{keywordflow}{return} NULL;
+170     \}
+171     fprintf(stdout, \textcolor{stringliteral}{"Lectura correcta de la base de datos\(\backslash\)n"});
+172     \textcolor{keywordflow}{if}(*(name) == 0x30)\{
+173         \mbox{\hyperlink{dbcontroller_8c_a055d575f82c315a645be43d0daa54dbe}{db\_free\_song\_name}}(name);
+174         \textcolor{keywordflow}{return} NULL;
+175     \}
+176     sprintf(sql,\mbox{\hyperlink{dbcontroller_8c_a14c45fad51df03c9f7ed915b076601dc}{SQL\_QUERY\_SELECT\_DB}},\mbox{\hyperlink{dbcontroller_8c_a51ad2def95c93dfce02566ae6d54dc65}{SQL\_TABLE\_NAME}},user\_id);
+177     rc = sqlite3\_exec(db, sql, db\_callback\_get\_song\_name, name, &zErrMsg);
+178     \textcolor{keywordflow}{if} (rc != SQLITE\_OK) \{
+179         fprintf(stderr, \textcolor{stringliteral}{"SQL error: %s\(\backslash\)n"}, zErrMsg);
+180         sqlite3\_free(zErrMsg);
+181         free(sql);
+182         \textcolor{keywordflow}{return} NULL;
+183     \}
+184     fprintf(stdout, \textcolor{stringliteral}{"Lectura correcta de la base de datos\(\backslash\)n"});
+185     free(sql);
+186     \textcolor{keywordflow}{return} name;
+187 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{dbcontroller_8h_a8954e818fd457eb22674fcf86b086f6a}\label{dbcontroller_8h_a8954e818fd457eb22674fcf86b086f6a}} 
+\index{dbcontroller.\+h@{dbcontroller.\+h}!db\+\_\+insert@{db\+\_\+insert}}
+\index{db\+\_\+insert@{db\+\_\+insert}!dbcontroller.\+h@{dbcontroller.\+h}}
+\subsubsection{\texorpdfstring{db\+\_\+insert()}{db\_insert()}}
+{\footnotesize\ttfamily int db\+\_\+insert (\begin{DoxyParamCaption}\item[{sqlite3 $\ast$}]{db,  }\item[{int}]{user\+\_\+id,  }\item[{char $\ast$}]{song\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Ejecuta la query para insertar en la base de datos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & Sqlite3 puntero de la estructura cargada \\
+\hline
+{\em user\+\_\+id} & Id que se quiere almacenar \\
+\hline
+{\em song\+\_\+name} & Nombre del fichero asociado al ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Codigo de control 
+\end{DoxyReturn}
+
+
+Definition at line 129 of file dbcontroller.\+c.
+
+
+\begin{DoxyCode}
+129                                                       \{
+130     \textcolor{keywordtype}{char} *zErrMsg = 0;
+131     \textcolor{keywordtype}{int} rc;
+132     \textcolor{keywordtype}{char}* sql = (\textcolor{keywordtype}{char}*) malloc(\mbox{\hyperlink{dbcontroller_8c_a50d7e91699c53cf3aa53a6161a57d493}{SQL\_QUERY\_MAX\_SIZE}} * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));
+133 
+134     sprintf(sql,\mbox{\hyperlink{dbcontroller_8c_a9977a338cb4096715d937611fb8f686d}{SQL\_QUERY\_INSERT\_DB}},\mbox{\hyperlink{dbcontroller_8c_a51ad2def95c93dfce02566ae6d54dc65}{SQL\_TABLE\_NAME}},user\_id,
+      \mbox{\hyperlink{tipos_8h_aad2bf680e32d8de23ad37cb9980150c0}{song\_name}});
+135 
+136     rc = sqlite3\_exec(db, sql, NULL, 0, &zErrMsg);
+137     \textcolor{keywordflow}{if} (rc != SQLITE\_OK) \{
+138         fprintf(stderr, \textcolor{stringliteral}{"SQL error: %s\(\backslash\)n"}, zErrMsg);
+139         sqlite3\_free(zErrMsg);
+140         free(sql);
+141         \textcolor{keywordflow}{return} \mbox{\hyperlink{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbeae580ff302465f1a990d401d94cfbeff1}{SQL\_OPERATION\_ERR}};
+142     \} \textcolor{keywordflow}{else} \{
+143         fprintf(stdout, \textcolor{stringliteral}{"Escritura correcta en la base de datos\(\backslash\)n"});
+144     \}
+145     free(sql);
+146     \textcolor{keywordflow}{return} \mbox{\hyperlink{dbcontroller_8h_a90971f93a64656d6b2a9fc4006d00fbeaf0913fa0529636ee554e74e2609eaa9f}{SQL\_OPERATION\_OK}};
+147 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{dbcontroller_8h_a6c03e23326b03a2084159378345e6fcf}\label{dbcontroller_8h_a6c03e23326b03a2084159378345e6fcf}} 
+\index{dbcontroller.\+h@{dbcontroller.\+h}!db\+\_\+load@{db\+\_\+load}}
+\index{db\+\_\+load@{db\+\_\+load}!dbcontroller.\+h@{dbcontroller.\+h}}
+\subsubsection{\texorpdfstring{db\+\_\+load()}{db\_load()}}
+{\footnotesize\ttfamily sqlite3$\ast$ db\+\_\+load (\begin{DoxyParamCaption}\item[{char $\ast$}]{file\+\_\+dir }\end{DoxyParamCaption})}
+
+
+
+Definition at line 42 of file dbcontroller.\+c.
+
+
+\begin{DoxyCode}
+42                                 \{
+43     sqlite3* db;
+44     \textcolor{keywordtype}{int} rc;
+45     \textcolor{keywordflow}{if}((rc = sqlite3\_open(file\_dir,&db)))\{
+46         fprintf(stderr,\textcolor{stringliteral}{"No se puede abrir la base de datos %s \(\backslash\)n"},sqlite3\_errmsg(db));
+47         \textcolor{keywordflow}{return} NULL;
+48     \}
+49     fprintf(stdout,\textcolor{stringliteral}{"Base de datos abierta \(\backslash\)n"});
+50     \textcolor{comment}{/*Funcion de persistencia para que siempre que haya una base de datos}
+51 \textcolor{comment}{     * se compruebe que sea correcta}
+52 \textcolor{comment}{     * */}
+53     \mbox{\hyperlink{dbcontroller_8c_a0e043d314f2bec3905c664b70cc4d0a1}{db\_create\_tables}}(db);
+54     \textcolor{keywordflow}{return} db;
+55 \}
+\end{DoxyCode}

@@ -1,0 +1,157 @@
+\hypertarget{struct_b_u_f_f_e_r_s}{}\section{B\+U\+F\+F\+E\+RS Struct Reference}
+\label{struct_b_u_f_f_e_r_s}\index{B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}}
+
+
+Estructura que almacena los buffers del Ping Pong.  
+
+
+
+
+{\ttfamily \#include $<$player.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int $\ast$ \mbox{\hyperlink{struct_b_u_f_f_e_r_s_ad31aa70b56496218b2a23ff3515a1cd6}{buff1\+\_\+r}}
+\begin{DoxyCompactList}\small\item\em Buffer1 del canal derecho. \end{DoxyCompactList}\item 
+int $\ast$ \mbox{\hyperlink{struct_b_u_f_f_e_r_s_a41f147f529b8c09dd8287a029d373b44}{buff2\+\_\+r}}
+\begin{DoxyCompactList}\small\item\em Buffer2 del canal derecho. \end{DoxyCompactList}\item 
+int $\ast$ \mbox{\hyperlink{struct_b_u_f_f_e_r_s_a39eefabe09b3b120d69fbaa4b6b005ce}{buff1\+\_\+l}}
+\begin{DoxyCompactList}\small\item\em Buffer1 del canal izquierdo. \end{DoxyCompactList}\item 
+int $\ast$ \mbox{\hyperlink{struct_b_u_f_f_e_r_s_a4b72ec787f878bb4946eb99959a9eee1}{buff2\+\_\+l}}
+\begin{DoxyCompactList}\small\item\em Buffer1 del canal izquierdo. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{struct_b_u_f_f_e_r_s_a6559ce1afae303f5a6024afba9dbea8b}{current\+Buffer}}
+\begin{DoxyCompactList}\small\item\em Buffer actual. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_b_u_f_f_e_r_s_ac2e1f44fd987b80899a7c4a2532af5ef}{length\+Buffer}}
+\begin{DoxyCompactList}\small\item\em Longitud de los buffers. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_b_u_f_f_e_r_s_ac6bbdc3545a0dbf8a4f7e405ce2adf3d}{sample\+Readed}}
+\begin{DoxyCompactList}\small\item\em Puntero de muestra. \end{DoxyCompactList}\item 
+volatile uint8\+\_\+t \mbox{\hyperlink{struct_b_u_f_f_e_r_s_a27ac1730f3c9b0d5935ac0c406f7b9f3}{flags}}
+\begin{DoxyCompactList}\small\item\em Flags asociados al Buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Estructura que almacena los buffers del Ping Pong. 
+
+Definition at line 42 of file player.\+h.
+
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_b_u_f_f_e_r_s_a39eefabe09b3b120d69fbaa4b6b005ce}\label{struct_b_u_f_f_e_r_s_a39eefabe09b3b120d69fbaa4b6b005ce}} 
+\index{B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}!buff1\+\_\+l@{buff1\+\_\+l}}
+\index{buff1\+\_\+l@{buff1\+\_\+l}!B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}}
+\subsubsection{\texorpdfstring{buff1\+\_\+l}{buff1\_l}}
+{\footnotesize\ttfamily int$\ast$ buff1\+\_\+l}
+
+
+
+Buffer1 del canal izquierdo. 
+
+
+
+Definition at line 47 of file player.\+h.
+
+\mbox{\Hypertarget{struct_b_u_f_f_e_r_s_ad31aa70b56496218b2a23ff3515a1cd6}\label{struct_b_u_f_f_e_r_s_ad31aa70b56496218b2a23ff3515a1cd6}} 
+\index{B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}!buff1\+\_\+r@{buff1\+\_\+r}}
+\index{buff1\+\_\+r@{buff1\+\_\+r}!B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}}
+\subsubsection{\texorpdfstring{buff1\+\_\+r}{buff1\_r}}
+{\footnotesize\ttfamily int$\ast$ buff1\+\_\+r}
+
+
+
+Buffer1 del canal derecho. 
+
+
+
+Definition at line 44 of file player.\+h.
+
+\mbox{\Hypertarget{struct_b_u_f_f_e_r_s_a4b72ec787f878bb4946eb99959a9eee1}\label{struct_b_u_f_f_e_r_s_a4b72ec787f878bb4946eb99959a9eee1}} 
+\index{B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}!buff2\+\_\+l@{buff2\+\_\+l}}
+\index{buff2\+\_\+l@{buff2\+\_\+l}!B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}}
+\subsubsection{\texorpdfstring{buff2\+\_\+l}{buff2\_l}}
+{\footnotesize\ttfamily int$\ast$ buff2\+\_\+l}
+
+
+
+Buffer1 del canal izquierdo. 
+
+
+
+Definition at line 48 of file player.\+h.
+
+\mbox{\Hypertarget{struct_b_u_f_f_e_r_s_a41f147f529b8c09dd8287a029d373b44}\label{struct_b_u_f_f_e_r_s_a41f147f529b8c09dd8287a029d373b44}} 
+\index{B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}!buff2\+\_\+r@{buff2\+\_\+r}}
+\index{buff2\+\_\+r@{buff2\+\_\+r}!B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}}
+\subsubsection{\texorpdfstring{buff2\+\_\+r}{buff2\_r}}
+{\footnotesize\ttfamily int$\ast$ buff2\+\_\+r}
+
+
+
+Buffer2 del canal derecho. 
+
+
+
+Definition at line 45 of file player.\+h.
+
+\mbox{\Hypertarget{struct_b_u_f_f_e_r_s_a6559ce1afae303f5a6024afba9dbea8b}\label{struct_b_u_f_f_e_r_s_a6559ce1afae303f5a6024afba9dbea8b}} 
+\index{B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}!current\+Buffer@{current\+Buffer}}
+\index{current\+Buffer@{current\+Buffer}!B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}}
+\subsubsection{\texorpdfstring{current\+Buffer}{currentBuffer}}
+{\footnotesize\ttfamily uint8\+\_\+t current\+Buffer}
+
+
+
+Buffer actual. 
+
+
+
+Definition at line 50 of file player.\+h.
+
+\mbox{\Hypertarget{struct_b_u_f_f_e_r_s_a27ac1730f3c9b0d5935ac0c406f7b9f3}\label{struct_b_u_f_f_e_r_s_a27ac1730f3c9b0d5935ac0c406f7b9f3}} 
+\index{B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}!flags@{flags}}
+\index{flags@{flags}!B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}}
+\subsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily volatile uint8\+\_\+t flags}
+
+
+
+Flags asociados al Buffer. 
+
+
+
+Definition at line 54 of file player.\+h.
+
+\mbox{\Hypertarget{struct_b_u_f_f_e_r_s_ac2e1f44fd987b80899a7c4a2532af5ef}\label{struct_b_u_f_f_e_r_s_ac2e1f44fd987b80899a7c4a2532af5ef}} 
+\index{B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}!length\+Buffer@{length\+Buffer}}
+\index{length\+Buffer@{length\+Buffer}!B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}}
+\subsubsection{\texorpdfstring{length\+Buffer}{lengthBuffer}}
+{\footnotesize\ttfamily int length\+Buffer}
+
+
+
+Longitud de los buffers. 
+
+
+
+Definition at line 51 of file player.\+h.
+
+\mbox{\Hypertarget{struct_b_u_f_f_e_r_s_ac6bbdc3545a0dbf8a4f7e405ce2adf3d}\label{struct_b_u_f_f_e_r_s_ac6bbdc3545a0dbf8a4f7e405ce2adf3d}} 
+\index{B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}!sample\+Readed@{sample\+Readed}}
+\index{sample\+Readed@{sample\+Readed}!B\+U\+F\+F\+E\+RS@{B\+U\+F\+F\+E\+RS}}
+\subsubsection{\texorpdfstring{sample\+Readed}{sampleReaded}}
+{\footnotesize\ttfamily int sample\+Readed}
+
+
+
+Puntero de muestra. 
+
+
+
+Definition at line 52 of file player.\+h.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{player_8h}{player.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="player_8h">
+    <title>player.h File Reference</title>
+    <programlisting>#include &lt;stdio.h&gt;</programlisting>
+    <programlisting>#include &lt;stdlib.h&gt;</programlisting>
+    <programlisting>#include &lt;unistd.h&gt;</programlisting>
+    <programlisting>#include &lt;sys/stat.h&gt;</programlisting>
+    <programlisting>#include &lt;sys/mman.h&gt;</programlisting>
+    <programlisting>#include &lt;pthread.h&gt;</programlisting>
+    <programlisting>#include &lt;sched.h&gt;</programlisting>
+    <programlisting>#include &quot;mad.h&quot;</programlisting>
+    <programlisting>#include &quot;portaudio.h&quot;</programlisting>
+    <programlisting>#include &quot;tipos.h&quot;</programlisting>
+    <programlisting>#include &quot;fsm.h&quot;</programlisting>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="struct_b_u_f_f_e_r_s">BUFFERS</link></para>
+<para><emphasis>Estructura que almacena los buffers del Ping Pong.</emphasis></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structfsm__audio__controller">fsm_audio_controller</link></para>
+<para><emphasis>Estructura de la maquina de estados player.</emphasis></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="player_8h_1a4b76a0c2859cfd819a343a780070ee2b">SAMPLE_RATE</link> 44100</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="player_8h_1af4f62216aa14e0407faa6631e9ec4c62">FRAMES_PER_BUFFER</link> 1152</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Enumerations</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para><literallayout>enum <link linkend="player_8h_1a971cbdcad3749cb5a6229ca48ee60954">fsm_states</link> {
+<link linkend="player_8h_1a971cbdcad3749cb5a6229ca48ee60954acb28ec9add78d971b8f7fc412b4a7de9">WAIT_BEGIN</link>,
+<link linkend="player_8h_1a971cbdcad3749cb5a6229ca48ee60954afaef777c0ac17885046d5f9ddf9c3f82">WAIT_BFF1</link>,
+<link linkend="player_8h_1a971cbdcad3749cb5a6229ca48ee60954af0c637f0ad86422e319ed7b9759e6090">WAIT_BFF2</link>
+}</literallayout>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Typedefs</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="struct_b_u_f_f_e_r_s">BUFFERS</link>  <link linkend="player_8h_1a60a77fbaea5edcaf4415b0adad33f411">BUFFERS_T</link><para><emphasis>Estructura que almacena los buffers del Ping Pong.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="structfsm__audio__controller">fsm_audio_controller</link>  <link linkend="player_8h_1a771475a0169821dc8705d154dcee73f0">fsm_audio_controller_t</link><para><emphasis>Estructura de la maquina de estados player.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="player_8h_1afbf824fb6586d8a0b33e4ddfe27331ee">launchPlayer</link> (
+)<para><emphasis>inicia el reproductor de audio
+Crea la maquina de estados y la lanza en un hilo de alta prioridad para garantizar tiempo real</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/player.h</para>
+    </simplesect>
+</section>

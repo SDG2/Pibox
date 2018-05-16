@@ -21,18 +21,18 @@
 
 uint8_t UUID[16];
 typedef struct list_files{
-	int num_files;
-	int current_file;
-	int select_file;
-	char** name_file;
+	int num_files; ///< Numero de ficheros totales
+	int current_file; ///< Puntero fichero muestra
+	int select_file; ///< Puntero fichero Seleccionado
+	char** name_file; ///< Lista de Strings
 }list_files_t;
 
 enum flags_rfid{
-	FLAG_SYSTEM_STARTn = 0x01,
-	FLAG_CARD_IN = 0x02,
-	FLAG_VALID_CARD =0x04,
-	FLAG_SYSTEM_END =0x08,
-	FLAG_CARD_EXIST = 0x10
+	FLAG_SYSTEM_STARTn = 0x01, ///< Flaf de systema iniciado NO USADO
+	FLAG_CARD_IN = 0x02, ///< Flag de tarjeta detectada optoacoplador
+	FLAG_VALID_CARD =0x04, ///< Flag tarjeta valida RFID
+	FLAG_SYSTEM_END =0x08, ///< Final del sistema
+	FLAG_CARD_EXIST = 0x10 ///< Flag tarjeta Existe
 };
 enum rfid_states{
 	WAIT_START,
@@ -44,8 +44,8 @@ enum rfid_states{
 };
 
 
-fsm_t* fsm_rfid;
-pthread_t thread;
+fsm_t* fsm_rfid; ///< Puntero fsm de la maquina de estados
+pthread_t thread; ///< Hilo de ejecucion de la maquina de estados
 
 int CompruebaComienzo(fsm_t* fsm);
 int CompruebaFinalReproduccion(fsm_t* fsm);

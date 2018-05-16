@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="tipos_8h">
+    <title>tipos.h File Reference</title>
+    <programlisting>#include &lt;stdint.h&gt;</programlisting>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="struct_tipo_sistema">TipoSistema</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="tipos_8h_1a54fbed14166bd85ddaa5cc14c0418056">FLAG_PLAYER_START</link> 0x01</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="tipos_8h_1a49cd5c683d683358648c1ed376921164">FLAG_PLAYER_STOP</link> 0x02</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="tipos_8h_1a3eadda9aca624337721a0b24c8bbc4b4">FLAG_PLAYER_END</link> 0x04</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="tipos_8h_1acfe1f8af71e20a363dcd804b00b6d051">FLAG_NOTA_TIMEOUT</link> 0x08</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="tipos_8h_1acde2387d60aae5a988585eecb3745533">FLAG_QUIT</link> 0x10</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="tipos_8h_1a5a6130f17926438ce73bb72f285e0294">FLAG_BFF1_END</link> 0x01<para><emphasis>Flag de fin de buffer1.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="tipos_8h_1a6f5aa8963b525ed0622aeecf844064ba">FLAG_BFF2_END</link> 0x02<para><emphasis>Flag de fin de buffer2.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="tipos_8h_1abe8b7d04534b17feedbf65d3d40a28ef">FLAG_END</link> 0x04<para><emphasis>Flag fin de cancion.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="tipos_8h_1aca7482b8a25290ec56826ad3b8d6bf19">FLAG_START</link> 0x08<para><emphasis>Flag de inicio de player.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="tipos_8h_1a631e1e6829ddf66f6ec53f6ab5fc2554">FLAG_IRQ_STEPPER_CONTINUE</link> 0x01<para><emphasis>Flag de movimiento detectado.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="tipos_8h_1a134bddded9af8032a0493fb55a84d41e">FLAG_IRQ_STEPPER_SELECT</link> 0x02<para><emphasis>Flag de pulsacion de selecion detectado.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="tipos_8h_1a45c907a60e8bc57bc7228754eae71b25">FLAG_IRQ_STEPPER_DIR</link> 0x04<para><emphasis>Flag de direccion de movimiento 0-&gt; izq 1-&gt; der.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>volatile uint8_t <link linkend="tipos_8h_1a068f27002f901dca30a2f9decdcc940b">flag_fsm</link><para><emphasis>flag de la maquina</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>volatile uint8_t <link linkend="tipos_8h_1a8d6cbadfb1878d67dffef9647ba5fe05">flags_player</link><para><emphasis>flags del player</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>volatile uint8_t <link linkend="tipos_8h_1a23e04a79e83a0bb62dc3d6be4e0d1b92">flag_rfid</link><para><emphasis>flags del rfid</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>volatile uint8_t <link linkend="tipos_8h_1adbd4507c3dcdd7bd3aafd49ad3aba4cd">stepper_irq_flag</link><para><emphasis>flags del encoder</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>volatile char * <link linkend="tipos_8h_1aad2bf680e32d8de23ad37cb9980150c0">song_name</link><para><emphasis>numbre del fichero</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>volatile int <link linkend="tipos_8h_1a3e0851617790c67a6b05d8721e5f8a96">num_file</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/tipos.h</para>
+    </simplesect>
+</section>

@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="fsm__rfid_8h">
+    <title>fsm_rfid.h File Reference</title>
+    <programlisting>#include &lt;stdio.h&gt;</programlisting>
+    <programlisting>#include &lt;pthread.h&gt;</programlisting>
+    <programlisting>#include &lt;sched.h&gt;</programlisting>
+    <programlisting>#include &quot;fsm.h&quot;</programlisting>
+    <programlisting>#include &quot;defines.h&quot;</programlisting>
+    <programlisting>#include &quot;tipos.h&quot;</programlisting>
+    <programlisting>#include &quot;RC522.h&quot;</programlisting>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structlist__files">list_files</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Enumerations</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para><literallayout>enum <link linkend="fsm__rfid_8h_1abdc0ff505cbd4c3a6fc0eee64ca2ddca">flags_rfid</link> {
+<link linkend="fsm__rfid_8h_1abdc0ff505cbd4c3a6fc0eee64ca2ddcaafcd100a8ec8a05562f875a94a8a7a730">FLAG_SYSTEM_STARTn</link>= 0x01,
+<link linkend="fsm__rfid_8h_1abdc0ff505cbd4c3a6fc0eee64ca2ddcaaff96c427210e75a502d2083d839844bb">FLAG_CARD_IN</link>= 0x02,
+<link linkend="fsm__rfid_8h_1abdc0ff505cbd4c3a6fc0eee64ca2ddcaae5f9e2292599b01b2028179e3f056e60">FLAG_VALID_CARD</link>=0x04,
+<link linkend="fsm__rfid_8h_1abdc0ff505cbd4c3a6fc0eee64ca2ddcaa931e5ce4a8ef8e85a5ba096321891ded">FLAG_SYSTEM_END</link>=0x08,
+<link linkend="fsm__rfid_8h_1abdc0ff505cbd4c3a6fc0eee64ca2ddcaa1f645d352eaa50d8703a11c539e04b22">FLAG_CARD_EXIST</link>= 0x10
+}</literallayout>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para><literallayout>enum <link linkend="fsm__rfid_8h_1ac5d3859d183e70214273d4a455dac030">rfid_states</link> {
+<link linkend="fsm__rfid_8h_1ac5d3859d183e70214273d4a455dac030ad672f41b357cfe8db0e7b262a428fd66">WAIT_START</link>,
+<link linkend="fsm__rfid_8h_1ac5d3859d183e70214273d4a455dac030a96589c1bca8da44e58c162ed39e17cd3">WAIT_PLAY</link>,
+<link linkend="fsm__rfid_8h_1ac5d3859d183e70214273d4a455dac030a5bca9eaafc1dfd8409ee779eda8537ad">WAIT_CARD</link>,
+<link linkend="fsm__rfid_8h_1ac5d3859d183e70214273d4a455dac030a1b68fba424de22ea2258e74face2ba0a">WAIT_CHECK</link>,
+<link linkend="fsm__rfid_8h_1ac5d3859d183e70214273d4a455dac030ae510c409b337b6c77cf07aecd6f6bab4">WAIT_CONFIG</link>,
+<link linkend="fsm__rfid_8h_1ac5d3859d183e70214273d4a455dac030ae78e2475a5f5995dbd42994a39b37926">WAIT_DATA</link>
+}</literallayout>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Typedefs</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="structlist__files">list_files</link>  <link linkend="fsm__rfid_8h_1a85839a66c9eb826246b8cd0b5652c26f">list_files_t</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t <link linkend="fsm__rfid_8h_1a414378ace9198797d96ba624749060e0">UUID</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * <link linkend="fsm__rfid_8h_1a4172cd6a98793577c1c4f3389b134791">fsm_rfid</link><para><emphasis>Puntero fsm de la maquina de estados.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>pthread_t <link linkend="fsm__rfid_8h_1a01f75a9ad916f63a94e06a27635ba278">thread</link><para><emphasis>Hilo de ejecucion de la maquina de estados.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="fsm__rfid_8h_1a894af73d089c430c2524bbb8015e749a">CompruebaComienzo</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Funcion de arranque del sistema devuelve siempre 1.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="fsm__rfid_8h_1aea3d64c12349f394154fb635e17c08f1">CompruebaFinalReproduccion</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Condición de paso si  Ha acabado la reproducción de la cancion.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="fsm__rfid_8h_1a25dc50da91baf30a6ef7a6cf3277ab4b">TarjetaDisponible</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Condición de paso si hay una tarjeta insertada en el optoacoplador.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="fsm__rfid_8h_1a6ce43ebc72dfc36e9b3f542ac4c42143">TarjetaNoDisponible</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Condición de paso si no hay una tarjeta insertada en el optoacoplador.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="fsm__rfid_8h_1a2395018b43d089e28965e7993fc7796f">TarjetaValida</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Condición de paso si la tarjeta es RFID.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="fsm__rfid_8h_1a7077c53d7693ce4e43ab1f3500ba7464">TarjetaNoValida</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Condición de paso si la tarjeta no es RFID.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="fsm__rfid_8h_1a2bf6bef8226a73e69999b66ab1c4d1ce">EsperaTargeta</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Funcion de espera de la tarjeta mientras no haya una en el optoacoplador.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="fsm__rfid_8h_1a2f0ba74b305da68c1f2969dd64042d8b">DescartaTarjeta</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Altera el flag de tarjeta insertada.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="fsm__rfid_8h_1a1b8679a64ad408caa001f99dd8f4ef88">LeerTarjeta</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Lee la tarjeta, activa el flag de tarjeta valida
+Lee la tarjeta, almacena en una variable privada del fichero
+el UUID de la misma. Activa el flag de tarjeta valida.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="fsm__rfid_8h_1ab1f623c126d57fab4c99a247e7ba3766">ComienzaSistema</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Funcion de Inicizalizacion del sistema.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="fsm__rfid_8h_1a5d872b86674c5ebc4e21793d76e75140">CancelaReproduccion</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Activa el flag de inicio de stop de la maquina de estados de player.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="fsm__rfid_8h_1a9557ef798d31cdbbe31de3713b8d9a3d">ComienzaReproduccion</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Activa el flag de inicio de reproduccion de la maquina de estados de player.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="fsm__rfid_8h_1ad61e8abe347c0fe4e1fa343f2a3dde2f">FinalizaReproduccion</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Funcion de finalizacion de reproduccion.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="fsm__rfid_8h_1a126312373885d78d67af9013bc12fa4e">CompruebaTarjeta</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)<para><emphasis>Funcion de espera de comprueba tarjeta.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="fsm__rfid_8h_1aa239886bea26a31d0f6ddf5137a804cb">launchRFID</link> (
+)<para><emphasis>Funcion de creacion de la maquina de estados
+Si la maquina de estados ya esta creada no se crea otra.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/fsm_rfid.h</para>
+    </simplesect>
+</section>

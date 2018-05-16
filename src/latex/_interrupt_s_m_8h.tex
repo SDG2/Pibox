@@ -1,0 +1,218 @@
+\hypertarget{_interrupt_s_m_8h}{}\section{Interrupt\+S\+M.\+h File Reference}
+\label{_interrupt_s_m_8h}\index{Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}}
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$sched.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_i_s_r___typ}{I\+S\+R\+\_\+\+Typ}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{_interrupt_s_m_8h_a25782dadcd5c0986f623661a27d786ee}{call\+\_\+back}}) (int)
+\item 
+typedef struct \mbox{\hyperlink{struct_i_s_r___typ}{I\+S\+R\+\_\+\+Typ}} \mbox{\hyperlink{_interrupt_s_m_8h_a2cfb857f1bbc13cc759c5acb4288a326}{I\+S\+R\+\_\+\+Typ\+\_\+}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9e}{event}} \{ \newline
+\mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eaad4144f5191f08b249b3f4dcce4cf9e3}{F\+A\+L\+L\+I\+N\+\_\+\+E\+D\+GE}}, 
+\mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9ea86445853271053ed37f404b9ca4fa434}{R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE}}, 
+\mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eafe3b416683ca47506b73ba760e1e3f21}{L\+O\+W\+\_\+\+D\+E\+T\+E\+CT}}, 
+\mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eae103a33b4689661d4923ff4031a5df9a}{H\+I\+G\+H\+\_\+\+D\+E\+T\+E\+CT}}, 
+\newline
+\mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eaada6cf2b086af8fd5f84e946d2bd145d}{C\+H\+A\+N\+GE}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_interrupt_s_m_8h_af169ed2cb7b858f9c2e7eeeee874f033}{attach\+Isr}} (uint8\+\_\+t \mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{P\+IN}}, uint8\+\_\+t I\+S\+R\+Event, void $\ast$handdle, void $\ast$user\+Data)
+\begin{DoxyCompactList}\small\item\em Crea la interrupcion Crea un hilo donde se lanza una funcion que analizara el estado del pin para detectar cambios en el. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_interrupt_s_m_8h_a411bdf6367b78a102b483d9ba31b9781}{delete\+Isr}} (uint8\+\_\+t \mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{P\+IN}})
+\begin{DoxyCompactList}\small\item\em Elimina la interrupcion del pin especificado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+pthread\+\_\+t \mbox{\hyperlink{_interrupt_s_m_8h_ac3f434fdbe5f3b95f5ccc7b2e4b3f2b2}{threads}} \mbox{[}64\mbox{]}
+\begin{DoxyCompactList}\small\item\em Hilos de las interrupciones. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{_interrupt_s_m_8h_a0094a05bcb5523f77617ad79a600230b}{atach\+Pin}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{_interrupt_s_m_8h_a25782dadcd5c0986f623661a27d786ee}\label{_interrupt_s_m_8h_a25782dadcd5c0986f623661a27d786ee}} 
+\index{Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}!call\+\_\+back@{call\+\_\+back}}
+\index{call\+\_\+back@{call\+\_\+back}!Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}}
+\subsubsection{\texorpdfstring{call\+\_\+back}{call\_back}}
+{\footnotesize\ttfamily typedef void($\ast$ call\+\_\+back) (int)}
+
+
+
+Definition at line 16 of file Interrupt\+S\+M.\+h.
+
+\mbox{\Hypertarget{_interrupt_s_m_8h_a2cfb857f1bbc13cc759c5acb4288a326}\label{_interrupt_s_m_8h_a2cfb857f1bbc13cc759c5acb4288a326}} 
+\index{Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}!I\+S\+R\+\_\+\+Typ\+\_\+@{I\+S\+R\+\_\+\+Typ\+\_\+}}
+\index{I\+S\+R\+\_\+\+Typ\+\_\+@{I\+S\+R\+\_\+\+Typ\+\_\+}!Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}}
+\subsubsection{\texorpdfstring{I\+S\+R\+\_\+\+Typ\+\_\+}{ISR\_Typ\_}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_i_s_r___typ}{I\+S\+R\+\_\+\+Typ}} \mbox{\hyperlink{_interrupt_s_m_8h_a2cfb857f1bbc13cc759c5acb4288a326}{I\+S\+R\+\_\+\+Typ\+\_\+}}}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9e}\label{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9e}} 
+\index{Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}!event@{event}}
+\index{event@{event}!Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}}
+\subsubsection{\texorpdfstring{event}{event}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9e}{event}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+A\+L\+L\+I\+N\+\_\+\+E\+D\+GE@{F\+A\+L\+L\+I\+N\+\_\+\+E\+D\+GE}!Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}}\index{Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}!F\+A\+L\+L\+I\+N\+\_\+\+E\+D\+GE@{F\+A\+L\+L\+I\+N\+\_\+\+E\+D\+GE}}}\mbox{\Hypertarget{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eaad4144f5191f08b249b3f4dcce4cf9e3}\label{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eaad4144f5191f08b249b3f4dcce4cf9e3}} 
+F\+A\+L\+L\+I\+N\+\_\+\+E\+D\+GE&Flanco de bajada. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE@{R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE}!Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}}\index{Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}!R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE@{R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE}}}\mbox{\Hypertarget{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9ea86445853271053ed37f404b9ca4fa434}\label{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9ea86445853271053ed37f404b9ca4fa434}} 
+R\+I\+S\+I\+N\+G\+\_\+\+E\+D\+GE&Flaco de subida. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+O\+W\+\_\+\+D\+E\+T\+E\+CT@{L\+O\+W\+\_\+\+D\+E\+T\+E\+CT}!Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}}\index{Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}!L\+O\+W\+\_\+\+D\+E\+T\+E\+CT@{L\+O\+W\+\_\+\+D\+E\+T\+E\+CT}}}\mbox{\Hypertarget{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eafe3b416683ca47506b73ba760e1e3f21}\label{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eafe3b416683ca47506b73ba760e1e3f21}} 
+L\+O\+W\+\_\+\+D\+E\+T\+E\+CT&Deteccion nivel alto. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{H\+I\+G\+H\+\_\+\+D\+E\+T\+E\+CT@{H\+I\+G\+H\+\_\+\+D\+E\+T\+E\+CT}!Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}}\index{Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}!H\+I\+G\+H\+\_\+\+D\+E\+T\+E\+CT@{H\+I\+G\+H\+\_\+\+D\+E\+T\+E\+CT}}}\mbox{\Hypertarget{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eae103a33b4689661d4923ff4031a5df9a}\label{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eae103a33b4689661d4923ff4031a5df9a}} 
+H\+I\+G\+H\+\_\+\+D\+E\+T\+E\+CT&Deteccion nivel bajo. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+H\+A\+N\+GE@{C\+H\+A\+N\+GE}!Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}}\index{Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}!C\+H\+A\+N\+GE@{C\+H\+A\+N\+GE}}}\mbox{\Hypertarget{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eaada6cf2b086af8fd5f84e946d2bd145d}\label{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eaada6cf2b086af8fd5f84e946d2bd145d}} 
+C\+H\+A\+N\+GE&Cambio de nivel. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 31 of file Interrupt\+S\+M.\+h.
+
+
+\begin{DoxyCode}
+32 \{
+33     \mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eaad4144f5191f08b249b3f4dcce4cf9e3}{FALLIN\_EDGE}}, 
+34     \mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9ea86445853271053ed37f404b9ca4fa434}{RISING\_EDGE}}, 
+35     \mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eafe3b416683ca47506b73ba760e1e3f21}{LOW\_DETECT}},   
+36     \mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eae103a33b4689661d4923ff4031a5df9a}{HIGH\_DETECT}}, 
+37     \mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eaada6cf2b086af8fd5f84e946d2bd145d}{CHANGE}} 
+38 \};
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_interrupt_s_m_8h_af169ed2cb7b858f9c2e7eeeee874f033}\label{_interrupt_s_m_8h_af169ed2cb7b858f9c2e7eeeee874f033}} 
+\index{Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}!attach\+Isr@{attach\+Isr}}
+\index{attach\+Isr@{attach\+Isr}!Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}}
+\subsubsection{\texorpdfstring{attach\+Isr()}{attachIsr()}}
+{\footnotesize\ttfamily void attach\+Isr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{P\+IN,  }\item[{uint8\+\_\+t}]{I\+S\+R\+Event,  }\item[{void $\ast$}]{handdle,  }\item[{void $\ast$}]{user\+Data }\end{DoxyParamCaption})}
+
+
+
+Crea la interrupcion Crea un hilo donde se lanza una funcion que analizara el estado del pin para detectar cambios en el. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em P\+IN} & pin donde se crea la interrupcion \\
+\hline
+{\em I\+S\+R\+Event} & Tipo de evento que queremos detectar \\
+\hline
+{\em handdle} & (no used yet) \\
+\hline
+{\em user\+Data} & funcion de callback \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 62 of file Interrupt\+S\+M.\+c.
+
+
+\begin{DoxyCode}
+63 \{
+64     printf(\textcolor{stringliteral}{"Entro"});
+65     fflush(stdout);
+66     \textcolor{keywordflow}{if} (!bcm2835\_init())
+67         \textcolor{keywordflow}{return};
+68     \textcolor{comment}{// Set RPI pin P1-15 to be an input}
+69     bcm2835\_gpio\_fsel(\mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{PIN}}, BCM2835\_GPIO\_FSEL\_INPT);
+70     \textcolor{comment}{//  with a pullup}
+71     bcm2835\_gpio\_set\_pud(\mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{PIN}}, BCM2835\_GPIO\_PUD\_UP);
+72     \textcolor{comment}{// And a low detect enable}
+73     pthread\_t \mbox{\hyperlink{fsm__rfid_8h_a01f75a9ad916f63a94e06a27635ba278}{thread}};
+74     \mbox{\hyperlink{struct_i_s_r___typ}{ISR\_Typ\_}} *interrupt = (\mbox{\hyperlink{struct_i_s_r___typ}{ISR\_Typ\_}} *)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_i_s_r___typ}{ISR\_Typ\_}}));
+75 
+76     interrupt->\mbox{\hyperlink{struct_i_s_r___typ_a83193f25730f05f9d5a65a18089d5432}{callback}} = userData;
+77     interrupt->\mbox{\hyperlink{struct_i_s_r___typ_aeef6900f411bc223febdd92c9435693b}{event}} = ISREvent;
+78     interrupt->\mbox{\hyperlink{struct_i_s_r___typ_ab40a673fb19c1e650e1f79de91788aa5}{pin}} = \mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{PIN}};
+79 
+80     printf(\textcolor{stringliteral}{"Entro"});
+81     fflush(stdout);
+82     \textcolor{keywordflow}{if} (\mbox{\hyperlink{_interrupt_s_m_8h_ac3f434fdbe5f3b95f5ccc7b2e4b3f2b2}{threads}}[\mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{PIN}}] != 0)
+83     \{
+84         printf(\textcolor{stringliteral}{"Error, has been created yet! \(\backslash\)n"});
+85         \textcolor{keywordflow}{return};
+86     \}
+87     pthread\_create(&\mbox{\hyperlink{fsm__rfid_8h_a01f75a9ad916f63a94e06a27635ba278}{thread}}, NULL, \mbox{\hyperlink{_interrupt_s_m_8c_a9f45f8a7a8db8a89b25b83e463c73873}{loop}}, interrupt);
+88     \mbox{\hyperlink{_interrupt_s_m_8h_ac3f434fdbe5f3b95f5ccc7b2e4b3f2b2}{threads}}[\mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{PIN}}] = \mbox{\hyperlink{fsm__rfid_8h_a01f75a9ad916f63a94e06a27635ba278}{thread}};
+89 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_interrupt_s_m_8h_a411bdf6367b78a102b483d9ba31b9781}\label{_interrupt_s_m_8h_a411bdf6367b78a102b483d9ba31b9781}} 
+\index{Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}!delete\+Isr@{delete\+Isr}}
+\index{delete\+Isr@{delete\+Isr}!Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}}
+\subsubsection{\texorpdfstring{delete\+Isr()}{deleteIsr()}}
+{\footnotesize\ttfamily void delete\+Isr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{P\+IN }\end{DoxyParamCaption})}
+
+
+
+Elimina la interrupcion del pin especificado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em P\+IN} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 95 of file Interrupt\+S\+M.\+c.
+
+
+\begin{DoxyCode}
+96 \{
+97     pthread\_cancel(\mbox{\hyperlink{_interrupt_s_m_8h_ac3f434fdbe5f3b95f5ccc7b2e4b3f2b2}{threads}}[\mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{PIN}}]);
+98     \mbox{\hyperlink{_interrupt_s_m_8h_ac3f434fdbe5f3b95f5ccc7b2e4b3f2b2}{threads}}[\mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{PIN}}] = 0;
+99 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_interrupt_s_m_8h_a0094a05bcb5523f77617ad79a600230b}\label{_interrupt_s_m_8h_a0094a05bcb5523f77617ad79a600230b}} 
+\index{Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}!atach\+Pin@{atach\+Pin}}
+\index{atach\+Pin@{atach\+Pin}!Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}}
+\subsubsection{\texorpdfstring{atach\+Pin}{atachPin}}
+{\footnotesize\ttfamily uint8\+\_\+t atach\+Pin}
+
+
+
+Definition at line 20 of file Interrupt\+S\+M.\+h.
+
+\mbox{\Hypertarget{_interrupt_s_m_8h_ac3f434fdbe5f3b95f5ccc7b2e4b3f2b2}\label{_interrupt_s_m_8h_ac3f434fdbe5f3b95f5ccc7b2e4b3f2b2}} 
+\index{Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}!threads@{threads}}
+\index{threads@{threads}!Interrupt\+S\+M.\+h@{Interrupt\+S\+M.\+h}}
+\subsubsection{\texorpdfstring{threads}{threads}}
+{\footnotesize\ttfamily pthread\+\_\+t threads\mbox{[}64\mbox{]}}
+
+
+
+Hilos de las interrupciones. 
+
+
+
+Definition at line 19 of file Interrupt\+S\+M.\+h.
+

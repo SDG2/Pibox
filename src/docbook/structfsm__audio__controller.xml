@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="structfsm__audio__controller">
+<title>fsm_audio_controller struct Reference</title>
+<para>
+    <programlisting>#include <link linkend="player_8h">&lt;player.h&gt;</link></programlisting>
+</para>
+        <section>
+            <title>Data Fields</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>fsm_t * fsm<para><emphasis>Puntero comun de maquina de estados.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>TipoSistema * tipo_sistema<para><emphasis>Puntero a tipo sistema -&gt; en desuso.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>BUFFERS_T * buffer<para><emphasis>Puntero a los buffers.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+
+<para>Estructura de la maquina de estados player. </para>
+    </simplesect>
+        <section>
+            <title>Field Documentation</title>
+        </section>
+</section>

@@ -1,0 +1,664 @@
+\hypertarget{fsm__rfid_8h}{}\section{fsm\+\_\+rfid.\+h File Reference}
+\label{fsm__rfid_8h}\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$sched.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fsm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tipos.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}R\+C522.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structlist__files}{list\+\_\+files}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structlist__files}{list\+\_\+files}} \mbox{\hyperlink{fsm__rfid_8h_a85839a66c9eb826246b8cd0b5652c26f}{list\+\_\+files\+\_\+t}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddca}{flags\+\_\+rfid}} \{ \newline
+\mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaafcd100a8ec8a05562f875a94a8a7a730}{F\+L\+A\+G\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+R\+Tn}} = 0x01, 
+\mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaaff96c427210e75a502d2083d839844bb}{F\+L\+A\+G\+\_\+\+C\+A\+R\+D\+\_\+\+IN}} = 0x02, 
+\mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaae5f9e2292599b01b2028179e3f056e60}{F\+L\+A\+G\+\_\+\+V\+A\+L\+I\+D\+\_\+\+C\+A\+RD}} =0x04, 
+\mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaa931e5ce4a8ef8e85a5ba096321891ded}{F\+L\+A\+G\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+E\+ND}} =0x08, 
+\newline
+\mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaa1f645d352eaa50d8703a11c539e04b22}{F\+L\+A\+G\+\_\+\+C\+A\+R\+D\+\_\+\+E\+X\+I\+ST}} = 0x10
+ \}
+\item 
+enum \mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030}{rfid\+\_\+states}} \{ \newline
+\mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030ad672f41b357cfe8db0e7b262a428fd66}{W\+A\+I\+T\+\_\+\+S\+T\+A\+RT}}, 
+\mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030a96589c1bca8da44e58c162ed39e17cd3}{W\+A\+I\+T\+\_\+\+P\+L\+AY}}, 
+\mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030a5bca9eaafc1dfd8409ee779eda8537ad}{W\+A\+I\+T\+\_\+\+C\+A\+RD}}, 
+\mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030a1b68fba424de22ea2258e74face2ba0a}{W\+A\+I\+T\+\_\+\+C\+H\+E\+CK}}, 
+\newline
+\mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030ae510c409b337b6c77cf07aecd6f6bab4}{W\+A\+I\+T\+\_\+\+C\+O\+N\+F\+IG}}, 
+\mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030ae78e2475a5f5995dbd42994a39b37926}{W\+A\+I\+T\+\_\+\+D\+A\+TA}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{fsm__rfid_8h_a894af73d089c430c2524bbb8015e749a}{Comprueba\+Comienzo}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Funcion de arranque del sistema devuelve siempre 1. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fsm__rfid_8h_aea3d64c12349f394154fb635e17c08f1}{Comprueba\+Final\+Reproduccion}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Condición de paso si Ha acabado la reproducción de la cancion. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fsm__rfid_8h_a25dc50da91baf30a6ef7a6cf3277ab4b}{Tarjeta\+Disponible}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Condición de paso si hay una tarjeta insertada en el optoacoplador. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fsm__rfid_8h_a6ce43ebc72dfc36e9b3f542ac4c42143}{Tarjeta\+No\+Disponible}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Condición de paso si no hay una tarjeta insertada en el optoacoplador. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fsm__rfid_8h_a2395018b43d089e28965e7993fc7796f}{Tarjeta\+Valida}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Condición de paso si la tarjeta es R\+F\+ID. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{fsm__rfid_8h_a7077c53d7693ce4e43ab1f3500ba7464}{Tarjeta\+No\+Valida}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Condición de paso si la tarjeta no es R\+F\+ID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm__rfid_8h_a2bf6bef8226a73e69999b66ab1c4d1ce}{Espera\+Targeta}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Funcion de espera de la tarjeta mientras no haya una en el optoacoplador. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm__rfid_8h_a2f0ba74b305da68c1f2969dd64042d8b}{Descarta\+Tarjeta}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Altera el flag de tarjeta insertada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm__rfid_8h_a1b8679a64ad408caa001f99dd8f4ef88}{Leer\+Tarjeta}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Lee la tarjeta, activa el flag de tarjeta valida Lee la tarjeta, almacena en una variable privada del fichero el U\+U\+ID de la misma. Activa el flag de tarjeta valida. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm__rfid_8h_ab1f623c126d57fab4c99a247e7ba3766}{Comienza\+Sistema}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Funcion de Inicizalizacion del sistema. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm__rfid_8h_a5d872b86674c5ebc4e21793d76e75140}{Cancela\+Reproduccion}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Activa el flag de inicio de stop de la maquina de estados de player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm__rfid_8h_a9557ef798d31cdbbe31de3713b8d9a3d}{Comienza\+Reproduccion}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Activa el flag de inicio de reproduccion de la maquina de estados de player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm__rfid_8h_ad61e8abe347c0fe4e1fa343f2a3dde2f}{Finaliza\+Reproduccion}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Funcion de finalizacion de reproduccion. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm__rfid_8h_a126312373885d78d67af9013bc12fa4e}{Comprueba\+Tarjeta}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\begin{DoxyCompactList}\small\item\em Funcion de espera de comprueba tarjeta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fsm__rfid_8h_aa239886bea26a31d0f6ddf5137a804cb}{launch\+R\+F\+ID}} ()
+\begin{DoxyCompactList}\small\item\em Funcion de creacion de la maquina de estados Si la maquina de estados ya esta creada no se crea otra. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{fsm__rfid_8h_a414378ace9198797d96ba624749060e0}{U\+U\+ID}} \mbox{[}16\mbox{]}
+\item 
+\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$ \mbox{\hyperlink{fsm__rfid_8h_a4172cd6a98793577c1c4f3389b134791}{fsm\+\_\+rfid}}
+\begin{DoxyCompactList}\small\item\em Puntero fsm de la maquina de estados. \end{DoxyCompactList}\item 
+pthread\+\_\+t \mbox{\hyperlink{fsm__rfid_8h_a01f75a9ad916f63a94e06a27635ba278}{thread}}
+\begin{DoxyCompactList}\small\item\em Hilo de ejecucion de la maquina de estados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{fsm__rfid_8h_a85839a66c9eb826246b8cd0b5652c26f}\label{fsm__rfid_8h_a85839a66c9eb826246b8cd0b5652c26f}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!list\+\_\+files\+\_\+t@{list\+\_\+files\+\_\+t}}
+\index{list\+\_\+files\+\_\+t@{list\+\_\+files\+\_\+t}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{list\+\_\+files\+\_\+t}{list\_files\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structlist__files}{list\+\_\+files}} \mbox{\hyperlink{fsm__rfid_8h_a85839a66c9eb826246b8cd0b5652c26f}{list\+\_\+files\+\_\+t}}}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddca}\label{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddca}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!flags\+\_\+rfid@{flags\+\_\+rfid}}
+\index{flags\+\_\+rfid@{flags\+\_\+rfid}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{flags\+\_\+rfid}{flags\_rfid}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddca}{flags\+\_\+rfid}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+L\+A\+G\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+R\+Tn@{F\+L\+A\+G\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+R\+Tn}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!F\+L\+A\+G\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+R\+Tn@{F\+L\+A\+G\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+R\+Tn}}}\mbox{\Hypertarget{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaafcd100a8ec8a05562f875a94a8a7a730}\label{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaafcd100a8ec8a05562f875a94a8a7a730}} 
+F\+L\+A\+G\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+S\+T\+A\+R\+Tn&Flaf de systema iniciado NO U\+S\+A\+DO. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+L\+A\+G\+\_\+\+C\+A\+R\+D\+\_\+\+IN@{F\+L\+A\+G\+\_\+\+C\+A\+R\+D\+\_\+\+IN}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!F\+L\+A\+G\+\_\+\+C\+A\+R\+D\+\_\+\+IN@{F\+L\+A\+G\+\_\+\+C\+A\+R\+D\+\_\+\+IN}}}\mbox{\Hypertarget{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaaff96c427210e75a502d2083d839844bb}\label{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaaff96c427210e75a502d2083d839844bb}} 
+F\+L\+A\+G\+\_\+\+C\+A\+R\+D\+\_\+\+IN&Flag de tarjeta detectada optoacoplador. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+L\+A\+G\+\_\+\+V\+A\+L\+I\+D\+\_\+\+C\+A\+RD@{F\+L\+A\+G\+\_\+\+V\+A\+L\+I\+D\+\_\+\+C\+A\+RD}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!F\+L\+A\+G\+\_\+\+V\+A\+L\+I\+D\+\_\+\+C\+A\+RD@{F\+L\+A\+G\+\_\+\+V\+A\+L\+I\+D\+\_\+\+C\+A\+RD}}}\mbox{\Hypertarget{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaae5f9e2292599b01b2028179e3f056e60}\label{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaae5f9e2292599b01b2028179e3f056e60}} 
+F\+L\+A\+G\+\_\+\+V\+A\+L\+I\+D\+\_\+\+C\+A\+RD&Flag tarjeta valida R\+F\+ID. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+L\+A\+G\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+E\+ND@{F\+L\+A\+G\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+E\+ND}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!F\+L\+A\+G\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+E\+ND@{F\+L\+A\+G\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+E\+ND}}}\mbox{\Hypertarget{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaa931e5ce4a8ef8e85a5ba096321891ded}\label{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaa931e5ce4a8ef8e85a5ba096321891ded}} 
+F\+L\+A\+G\+\_\+\+S\+Y\+S\+T\+E\+M\+\_\+\+E\+ND&Final del sistema. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+L\+A\+G\+\_\+\+C\+A\+R\+D\+\_\+\+E\+X\+I\+ST@{F\+L\+A\+G\+\_\+\+C\+A\+R\+D\+\_\+\+E\+X\+I\+ST}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!F\+L\+A\+G\+\_\+\+C\+A\+R\+D\+\_\+\+E\+X\+I\+ST@{F\+L\+A\+G\+\_\+\+C\+A\+R\+D\+\_\+\+E\+X\+I\+ST}}}\mbox{\Hypertarget{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaa1f645d352eaa50d8703a11c539e04b22}\label{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaa1f645d352eaa50d8703a11c539e04b22}} 
+F\+L\+A\+G\+\_\+\+C\+A\+R\+D\+\_\+\+E\+X\+I\+ST&Flag tarjeta Existe. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 30 of file fsm\+\_\+rfid.\+h.
+
+
+\begin{DoxyCode}
+30                \{
+31     \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaafcd100a8ec8a05562f875a94a8a7a730}{FLAG\_SYSTEM\_STARTn}} = 0x01, 
+32     \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaaff96c427210e75a502d2083d839844bb}{FLAG\_CARD\_IN}} = 0x02, 
+33     \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaae5f9e2292599b01b2028179e3f056e60}{FLAG\_VALID\_CARD}} =0x04, 
+34     \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaa931e5ce4a8ef8e85a5ba096321891ded}{FLAG\_SYSTEM\_END}} =0x08, 
+35     \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaa1f645d352eaa50d8703a11c539e04b22}{FLAG\_CARD\_EXIST}} = 0x10 
+36 \};
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030}\label{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!rfid\+\_\+states@{rfid\+\_\+states}}
+\index{rfid\+\_\+states@{rfid\+\_\+states}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{rfid\+\_\+states}{rfid\_states}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030}{rfid\+\_\+states}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+\_\+\+S\+T\+A\+RT@{W\+A\+I\+T\+\_\+\+S\+T\+A\+RT}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!W\+A\+I\+T\+\_\+\+S\+T\+A\+RT@{W\+A\+I\+T\+\_\+\+S\+T\+A\+RT}}}\mbox{\Hypertarget{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030ad672f41b357cfe8db0e7b262a428fd66}\label{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030ad672f41b357cfe8db0e7b262a428fd66}} 
+W\+A\+I\+T\+\_\+\+S\+T\+A\+RT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+\_\+\+P\+L\+AY@{W\+A\+I\+T\+\_\+\+P\+L\+AY}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!W\+A\+I\+T\+\_\+\+P\+L\+AY@{W\+A\+I\+T\+\_\+\+P\+L\+AY}}}\mbox{\Hypertarget{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030a96589c1bca8da44e58c162ed39e17cd3}\label{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030a96589c1bca8da44e58c162ed39e17cd3}} 
+W\+A\+I\+T\+\_\+\+P\+L\+AY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+\_\+\+C\+A\+RD@{W\+A\+I\+T\+\_\+\+C\+A\+RD}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!W\+A\+I\+T\+\_\+\+C\+A\+RD@{W\+A\+I\+T\+\_\+\+C\+A\+RD}}}\mbox{\Hypertarget{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030a5bca9eaafc1dfd8409ee779eda8537ad}\label{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030a5bca9eaafc1dfd8409ee779eda8537ad}} 
+W\+A\+I\+T\+\_\+\+C\+A\+RD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+\_\+\+C\+H\+E\+CK@{W\+A\+I\+T\+\_\+\+C\+H\+E\+CK}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!W\+A\+I\+T\+\_\+\+C\+H\+E\+CK@{W\+A\+I\+T\+\_\+\+C\+H\+E\+CK}}}\mbox{\Hypertarget{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030a1b68fba424de22ea2258e74face2ba0a}\label{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030a1b68fba424de22ea2258e74face2ba0a}} 
+W\+A\+I\+T\+\_\+\+C\+H\+E\+CK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+\_\+\+C\+O\+N\+F\+IG@{W\+A\+I\+T\+\_\+\+C\+O\+N\+F\+IG}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!W\+A\+I\+T\+\_\+\+C\+O\+N\+F\+IG@{W\+A\+I\+T\+\_\+\+C\+O\+N\+F\+IG}}}\mbox{\Hypertarget{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030ae510c409b337b6c77cf07aecd6f6bab4}\label{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030ae510c409b337b6c77cf07aecd6f6bab4}} 
+W\+A\+I\+T\+\_\+\+C\+O\+N\+F\+IG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+\_\+\+D\+A\+TA@{W\+A\+I\+T\+\_\+\+D\+A\+TA}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!W\+A\+I\+T\+\_\+\+D\+A\+TA@{W\+A\+I\+T\+\_\+\+D\+A\+TA}}}\mbox{\Hypertarget{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030ae78e2475a5f5995dbd42994a39b37926}\label{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030ae78e2475a5f5995dbd42994a39b37926}} 
+W\+A\+I\+T\+\_\+\+D\+A\+TA&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 37 of file fsm\+\_\+rfid.\+h.
+
+
+\begin{DoxyCode}
+37                 \{
+38     \mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030ad672f41b357cfe8db0e7b262a428fd66}{WAIT\_START}},
+39     \mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030a96589c1bca8da44e58c162ed39e17cd3}{WAIT\_PLAY}} ,
+40     \mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030a5bca9eaafc1dfd8409ee779eda8537ad}{WAIT\_CARD}} ,
+41     \mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030a1b68fba424de22ea2258e74face2ba0a}{WAIT\_CHECK}},
+42     \mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030ae510c409b337b6c77cf07aecd6f6bab4}{WAIT\_CONFIG}},
+43     \mbox{\hyperlink{fsm__rfid_8h_ac5d3859d183e70214273d4a455dac030ae78e2475a5f5995dbd42994a39b37926}{WAIT\_DATA}}
+44 \};
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fsm__rfid_8h_a5d872b86674c5ebc4e21793d76e75140}\label{fsm__rfid_8h_a5d872b86674c5ebc4e21793d76e75140}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Cancela\+Reproduccion@{Cancela\+Reproduccion}}
+\index{Cancela\+Reproduccion@{Cancela\+Reproduccion}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Cancela\+Reproduccion()}{CancelaReproduccion()}}
+{\footnotesize\ttfamily void Cancela\+Reproduccion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Activa el flag de inicio de stop de la maquina de estados de player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & Maquina de estados \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 225 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+226 \{
+227     \mbox{\hyperlink{mutex_8c_ad649ab53814d18a30bb40d7242961e23}{lock}}(1);
+228     \mbox{\hyperlink{tipos_8h_a8d6cbadfb1878d67dffef9647ba5fe05}{flags\_player}} |= \mbox{\hyperlink{tipos_8h_abe8b7d04534b17feedbf65d3d40a28ef}{FLAG\_END}};
+229     \mbox{\hyperlink{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}{unlock}}(1);
+230 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_a9557ef798d31cdbbe31de3713b8d9a3d}\label{fsm__rfid_8h_a9557ef798d31cdbbe31de3713b8d9a3d}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Comienza\+Reproduccion@{Comienza\+Reproduccion}}
+\index{Comienza\+Reproduccion@{Comienza\+Reproduccion}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Comienza\+Reproduccion()}{ComienzaReproduccion()}}
+{\footnotesize\ttfamily void Comienza\+Reproduccion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Activa el flag de inicio de reproduccion de la maquina de estados de player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & Maquina de estados \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 212 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+213 \{
+214     menu\_lcd\_display(\textcolor{stringliteral}{""}, \textcolor{stringliteral}{"Playing: "}, \mbox{\hyperlink{tipos_8h_aad2bf680e32d8de23ad37cb9980150c0}{song\_name}}, \textcolor{stringliteral}{""});
+215     \mbox{\hyperlink{mutex_8c_ad649ab53814d18a30bb40d7242961e23}{lock}}(1);
+216     \mbox{\hyperlink{tipos_8h_a8d6cbadfb1878d67dffef9647ba5fe05}{flags\_player}} = \mbox{\hyperlink{tipos_8h_aca7482b8a25290ec56826ad3b8d6bf19}{FLAG\_START}};
+217     \mbox{\hyperlink{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}{unlock}}(1);
+218     printf(\textcolor{stringliteral}{"comienzas flag: %d"}, \mbox{\hyperlink{tipos_8h_a8d6cbadfb1878d67dffef9647ba5fe05}{flags\_player}});
+219 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_ab1f623c126d57fab4c99a247e7ba3766}\label{fsm__rfid_8h_ab1f623c126d57fab4c99a247e7ba3766}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Comienza\+Sistema@{Comienza\+Sistema}}
+\index{Comienza\+Sistema@{Comienza\+Sistema}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Comienza\+Sistema()}{ComienzaSistema()}}
+{\footnotesize\ttfamily void Comienza\+Sistema (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Funcion de Inicizalizacion del sistema. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & Maquina de estados \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 256 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+257 \{
+258     printf(\textcolor{stringliteral}{"Arranca el RFID"});
+259     menu\_lcd\_display\_clear(),
+260         menu\_lcd\_display(\textcolor{stringliteral}{"PiMusicBox Player!"}, \textcolor{stringliteral}{""}, \textcolor{stringliteral}{""}, \textcolor{stringliteral}{""});
+261     fflush(stdout);
+262     \textcolor{comment}{//Si no es la primera inicialización no ocurre nada aqui}
+263     \textcolor{keywordflow}{if} (RC522\_Init() == STATUS\_ERROR)
+264         printf(\textcolor{stringliteral}{"ERROR! \(\backslash\)n"});
+265     \textcolor{comment}{//Reset de todos los flags}
+266     \mbox{\hyperlink{mutex_8c_ad649ab53814d18a30bb40d7242961e23}{lock}}(0);
+267     \mbox{\hyperlink{tipos_8h_a23e04a79e83a0bb62dc3d6be4e0d1b92}{flag\_rfid}} = 0;
+268     \mbox{\hyperlink{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}{unlock}}(0);
+269 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_a894af73d089c430c2524bbb8015e749a}\label{fsm__rfid_8h_a894af73d089c430c2524bbb8015e749a}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Comprueba\+Comienzo@{Comprueba\+Comienzo}}
+\index{Comprueba\+Comienzo@{Comprueba\+Comienzo}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Comprueba\+Comienzo()}{CompruebaComienzo()}}
+{\footnotesize\ttfamily int Comprueba\+Comienzo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Funcion de arranque del sistema devuelve siempre 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int, siempre 1 
+\end{DoxyReturn}
+
+
+Definition at line 103 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+104 \{
+105     \textcolor{keywordflow}{return} 1;
+106 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_aea3d64c12349f394154fb635e17c08f1}\label{fsm__rfid_8h_aea3d64c12349f394154fb635e17c08f1}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Comprueba\+Final\+Reproduccion@{Comprueba\+Final\+Reproduccion}}
+\index{Comprueba\+Final\+Reproduccion@{Comprueba\+Final\+Reproduccion}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Comprueba\+Final\+Reproduccion()}{CompruebaFinalReproduccion()}}
+{\footnotesize\ttfamily int Comprueba\+Final\+Reproduccion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Condición de paso si Ha acabado la reproducción de la cancion. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & Maquina de estados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Condición cumplida o no 
+\end{DoxyReturn}
+
+
+Definition at line 113 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+114 \{
+115     \mbox{\hyperlink{mutex_8c_ad649ab53814d18a30bb40d7242961e23}{lock}}(0);
+116     uint8\_t tmp = (\mbox{\hyperlink{tipos_8h_a23e04a79e83a0bb62dc3d6be4e0d1b92}{flag\_rfid}} & \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaa931e5ce4a8ef8e85a5ba096321891ded}{FLAG\_SYSTEM\_END}});
+117     \mbox{\hyperlink{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}{unlock}}(0);
+118     \textcolor{keywordflow}{return} tmp;
+119 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_a126312373885d78d67af9013bc12fa4e}\label{fsm__rfid_8h_a126312373885d78d67af9013bc12fa4e}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Comprueba\+Tarjeta@{Comprueba\+Tarjeta}}
+\index{Comprueba\+Tarjeta@{Comprueba\+Tarjeta}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Comprueba\+Tarjeta()}{CompruebaTarjeta()}}
+{\footnotesize\ttfamily void Comprueba\+Tarjeta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Funcion de espera de comprueba tarjeta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & Maquina de estados \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 236 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+237 \{
+238     \textcolor{keywordflow}{return};
+239 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_a2f0ba74b305da68c1f2969dd64042d8b}\label{fsm__rfid_8h_a2f0ba74b305da68c1f2969dd64042d8b}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Descarta\+Tarjeta@{Descarta\+Tarjeta}}
+\index{Descarta\+Tarjeta@{Descarta\+Tarjeta}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Descarta\+Tarjeta()}{DescartaTarjeta()}}
+{\footnotesize\ttfamily void Descarta\+Tarjeta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Altera el flag de tarjeta insertada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & Maquina de estados \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 186 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+187 \{
+188     \mbox{\hyperlink{mutex_8c_ad649ab53814d18a30bb40d7242961e23}{lock}}(0);
+189     \mbox{\hyperlink{tipos_8h_a23e04a79e83a0bb62dc3d6be4e0d1b92}{flag\_rfid}} &= ~\mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaaff96c427210e75a502d2083d839844bb}{FLAG\_CARD\_IN}};
+190     \mbox{\hyperlink{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}{unlock}}(0);
+191 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_a2bf6bef8226a73e69999b66ab1c4d1ce}\label{fsm__rfid_8h_a2bf6bef8226a73e69999b66ab1c4d1ce}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Espera\+Targeta@{Espera\+Targeta}}
+\index{Espera\+Targeta@{Espera\+Targeta}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Espera\+Targeta()}{EsperaTargeta()}}
+{\footnotesize\ttfamily void Espera\+Targeta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Funcion de espera de la tarjeta mientras no haya una en el optoacoplador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & Maquina de estados \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 177 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+178 \{
+179     \textcolor{keywordflow}{return};
+180 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_ad61e8abe347c0fe4e1fa343f2a3dde2f}\label{fsm__rfid_8h_ad61e8abe347c0fe4e1fa343f2a3dde2f}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Finaliza\+Reproduccion@{Finaliza\+Reproduccion}}
+\index{Finaliza\+Reproduccion@{Finaliza\+Reproduccion}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Finaliza\+Reproduccion()}{FinalizaReproduccion()}}
+{\footnotesize\ttfamily void Finaliza\+Reproduccion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Funcion de finalizacion de reproduccion. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & Maquina de estados \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 245 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+246 \{
+247     \mbox{\hyperlink{mutex_8c_ad649ab53814d18a30bb40d7242961e23}{lock}}(1);
+248     \mbox{\hyperlink{tipos_8h_a8d6cbadfb1878d67dffef9647ba5fe05}{flags\_player}} |= \mbox{\hyperlink{tipos_8h_abe8b7d04534b17feedbf65d3d40a28ef}{FLAG\_END}};
+249     \mbox{\hyperlink{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}{unlock}}(1);
+250 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_aa239886bea26a31d0f6ddf5137a804cb}\label{fsm__rfid_8h_aa239886bea26a31d0f6ddf5137a804cb}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!launch\+R\+F\+ID@{launch\+R\+F\+ID}}
+\index{launch\+R\+F\+ID@{launch\+R\+F\+ID}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{launch\+R\+F\+I\+D()}{launchRFID()}}
+{\footnotesize\ttfamily void launch\+R\+F\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funcion de creacion de la maquina de estados Si la maquina de estados ya esta creada no se crea otra. 
+
+
+
+Definition at line 287 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+288 \{
+289     \textcolor{keywordflow}{if} (\mbox{\hyperlink{fsm__rfid_8c_adc76c8cbae64e5426e49144ac52ac6d5}{maquina\_creada}})
+290     \{
+291         printf(\textcolor{stringliteral}{"La maquina de estados ya ha sido creada \(\backslash\)n"});
+292         fflush(stdout);
+293         \textcolor{keywordflow}{return};
+294     \}
+295     \mbox{\hyperlink{fsm__rfid_8h_a4172cd6a98793577c1c4f3389b134791}{fsm\_rfid}} = \mbox{\hyperlink{fsm_8c_a5a5f1422455f99b9d1c2d74d04537de7}{fsm\_new}}(\mbox{\hyperlink{fsm__rfid_8c_a1b63db81023235b2ef3108ad324a58f8}{transition\_table\_rfid}}, NULL);
+296     pthread\_create(&\mbox{\hyperlink{fsm__rfid_8h_a01f75a9ad916f63a94e06a27635ba278}{thread}}, NULL, \mbox{\hyperlink{fsm__rfid_8c_a1ad6b3a023f7f39cfc2d607f2c26dd9b}{lp}}, \mbox{\hyperlink{fsm__rfid_8h_a4172cd6a98793577c1c4f3389b134791}{fsm\_rfid}});
+297     \mbox{\hyperlink{fsm__rfid_8c_adc76c8cbae64e5426e49144ac52ac6d5}{maquina\_creada}} = 1;
+298 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_a1b8679a64ad408caa001f99dd8f4ef88}\label{fsm__rfid_8h_a1b8679a64ad408caa001f99dd8f4ef88}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Leer\+Tarjeta@{Leer\+Tarjeta}}
+\index{Leer\+Tarjeta@{Leer\+Tarjeta}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Leer\+Tarjeta()}{LeerTarjeta()}}
+{\footnotesize\ttfamily void Leer\+Tarjeta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Lee la tarjeta, activa el flag de tarjeta valida Lee la tarjeta, almacena en una variable privada del fichero el U\+U\+ID de la misma. Activa el flag de tarjeta valida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & Maquina de estados \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 198 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+199 \{
+200     \textcolor{keywordflow}{if} (RC522\_Check(\mbox{\hyperlink{fsm__rfid_8c_a414378ace9198797d96ba624749060e0}{UUID}}) == STATUS\_OK)
+201     \{
+202         printf(\textcolor{stringliteral}{"FOUND TAG! \(\backslash\)n"});
+203         fflush(stdout);
+204         \mbox{\hyperlink{tipos_8h_a23e04a79e83a0bb62dc3d6be4e0d1b92}{flag\_rfid}} |= \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaae5f9e2292599b01b2028179e3f056e60}{FLAG\_VALID\_CARD}};
+205     \}
+206 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_a25dc50da91baf30a6ef7a6cf3277ab4b}\label{fsm__rfid_8h_a25dc50da91baf30a6ef7a6cf3277ab4b}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Tarjeta\+Disponible@{Tarjeta\+Disponible}}
+\index{Tarjeta\+Disponible@{Tarjeta\+Disponible}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Tarjeta\+Disponible()}{TarjetaDisponible()}}
+{\footnotesize\ttfamily int Tarjeta\+Disponible (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Condición de paso si hay una tarjeta insertada en el optoacoplador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & Maquina de estados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Condición cumplida o no 
+\end{DoxyReturn}
+
+
+Definition at line 126 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+127 \{
+128     \mbox{\hyperlink{mutex_8c_ad649ab53814d18a30bb40d7242961e23}{lock}}(0);
+129     uint8\_t tmp = (\mbox{\hyperlink{tipos_8h_a23e04a79e83a0bb62dc3d6be4e0d1b92}{flag\_rfid}} & \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaaff96c427210e75a502d2083d839844bb}{FLAG\_CARD\_IN}});
+130     \mbox{\hyperlink{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}{unlock}}(0);
+131     \textcolor{keywordflow}{return} tmp;
+132 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_a6ce43ebc72dfc36e9b3f542ac4c42143}\label{fsm__rfid_8h_a6ce43ebc72dfc36e9b3f542ac4c42143}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Tarjeta\+No\+Disponible@{Tarjeta\+No\+Disponible}}
+\index{Tarjeta\+No\+Disponible@{Tarjeta\+No\+Disponible}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Tarjeta\+No\+Disponible()}{TarjetaNoDisponible()}}
+{\footnotesize\ttfamily int Tarjeta\+No\+Disponible (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Condición de paso si no hay una tarjeta insertada en el optoacoplador. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & Maquina de estados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Condición cumplida o no 
+\end{DoxyReturn}
+
+
+Definition at line 139 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+140 \{
+141     \mbox{\hyperlink{mutex_8c_ad649ab53814d18a30bb40d7242961e23}{lock}}(0);
+142     uint8\_t tmp = !(\mbox{\hyperlink{tipos_8h_a23e04a79e83a0bb62dc3d6be4e0d1b92}{flag\_rfid}} & \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaaff96c427210e75a502d2083d839844bb}{FLAG\_CARD\_IN}});
+143     \mbox{\hyperlink{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}{unlock}}(0);
+144     \textcolor{keywordflow}{return} tmp;
+145 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_a7077c53d7693ce4e43ab1f3500ba7464}\label{fsm__rfid_8h_a7077c53d7693ce4e43ab1f3500ba7464}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Tarjeta\+No\+Valida@{Tarjeta\+No\+Valida}}
+\index{Tarjeta\+No\+Valida@{Tarjeta\+No\+Valida}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Tarjeta\+No\+Valida()}{TarjetaNoValida()}}
+{\footnotesize\ttfamily int Tarjeta\+No\+Valida (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Condición de paso si la tarjeta no es R\+F\+ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & Maquina de estados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Condición cumplida o no 
+\end{DoxyReturn}
+
+
+Definition at line 165 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+166 \{
+167     \mbox{\hyperlink{mutex_8c_ad649ab53814d18a30bb40d7242961e23}{lock}}(0);
+168     uint8\_t tmp = !(\mbox{\hyperlink{tipos_8h_a23e04a79e83a0bb62dc3d6be4e0d1b92}{flag\_rfid}} & \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaae5f9e2292599b01b2028179e3f056e60}{FLAG\_VALID\_CARD}});
+169     \mbox{\hyperlink{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}{unlock}}(0);
+170     \textcolor{keywordflow}{return} tmp;
+171 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm__rfid_8h_a2395018b43d089e28965e7993fc7796f}\label{fsm__rfid_8h_a2395018b43d089e28965e7993fc7796f}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!Tarjeta\+Valida@{Tarjeta\+Valida}}
+\index{Tarjeta\+Valida@{Tarjeta\+Valida}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{Tarjeta\+Valida()}{TarjetaValida()}}
+{\footnotesize\ttfamily int Tarjeta\+Valida (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Condición de paso si la tarjeta es R\+F\+ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fsm} & Maquina de estados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Condición cumplida o no 
+\end{DoxyReturn}
+
+
+Definition at line 152 of file fsm\+\_\+rfid.\+c.
+
+
+\begin{DoxyCode}
+153 \{
+154     \mbox{\hyperlink{mutex_8c_ad649ab53814d18a30bb40d7242961e23}{lock}}(0);
+155     uint8\_t tmp = \mbox{\hyperlink{tipos_8h_a23e04a79e83a0bb62dc3d6be4e0d1b92}{flag\_rfid}} & \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaae5f9e2292599b01b2028179e3f056e60}{FLAG\_VALID\_CARD}};
+156     \mbox{\hyperlink{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}{unlock}}(0);
+157     \textcolor{keywordflow}{return} tmp;
+158 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{fsm__rfid_8h_a4172cd6a98793577c1c4f3389b134791}\label{fsm__rfid_8h_a4172cd6a98793577c1c4f3389b134791}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!fsm\+\_\+rfid@{fsm\+\_\+rfid}}
+\index{fsm\+\_\+rfid@{fsm\+\_\+rfid}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{fsm\+\_\+rfid}{fsm\_rfid}}
+{\footnotesize\ttfamily \mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}}$\ast$ fsm\+\_\+rfid}
+
+
+
+Puntero fsm de la maquina de estados. 
+
+
+
+Definition at line 47 of file fsm\+\_\+rfid.\+h.
+
+\mbox{\Hypertarget{fsm__rfid_8h_a01f75a9ad916f63a94e06a27635ba278}\label{fsm__rfid_8h_a01f75a9ad916f63a94e06a27635ba278}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!thread@{thread}}
+\index{thread@{thread}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{thread}{thread}}
+{\footnotesize\ttfamily pthread\+\_\+t thread}
+
+
+
+Hilo de ejecucion de la maquina de estados. 
+
+
+
+Definition at line 48 of file fsm\+\_\+rfid.\+h.
+
+\mbox{\Hypertarget{fsm__rfid_8h_a414378ace9198797d96ba624749060e0}\label{fsm__rfid_8h_a414378ace9198797d96ba624749060e0}} 
+\index{fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}!U\+U\+ID@{U\+U\+ID}}
+\index{U\+U\+ID@{U\+U\+ID}!fsm\+\_\+rfid.\+h@{fsm\+\_\+rfid.\+h}}
+\subsubsection{\texorpdfstring{U\+U\+ID}{UUID}}
+{\footnotesize\ttfamily uint8\+\_\+t U\+U\+ID\mbox{[}16\mbox{]}}
+
+
+
+Definition at line 22 of file fsm\+\_\+rfid.\+h.
+

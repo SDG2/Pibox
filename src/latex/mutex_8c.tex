@@ -1,0 +1,63 @@
+\hypertarget{mutex_8c}{}\section{mutex.\+c File Reference}
+\label{mutex_8c}\index{mutex.\+c@{mutex.\+c}}
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{mutex_8c_ad649ab53814d18a30bb40d7242961e23}{lock}} (int key)
+\begin{DoxyCompactList}\small\item\em Bloquea el hilo actual. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}{unlock}} (int key)
+\begin{DoxyCompactList}\small\item\em desloquea el hilo actual \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{mutex_8c_ad649ab53814d18a30bb40d7242961e23}\label{mutex_8c_ad649ab53814d18a30bb40d7242961e23}} 
+\index{mutex.\+c@{mutex.\+c}!lock@{lock}}
+\index{lock@{lock}!mutex.\+c@{mutex.\+c}}
+\subsubsection{\texorpdfstring{lock()}{lock()}}
+{\footnotesize\ttfamily void lock (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+Bloquea el hilo actual. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & inidice del hilo a bloquear \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 16 of file mutex.\+c.
+
+
+\begin{DoxyCode}
+17 \{
+18   pthread\_mutex\_lock(&piMutexes[key]) ;
+19 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}\label{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}} 
+\index{mutex.\+c@{mutex.\+c}!unlock@{unlock}}
+\index{unlock@{unlock}!mutex.\+c@{mutex.\+c}}
+\subsubsection{\texorpdfstring{unlock()}{unlock()}}
+{\footnotesize\ttfamily void unlock (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+desloquea el hilo actual 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & inidice del hilo a desbloquear \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 25 of file mutex.\+c.
+
+
+\begin{DoxyCode}
+26 \{
+27   pthread\_mutex\_unlock(&piMutexes[key]) ;
+28 \}
+\end{DoxyCode}

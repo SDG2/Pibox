@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="dbcontroller_8c">
+    <title>dbcontroller.c File Reference</title>
+    <programlisting>#include &quot;dbcontroller.h&quot;</programlisting>
+    <programlisting>#include &lt;sqlite3.h&gt;</programlisting>
+    <programlisting>#include &lt;stdlib.h&gt;</programlisting>
+    <programlisting>#include &lt;stdio.h&gt;</programlisting>
+    <programlisting>#include &lt;string.h&gt;</programlisting>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="dbcontroller_8c_1a836373917e3d6bda1253864bf828aebe">SQL_QUERY_CREATE_DB</link> &quot;CREATE TABLE %s(USERID INT PRIMARY KEY     NOT NULL,SONG           TEXT    NOT NULL);&quot;</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="dbcontroller_8c_1a9977a338cb4096715d937611fb8f686d">SQL_QUERY_INSERT_DB</link> &quot;INSERT INTO %s (USERID,SONG) VALUES (%d,&apos;%s&apos;); &quot;</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="dbcontroller_8c_1a3c0fc6001c2c245be160b4451f821628">SQL_QUERY_CHECK_DB</link> &quot;SELECT name FROM sqlite_master WHERE type=&apos;table&apos; AND name=&apos;%s&apos;;&quot;</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="dbcontroller_8c_1a14c45fad51df03c9f7ed915b076601dc">SQL_QUERY_SELECT_DB</link> &quot;SELECT SONG FROM %s WHERE USERID = %d;&quot;</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="dbcontroller_8c_1a7876ba4ce4e52f3fed2bb99103797743">SQL_QUERY_GET_NUMBER_OF_ELEMENTS</link> &quot;SELECT count(*) FROM %s WHERE USERID = %d;&quot;</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="dbcontroller_8c_1a51ad2def95c93dfce02566ae6d54dc65">SQL_TABLE_NAME</link> &quot;TARJETAS&quot;</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="dbcontroller_8c_1a50d7e91699c53cf3aa53a6161a57d493">SQL_QUERY_MAX_SIZE</link> 500</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="dbcontroller_8c_1a0e043d314f2bec3905c664b70cc4d0a1">db_create_tables</link> (
+sqlite3 * db)<para><emphasis>Comprueba si es una base de datos nueva y en caso de serlo crea las tablas necesarias
+La funcion comprueba si existen la tabla especificada intentando hacer
+la query de creación, si dicha query se ha ejecutado correctamente, quiere decir
+que la base de datos es nueva, por lo que se crean las tablas necesarias para
+adecuarla al modelo de datos. Si la ejecución da error, quiere decir que la base de datos
+ya existía y no tienen que sobreescribirse las tablas.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static int <link linkend="dbcontroller_8c_1a39feb3a4addbfb8ec3306b6e57c5a9c0">callback</link> (
+void * data, int argc, char ** argv, char ** azColName)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static int <link linkend="dbcontroller_8c_1a8c010f84a1bd0376fc81ec8d8b829b0c">db_callback_get_song_name</link> (
+void * data_in, int argc, char ** argv, char ** azColName)<para><emphasis>Función de callback para la query de leer el nombre de la cancion asociada.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static int <link linkend="dbcontroller_8c_1a1b88ad86e4c4740b3229993322afd373">db_callback_get_num_of_elm</link> (
+void * data_in, int argc, char ** argv, char ** azColName)<para><emphasis>Función de callback para la query de contar numero de elementos.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>sqlite3 * <link linkend="dbcontroller_8c_1a6c03e23326b03a2084159378345e6fcf">db_load</link> (
+char * file_dir)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="dbcontroller_8c_1a8b76145fe43a8536318fe3494b1d78ee">db_check</link> (
+sqlite3 * db)<para><emphasis>Ejecuta una query para ver si existe la tabla con el valor especificado.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="dbcontroller_8c_1a8954e818fd457eb22674fcf86b086f6a">db_insert</link> (
+sqlite3 * db, int user_id, char * song_name)<para><emphasis>Ejecuta la query para insertar en la base de datos.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>char * <link linkend="dbcontroller_8c_1afa05bc6d059b49ba25da7afa536e29a9">db_get_song_name</link> (
+sqlite3 * db, int user_id)<para><emphasis>Ejecuta la query de busqueda del nombre de la canción dado un ID
+Hace una query de busqueda del fichero que esta asociado a un ID.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="dbcontroller_8c_1a055d575f82c315a645be43d0daa54dbe">db_free_song_name</link> (
+char * name)<para><emphasis>Libera memoria del reservado para el nombre de la cancion
+Binding de la función free.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="dbcontroller_8c_1ae07af262c608d2e3de291268d923d24a">db_close</link> (
+sqlite3 * db)<para><emphasis>Cierra la base de datos y libera la memoria asignada al puntero.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/dbcontroller.c</para>
+    </simplesect>
+</section>

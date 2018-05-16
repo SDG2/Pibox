@@ -1,0 +1,170 @@
+\hypertarget{player_8h}{}\section{player.\+h File Reference}
+\label{player_8h}\index{player.\+h@{player.\+h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$sys/mman.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$sched.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}mad.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}portaudio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tipos.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fsm.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_b_u_f_f_e_r_s}{B\+U\+F\+F\+E\+RS}}
+\begin{DoxyCompactList}\small\item\em Estructura que almacena los buffers del Ping Pong. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structfsm__audio__controller}{fsm\+\_\+audio\+\_\+controller}}
+\begin{DoxyCompactList}\small\item\em Estructura de la maquina de estados player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{player_8h_a4b76a0c2859cfd819a343a780070ee2b}{S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE}}~44100
+\item 
+\#define \mbox{\hyperlink{player_8h_af4f62216aa14e0407faa6631e9ec4c62}{F\+R\+A\+M\+E\+S\+\_\+\+P\+E\+R\+\_\+\+B\+U\+F\+F\+ER}}~1152
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct_b_u_f_f_e_r_s}{B\+U\+F\+F\+E\+RS}} \mbox{\hyperlink{player_8h_a60a77fbaea5edcaf4415b0adad33f411}{B\+U\+F\+F\+E\+R\+S\+\_\+T}}
+\begin{DoxyCompactList}\small\item\em Estructura que almacena los buffers del Ping Pong. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structfsm__audio__controller}{fsm\+\_\+audio\+\_\+controller}} \mbox{\hyperlink{player_8h_a771475a0169821dc8705d154dcee73f0}{fsm\+\_\+audio\+\_\+controller\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Estructura de la maquina de estados player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954}{fsm\+\_\+states}} \{ \mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954acb28ec9add78d971b8f7fc412b4a7de9}{W\+A\+I\+T\+\_\+\+B\+E\+G\+IN}}, 
+\mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954afaef777c0ac17885046d5f9ddf9c3f82}{W\+A\+I\+T\+\_\+\+B\+F\+F1}}, 
+\mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954af0c637f0ad86422e319ed7b9759e6090}{W\+A\+I\+T\+\_\+\+B\+F\+F2}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{player_8h_afbf824fb6586d8a0b33e4ddfe27331ee}{launch\+Player}} ()
+\begin{DoxyCompactList}\small\item\em inicia el reproductor de audio Crea la maquina de estados y la lanza en un hilo de alta prioridad para garantizar tiempo real \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{player_8h_af4f62216aa14e0407faa6631e9ec4c62}\label{player_8h_af4f62216aa14e0407faa6631e9ec4c62}} 
+\index{player.\+h@{player.\+h}!F\+R\+A\+M\+E\+S\+\_\+\+P\+E\+R\+\_\+\+B\+U\+F\+F\+ER@{F\+R\+A\+M\+E\+S\+\_\+\+P\+E\+R\+\_\+\+B\+U\+F\+F\+ER}}
+\index{F\+R\+A\+M\+E\+S\+\_\+\+P\+E\+R\+\_\+\+B\+U\+F\+F\+ER@{F\+R\+A\+M\+E\+S\+\_\+\+P\+E\+R\+\_\+\+B\+U\+F\+F\+ER}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{F\+R\+A\+M\+E\+S\+\_\+\+P\+E\+R\+\_\+\+B\+U\+F\+F\+ER}{FRAMES\_PER\_BUFFER}}
+{\footnotesize\ttfamily \#define F\+R\+A\+M\+E\+S\+\_\+\+P\+E\+R\+\_\+\+B\+U\+F\+F\+ER~1152}
+
+
+
+Definition at line 26 of file player.\+h.
+
+\mbox{\Hypertarget{player_8h_a4b76a0c2859cfd819a343a780070ee2b}\label{player_8h_a4b76a0c2859cfd819a343a780070ee2b}} 
+\index{player.\+h@{player.\+h}!S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE@{S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE}}
+\index{S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE@{S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE}{SAMPLE\_RATE}}
+{\footnotesize\ttfamily \#define S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE~44100}
+
+
+
+Definition at line 25 of file player.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{player_8h_a60a77fbaea5edcaf4415b0adad33f411}\label{player_8h_a60a77fbaea5edcaf4415b0adad33f411}} 
+\index{player.\+h@{player.\+h}!B\+U\+F\+F\+E\+R\+S\+\_\+T@{B\+U\+F\+F\+E\+R\+S\+\_\+T}}
+\index{B\+U\+F\+F\+E\+R\+S\+\_\+T@{B\+U\+F\+F\+E\+R\+S\+\_\+T}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{B\+U\+F\+F\+E\+R\+S\+\_\+T}{BUFFERS\_T}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{struct_b_u_f_f_e_r_s}{B\+U\+F\+F\+E\+RS}}  \mbox{\hyperlink{player_8h_a60a77fbaea5edcaf4415b0adad33f411}{B\+U\+F\+F\+E\+R\+S\+\_\+T}}}
+
+
+
+Estructura que almacena los buffers del Ping Pong. 
+
+\mbox{\Hypertarget{player_8h_a771475a0169821dc8705d154dcee73f0}\label{player_8h_a771475a0169821dc8705d154dcee73f0}} 
+\index{player.\+h@{player.\+h}!fsm\+\_\+audio\+\_\+controller\+\_\+t@{fsm\+\_\+audio\+\_\+controller\+\_\+t}}
+\index{fsm\+\_\+audio\+\_\+controller\+\_\+t@{fsm\+\_\+audio\+\_\+controller\+\_\+t}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{fsm\+\_\+audio\+\_\+controller\+\_\+t}{fsm\_audio\_controller\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structfsm__audio__controller}{fsm\+\_\+audio\+\_\+controller}}  \mbox{\hyperlink{player_8h_a771475a0169821dc8705d154dcee73f0}{fsm\+\_\+audio\+\_\+controller\+\_\+t}}}
+
+
+
+Estructura de la maquina de estados player. 
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{player_8h_a971cbdcad3749cb5a6229ca48ee60954}\label{player_8h_a971cbdcad3749cb5a6229ca48ee60954}} 
+\index{player.\+h@{player.\+h}!fsm\+\_\+states@{fsm\+\_\+states}}
+\index{fsm\+\_\+states@{fsm\+\_\+states}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{fsm\+\_\+states}{fsm\_states}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954}{fsm\+\_\+states}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+\_\+\+B\+E\+G\+IN@{W\+A\+I\+T\+\_\+\+B\+E\+G\+IN}!player.\+h@{player.\+h}}\index{player.\+h@{player.\+h}!W\+A\+I\+T\+\_\+\+B\+E\+G\+IN@{W\+A\+I\+T\+\_\+\+B\+E\+G\+IN}}}\mbox{\Hypertarget{player_8h_a971cbdcad3749cb5a6229ca48ee60954acb28ec9add78d971b8f7fc412b4a7de9}\label{player_8h_a971cbdcad3749cb5a6229ca48ee60954acb28ec9add78d971b8f7fc412b4a7de9}} 
+W\+A\+I\+T\+\_\+\+B\+E\+G\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+\_\+\+B\+F\+F1@{W\+A\+I\+T\+\_\+\+B\+F\+F1}!player.\+h@{player.\+h}}\index{player.\+h@{player.\+h}!W\+A\+I\+T\+\_\+\+B\+F\+F1@{W\+A\+I\+T\+\_\+\+B\+F\+F1}}}\mbox{\Hypertarget{player_8h_a971cbdcad3749cb5a6229ca48ee60954afaef777c0ac17885046d5f9ddf9c3f82}\label{player_8h_a971cbdcad3749cb5a6229ca48ee60954afaef777c0ac17885046d5f9ddf9c3f82}} 
+W\+A\+I\+T\+\_\+\+B\+F\+F1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{W\+A\+I\+T\+\_\+\+B\+F\+F2@{W\+A\+I\+T\+\_\+\+B\+F\+F2}!player.\+h@{player.\+h}}\index{player.\+h@{player.\+h}!W\+A\+I\+T\+\_\+\+B\+F\+F2@{W\+A\+I\+T\+\_\+\+B\+F\+F2}}}\mbox{\Hypertarget{player_8h_a971cbdcad3749cb5a6229ca48ee60954af0c637f0ad86422e319ed7b9759e6090}\label{player_8h_a971cbdcad3749cb5a6229ca48ee60954af0c637f0ad86422e319ed7b9759e6090}} 
+W\+A\+I\+T\+\_\+\+B\+F\+F2&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 29 of file player.\+h.
+
+
+\begin{DoxyCode}
+30 \{
+31     \mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954acb28ec9add78d971b8f7fc412b4a7de9}{WAIT\_BEGIN}},
+32     \mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954afaef777c0ac17885046d5f9ddf9c3f82}{WAIT\_BFF1}},
+33     \mbox{\hyperlink{player_8h_a971cbdcad3749cb5a6229ca48ee60954af0c637f0ad86422e319ed7b9759e6090}{WAIT\_BFF2}}
+34 \};
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{player_8h_afbf824fb6586d8a0b33e4ddfe27331ee}\label{player_8h_afbf824fb6586d8a0b33e4ddfe27331ee}} 
+\index{player.\+h@{player.\+h}!launch\+Player@{launch\+Player}}
+\index{launch\+Player@{launch\+Player}!player.\+h@{player.\+h}}
+\subsubsection{\texorpdfstring{launch\+Player()}{launchPlayer()}}
+{\footnotesize\ttfamily void launch\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+inicia el reproductor de audio Crea la maquina de estados y la lanza en un hilo de alta prioridad para garantizar tiempo real 
+
+
+
+Definition at line 380 of file player.\+c.
+
+
+\begin{DoxyCode}
+381 \{
+382     \mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}} *sFsm = (\mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}} *)
+      malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structfsm__audio__controller}{fsm\_audio\_controller\_t}}));
+383     sFsm->\mbox{\hyperlink{structfsm__audio__controller_ac266ea0b7c96d1a0656ed46a9d3add6e}{fsm}} = \mbox{\hyperlink{fsm_8c_a5a5f1422455f99b9d1c2d74d04537de7}{fsm\_new}}(\mbox{\hyperlink{player_8c_a50ad1938e7f7998ac655bf59a6c1b30b}{transition\_table\_player}}, NULL);
+384 
+385     pthread\_attr\_t tattr;
+386     pthread\_t \mbox{\hyperlink{fsm__rfid_8h_a01f75a9ad916f63a94e06a27635ba278}{thread}};
+387     \textcolor{keywordtype}{int} newprio = 99;
+388     \textcolor{keyword}{struct }sched\_param param;
+389     \textcolor{comment}{/* initialized with default attributes */}
+390     pthread\_attr\_init(&tattr);
+391 
+392     \textcolor{comment}{/* safe to get existing scheduling param */}
+393     pthread\_attr\_getschedparam(&tattr, &param);
+394 
+395     \textcolor{comment}{/* set the priority; others are unchanged */}
+396     param.sched\_priority = newprio;
+397 
+398     \textcolor{comment}{/* setting the new scheduling param */}
+399     pthread\_attr\_setschedparam(&tattr, &param);
+400     pthread\_create(&\mbox{\hyperlink{fsm__rfid_8h_a01f75a9ad916f63a94e06a27635ba278}{thread}}, &tattr, \mbox{\hyperlink{player_8c_ad7bce7c24e3cde69be4bb4d140df3e2d}{func}}, sFsm);
+401 \}
+\end{DoxyCode}

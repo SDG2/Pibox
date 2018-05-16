@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="dbcontroller_8h">
+    <title>dbcontroller.h File Reference</title>
+    <programlisting>#include &lt;sqlite3.h&gt;</programlisting>
+        <section>
+            <title>Enumerations</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para><literallayout>enum <link linkend="dbcontroller_8h_1a90971f93a64656d6b2a9fc4006d00fbe">SQL_RESOLUTION</link> {
+<link linkend="dbcontroller_8h_1a90971f93a64656d6b2a9fc4006d00fbeaf0913fa0529636ee554e74e2609eaa9f">SQL_OPERATION_OK</link>,
+<link linkend="dbcontroller_8h_1a90971f93a64656d6b2a9fc4006d00fbeae580ff302465f1a990d401d94cfbeff1">SQL_OPERATION_ERR</link>
+}</literallayout>
+<para><emphasis>Enum de resultados posibles de ejecución.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>sqlite3 * <link linkend="dbcontroller_8h_1a6c03e23326b03a2084159378345e6fcf">db_load</link> (
+char * file_dir)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="dbcontroller_8h_1a8b76145fe43a8536318fe3494b1d78ee">db_check</link> (
+sqlite3 * db)<para><emphasis>Ejecuta una query para ver si existe la tabla con el valor especificado.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="dbcontroller_8h_1a8954e818fd457eb22674fcf86b086f6a">db_insert</link> (
+sqlite3 * db, int user_id, char * song_name)<para><emphasis>Ejecuta la query para insertar en la base de datos.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>char * <link linkend="dbcontroller_8h_1afa05bc6d059b49ba25da7afa536e29a9">db_get_song_name</link> (
+sqlite3 * db, int user_id)<para><emphasis>Ejecuta la query de busqueda del nombre de la canción dado un ID
+Hace una query de busqueda del fichero que esta asociado a un ID.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="dbcontroller_8h_1ae07af262c608d2e3de291268d923d24a">db_close</link> (
+sqlite3 * db)<para><emphasis>Cierra la base de datos y libera la memoria asignada al puntero.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/dbcontroller.h</para>
+    </simplesect>
+</section>
