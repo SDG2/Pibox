@@ -1,0 +1,76 @@
+\hypertarget{fsm_8c}{}\section{fsm.\+c File Reference}
+\label{fsm_8c}\index{fsm.\+c@{fsm.\+c}}
+{\ttfamily \#include \char`\"{}fsm.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$ \mbox{\hyperlink{fsm_8c_a5a5f1422455f99b9d1c2d74d04537de7}{fsm\+\_\+new}} (\mbox{\hyperlink{fsm_8h_a6b1de28e7a9f91913bb0499e2584b5ac}{fsm\+\_\+trans\+\_\+t}} $\ast$tt, void $\ast$user\+\_\+data)
+\item 
+int \mbox{\hyperlink{fsm_8c_a05233b4c7457948248efafc57c5b682a}{fsm\+\_\+delete}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$fsm)
+\item 
+void \mbox{\hyperlink{fsm_8c_ab819883cf2f1ddfab600f96057d74169}{fsm\+\_\+fire}} (\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$this)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fsm_8c_a05233b4c7457948248efafc57c5b682a}\label{fsm_8c_a05233b4c7457948248efafc57c5b682a}} 
+\index{fsm.\+c@{fsm.\+c}!fsm\+\_\+delete@{fsm\+\_\+delete}}
+\index{fsm\+\_\+delete@{fsm\+\_\+delete}!fsm.\+c@{fsm.\+c}}
+\subsubsection{\texorpdfstring{fsm\+\_\+delete()}{fsm\_delete()}}
+{\footnotesize\ttfamily int fsm\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{fsm }\end{DoxyParamCaption})}
+
+
+
+Definition at line 18 of file fsm.\+c.
+
+
+\begin{DoxyCode}
+18                           \{
+19     free(fsm);
+20     \textcolor{keywordflow}{return} 1;
+21 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm_8c_ab819883cf2f1ddfab600f96057d74169}\label{fsm_8c_ab819883cf2f1ddfab600f96057d74169}} 
+\index{fsm.\+c@{fsm.\+c}!fsm\+\_\+fire@{fsm\+\_\+fire}}
+\index{fsm\+\_\+fire@{fsm\+\_\+fire}!fsm.\+c@{fsm.\+c}}
+\subsubsection{\texorpdfstring{fsm\+\_\+fire()}{fsm\_fire()}}
+{\footnotesize\ttfamily void fsm\+\_\+fire (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}} $\ast$}]{this }\end{DoxyParamCaption})}
+
+
+
+Definition at line 23 of file fsm.\+c.
+
+
+\begin{DoxyCode}
+23                            \{
+24     \mbox{\hyperlink{structfsm__trans__}{fsm\_trans\_t}}* t;
+25     \textcolor{keywordflow}{for} (t = this->tt; t->\mbox{\hyperlink{structfsm__trans___acfe7a3cb63b43b68f70e8b2f0bd88757}{orig\_state}} >= 0; ++t) \{
+26         \textcolor{keywordflow}{if} ((this->current\_state == t->\mbox{\hyperlink{structfsm__trans___acfe7a3cb63b43b68f70e8b2f0bd88757}{orig\_state}}) && t->\mbox{\hyperlink{structfsm__trans___af82b44bc4d66c5b28d20c2a10ae428c6}{in}}(\textcolor{keyword}{this})) \{
+27             this->current\_state = t->\mbox{\hyperlink{structfsm__trans___a053918e1685191f0c043e582d59de7bb}{dest\_state}};
+28             \textcolor{keywordflow}{if} (t->\mbox{\hyperlink{structfsm__trans___ac53985355b5ddaaba48ab1396e2c7240}{out}})
+29                 t->\mbox{\hyperlink{structfsm__trans___ac53985355b5ddaaba48ab1396e2c7240}{out}}(\textcolor{keyword}{this});
+30             \textcolor{keywordflow}{break};
+31         \}
+32     \}
+33 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{fsm_8c_a5a5f1422455f99b9d1c2d74d04537de7}\label{fsm_8c_a5a5f1422455f99b9d1c2d74d04537de7}} 
+\index{fsm.\+c@{fsm.\+c}!fsm\+\_\+new@{fsm\+\_\+new}}
+\index{fsm\+\_\+new@{fsm\+\_\+new}!fsm.\+c@{fsm.\+c}}
+\subsubsection{\texorpdfstring{fsm\+\_\+new()}{fsm\_new()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{fsm_8h_ac7a7d1813cdcb9d4c76f575416188504}{fsm\+\_\+t}}$\ast$ fsm\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fsm_8h_a6b1de28e7a9f91913bb0499e2584b5ac}{fsm\+\_\+trans\+\_\+t}} $\ast$}]{tt,  }\item[{void $\ast$}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 10 of file fsm.\+c.
+
+
+\begin{DoxyCode}
+10                                                  \{
+11     \mbox{\hyperlink{structfsm__}{fsm\_t}}* new\_fsm = (\mbox{\hyperlink{structfsm__}{fsm\_t}}*)malloc(\textcolor{keyword}{sizeof} (\mbox{\hyperlink{structfsm__}{fsm\_t}}));
+12     new\_fsm->\mbox{\hyperlink{structfsm___aa3e8c46cf7d518a83b9655e9ec64b252}{tt}} = tt;
+13     new\_fsm->\mbox{\hyperlink{structfsm___a412684a98bd841cd75d9a7d6cfc6cd91}{current\_state}} = 0;
+14     new\_fsm->\mbox{\hyperlink{structfsm___a0f53d287ac7c064d1a49d4bd93ca1cb9}{user\_data}} = user\_data;
+15     \textcolor{keywordflow}{return} new\_fsm;
+16 \}
+\end{DoxyCode}

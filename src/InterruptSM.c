@@ -9,15 +9,14 @@
 #include "bcm2835.h"
 #include "poll.h"
 
-#define THRESHOLD_HIGH 12
-#define THRESHOLD_LOW 7
+#define THRESHOLD_HIGH 12 ///< Umbral para que el muestreo concluya nivel alto
+#define THRESHOLD_LOW 7 ///< Umbral para que el muestreo concluya nivel bajo
 
 /**
  * @brief Bucle de interrupción
  * 
  * @param userData 
  */
-
 void loop(void *userData)
 {
 	ISR_Typ_ *ptr = (ISR_Typ_ *)userData;
@@ -98,6 +97,11 @@ void attachIsr(uint8_t PIN, uint8_t ISREvent, void *handdle, void *userData)
 	pthread_create(&thread, &tattr, loop, interrupt);
 	threads[PIN] = thread;
 }
+/**
+ * @brief Elimina la interrupcion del pin especificado
+ * 
+ * @param PIN 
+ */
 void deleteIsr(uint8_t PIN)
 {
 	pthread_cancel(threads[PIN]);

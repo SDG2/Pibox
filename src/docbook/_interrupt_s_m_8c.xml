@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interrupt_s_m_8c">
+    <title>InterruptSM.c File Reference</title>
+    <programlisting>#include &quot;InterruptSM.h&quot;</programlisting>
+    <programlisting>#include &lt;stdio.h&gt;</programlisting>
+    <programlisting>#include &quot;bcm2835.h&quot;</programlisting>
+    <programlisting>#include &quot;poll.h&quot;</programlisting>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="_interrupt_s_m_8c_1a92a0d895570fc415e1a9551db0b0dd4a">THRESHOLD_HIGH</link> 12<para><emphasis>Umbral para que el muestreo concluya nivel alto.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="_interrupt_s_m_8c_1a3dd15bcf37be86eeaafb74ee83479c26">THRESHOLD_LOW</link> 7<para><emphasis>Umbral para que el muestreo concluya nivel bajo.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_interrupt_s_m_8c_1a9f45f8a7a8db8a89b25b83e463c73873">loop</link> (
+void * userData)<para><emphasis>Bucle de interrupción.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_interrupt_s_m_8c_1af169ed2cb7b858f9c2e7eeeee874f033">attachIsr</link> (
+uint8_t PIN, uint8_t ISREvent, void * handdle, void * userData)<para><emphasis>Crea la interrupcion 
+Crea un hilo donde se lanza una funcion que analizara el estado del pin para detectar cambios en el.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_interrupt_s_m_8c_1a411bdf6367b78a102b483d9ba31b9781">deleteIsr</link> (
+uint8_t PIN)<para><emphasis>Elimina la interrupcion del pin especificado.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/InterruptSM.c</para>
+    </simplesect>
+</section>

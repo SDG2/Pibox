@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="structlist__files">
+<title>list_files struct Reference</title>
+<para>
+    <programlisting>#include <link linkend="fsm__rfid_8h">&lt;fsm_rfid.h&gt;</link></programlisting>
+</para>
+        <section>
+            <title>Data Fields</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int num_files<para><emphasis>Numero de ficheros totales.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int current_file<para><emphasis>Puntero fichero muestra.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int select_file<para><emphasis>Puntero fichero Seleccionado.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>char ** name_file<para><emphasis>Lista de Strings.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Field Documentation</title>
+        </section>
+</section>

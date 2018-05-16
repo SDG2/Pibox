@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="tone_8c">
+    <title>tone.c File Reference</title>
+    <programlisting>#include &quot;tone.h&quot;</programlisting>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static pthread_t <link linkend="tone_8c_1a1516060cf47b4a91d0e400ea88990e93">pwm_thread</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static uint32_t <link linkend="tone_8c_1a33971e865f7e68bb1ba86243b05d48cc">pin_freq</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>volatile uint8_t <link linkend="tone_8c_1ad286c629602a3a532655a05c7e8d5ddb">PIN</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="tone_8c_1ad277193b2dca0bab1e0ad24d45407dc3">toggle</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="tone_8c_1aca198b2c1430e614c6a0d3951f730e3f">tone_init</link> (
+uint8_t P)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="tone_8c_1a8efc43db3ec4d277736faf2a4054f2ff">tone_write</link> (
+uint32_t freq)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="tone_8c_1abf8928aef50a202609b9864515356fb8">tone_stop</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/tone.c</para>
+    </simplesect>
+</section>

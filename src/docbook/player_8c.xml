@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="player_8c">
+    <title>player.c File Reference</title>
+    <programlisting>#include &quot;player.h&quot;</programlisting>
+    <programlisting>#include &quot;mutex.h&quot;</programlisting>
+    <programlisting>#include &lt;string.h&gt;</programlisting>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct mad_stream <link linkend="player_8c_1a026e5e50625546e80eaa4c9af14fca88">mad_stream</link><para><emphasis>Estructura de stream de audio.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct mad_frame <link linkend="player_8c_1a521fb372f3556f5fb8bf4e6846dcd372">mad_frame</link><para><emphasis>Estructura de informacion del frame decodificado.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct mad_synth <link linkend="player_8c_1ab3c5fa6c50f63c63fc65bbad2214b6db">mad_synth</link><para><emphasis>Estructura de sintesis de frame.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>PaStreamParameters <link linkend="player_8c_1aca1655299687074746b35ca16a14c261">outputParameters</link><para><emphasis>Estructura de parametros del driver de audio.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>PaStream * <link linkend="player_8c_1aa2fbdaf8db29dee4b723a45b890cd92a">stream</link><para><emphasis>Estructura de Stream de reproduccion.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>PaError <link linkend="player_8c_1abdb12f1e5e522d413d39613e89635c7c">err</link><para><emphasis>Variable de error.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>FILE * <link linkend="player_8c_1aa065f30aa9f5f9a42132c82c787ee70b">fp</link><para><emphasis>Puntero a fichero. Contendrá el fichero .mp3.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="fsm_8h_1a6b1de28e7a9f91913bb0499e2584b5ac">fsm_trans_t</link> <link linkend="player_8c_1a50ad1938e7f7998ac655bf59a6c1b30b">transition_table_player</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static signed int <link linkend="player_8c_1a4b4c68b8f02c7203cf55e09059fb8b24">scale</link> (
+mad_fixed_t sample)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static int <link linkend="player_8c_1a7790b1c11b105729ae61e83fd133e46b">CompruebaPlayerStart</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * userData)<para><emphasis>Comprueba el flag de inicio
+Compureba el flag de inicio de sistema FLAG_START.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static int <link linkend="player_8c_1aa83fef24346923681533c39f040ad2a0">Comprueba_fin_bff2</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * userData)<para><emphasis>Comprueba el final del buffer n2
+Comprueba el flag del final de buffer (FLAG_BFF2_END) y el flag de final del sistema (FLAG_END)</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static int <link linkend="player_8c_1ae12dbf7165436e5f1b5de417d182b6f3">Comprueba_fin_bff1</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * userData)<para><emphasis>Comprueba el final del buffer n1
+Comprueba el flag del final de buffer (FLAG_BFF1_END) y el flag de final del sistema (FLAG_END)</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static int <link linkend="player_8c_1a49a09532286527f21ad000632c7b8aeb">CompruebaFinal</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * userData)<para><emphasis>Comprueba el final del sistema
+Comprueba el flag de final del sistema (FLAG_END)</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static int <link linkend="player_8c_1a24a9ff6bad6a3850fac39fbe3ed92e2e">patestCallback</link> (
+const void * inputBuffer, void * outputBuffer, unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo * timeInfo, PaStreamCallbackFlags statusFlags, void * userData)<para><emphasis>Callback llamada cada vez que el stream de reproducción se queda sin muestras 
+    Carga los datos del buffer al buffer de salida del stream. Tambien de encarga de hacer un switch entre
+los buffers (selecciona cual se carga el siguiente)</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="player_8c_1a6543a6b8f195f8e69d69b1469b5df684">output</link> (
+struct mad_pcm * pcm, <link linkend="player_8h_1a60a77fbaea5edcaf4415b0adad33f411">BUFFERS_T</link> * buffer, uint8_t cbuff)<para><emphasis>Carga los frame en el buffer
+Funcion auxiliar que carga los datos del frame en buffer que corresponda en el momento.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="player_8c_1a1c8c89eacab2ed372e4d30dc9e0273a1">Iniciliza_player</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * userData)<para><emphasis>Inicia el las estrucuturas necesarias
+Inicia los estructuras de decodificacion y reproduccion necesarias. Tambien carga el primer frame decodificado+
+en el buffer 1.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="player_8c_1aa629f23f878d63dcd5dd0108005b0a65">carga_bff1</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * userData)<para><emphasis>Carga el buffer 1
+Decodifica y sintetisa un frame y lo almacena en el buffer 1.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="player_8c_1ad593e0d8b51cc348a46a6758a5d5ae8f">carga_bff2</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * userData)<para><emphasis>Carga el buffer 2
+Decodifica y sintetisa un frame y lo almacena en el buffer 2.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="player_8h_1a60a77fbaea5edcaf4415b0adad33f411">BUFFERS_T</link> * <link linkend="player_8c_1a2785a1798732ee5c03e3842d4fa34c17">new_buffer</link> (
+void )<para><emphasis>Crea una estructura de buffers.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="player_8c_1a6ee3bed43be4ae93f907bb988f083bad">Final_Melodia</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * userData)<para><emphasis>Finaliza la melodia
+Limpia la estructuras utilizadas y cierra los ficheros.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="player_8c_1ad7bce7c24e3cde69be4bb4d140df3e2d">func</link> (
+void * data)<para><emphasis>funcion de loop del fsm</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="player_8c_1afbf824fb6586d8a0b33e4ddfe27331ee">launchPlayer</link> (
+)<para><emphasis>inicia el reproductor de audio
+Crea la maquina de estados y la lanza en un hilo de alta prioridad para garantizar tiempo real</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/player.c</para>
+    </simplesect>
+</section>

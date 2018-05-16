@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="fsm_8c">
+    <title>fsm.c File Reference</title>
+    <programlisting>#include &quot;fsm.h&quot;</programlisting>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * <link linkend="fsm_8c_1a5a5f1422455f99b9d1c2d74d04537de7">fsm_new</link> (
+<link linkend="fsm_8h_1a6b1de28e7a9f91913bb0499e2584b5ac">fsm_trans_t</link> * tt, void * user_data)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="fsm_8c_1a05233b4c7457948248efafc57c5b682a">fsm_delete</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="fsm_8c_1ab819883cf2f1ddfab600f96057d74169">fsm_fire</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * this)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/fsm.c</para>
+    </simplesect>
+</section>

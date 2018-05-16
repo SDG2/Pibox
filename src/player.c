@@ -28,14 +28,14 @@ void Final_Melodia(fsm_t *userData);
 void func(void *data);
 
 //local variables
-struct mad_stream mad_stream; //Estructura de stream de audio
-struct mad_frame mad_frame;   //Estructura de informacion del frame decodificado
-struct mad_synth mad_synth;   //Estructura de sintesis de frame
+struct mad_stream mad_stream; ///<Estructura de stream de audio
+struct mad_frame mad_frame;   ///<Estructura de informacion del frame decodificado
+struct mad_synth mad_synth;   ///<Estructura de sintesis de frame
 
-PaStreamParameters outputParameters; //Estructura de parametros del driver de audio
-PaStream *stream;					 //Estructura de Stream de reproduccion
-PaError err;						 //Variable de error
-FILE *fp;							 //Puntero a fichero. Contendrá el fichero .mp3
+PaStreamParameters outputParameters; ///<Estructura de parametros del driver de audio
+PaStream *stream;					 ///<Estructura de Stream de reproduccion
+PaError err;						 ///<Variable de error
+FILE *fp;							 ///<Puntero a fichero. Contendrá el fichero .mp3
 
 //Tabla de tansiciones
 fsm_trans_t transition_table_player[] = {
@@ -399,6 +399,12 @@ void launchPlayer()
 	pthread_attr_setschedparam(&tattr, &param);
 	pthread_create(&thread, &tattr, func, sFsm);
 }
+
+/**
+ * @brief funcion de loop del fsm
+ * 
+ * @param data 
+ */
 void func(void *data)
 {
 	fsm_audio_controller_t *sFsm = (fsm_audio_controller_t *)data;

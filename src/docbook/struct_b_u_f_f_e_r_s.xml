@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="struct_b_u_f_f_e_r_s">
+<title>BUFFERS struct Reference</title>
+<para>
+    <programlisting>#include <link linkend="player_8h">&lt;player.h&gt;</link></programlisting>
+</para>
+        <section>
+            <title>Data Fields</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int * buff1_r<para><emphasis>Buffer1 del canal derecho.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int * buff2_r<para><emphasis>Buffer2 del canal derecho.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int * buff1_l<para><emphasis>Buffer1 del canal izquierdo.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int * buff2_l<para><emphasis>Buffer1 del canal izquierdo.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>uint8_t currentBuffer<para><emphasis>Buffer actual.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int lengthBuffer<para><emphasis>Longitud de los buffers.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int sampleReaded<para><emphasis>Puntero de muestra.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>volatile uint8_t flags<para><emphasis>Flags asociados al Buffer.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+
+<para>Estructura que almacena los buffers del Ping Pong. </para>
+    </simplesect>
+        <section>
+            <title>Field Documentation</title>
+        </section>
+</section>

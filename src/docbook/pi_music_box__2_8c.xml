@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="pi_music_box__2_8c">
+    <title>piMusicBox_2.c File Reference</title>
+    <programlisting>#include &quot;fsm.h&quot;</programlisting>
+    <programlisting>#include &quot;player.h&quot;</programlisting>
+    <programlisting>#include &lt;stdio.h&gt;</programlisting>
+    <programlisting>#include &lt;pthread.h&gt;</programlisting>
+    <programlisting>#include &lt;sched.h&gt;</programlisting>
+    <programlisting>#include &quot;RC522.h&quot;</programlisting>
+    <programlisting>#include &quot;fsm_rfid.h&quot;</programlisting>
+    <programlisting>#include &quot;piMusicBox_2.h&quot;</programlisting>
+    <programlisting>#include &quot;InterruptSM.h&quot;</programlisting>
+    <programlisting>#include &quot;mutex.h&quot;</programlisting>
+    <programlisting>#include &quot;menu_lcd.h&quot;</programlisting>
+    <programlisting>#include &quot;dbcontroller.h&quot;</programlisting>
+    <programlisting>#include &lt;time.h&gt;</programlisting>
+        <section>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="pi_music_box__2_8c_1ab66ed8e0098c0a86b458672a55a9cca9">k</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="pi_music_box__2_8c_1a5559b6f8334054ad27750eb1b4dee6ce">callback</link> (
+int event)<para><emphasis>Callback llamado cuando se produce una interrupción.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="pi_music_box__2_8c_1a840291bc02cba5474a4cb46a9b9566fe">main</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/piMusicBox_2.c</para>
+    </simplesect>
+</section>

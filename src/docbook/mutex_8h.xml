@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="mutex_8h">
+    <title>mutex.h File Reference</title>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="mutex_8h_1ad649ab53814d18a30bb40d7242961e23">lock</link> (
+int key)<para><emphasis>Bloquea el hilo actual.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="mutex_8h_1aa5fdb07cba530aae1495d95be367d04a">unlock</link> (
+int key)<para><emphasis>desloquea el hilo actual</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/mutex.h</para>
+    </simplesect>
+</section>

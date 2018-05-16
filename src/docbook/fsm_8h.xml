@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="fsm_8h">
+    <title>fsm.h File Reference</title>
+    <programlisting>#include &lt;stdlib.h&gt;</programlisting>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structfsm__trans__">fsm_trans_</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structfsm__">fsm_</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Typedefs</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="structfsm__">fsm_</link>  <link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef int(*  <link linkend="fsm_8h_1a5cf8c1afee6b2907959c75bb0ad53f38">fsm_input_func_t</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef void(*  <link linkend="fsm_8h_1ab9f0952fdbd6e84f1faa86547e1b42f5">fsm_output_func_t</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="structfsm__trans__">fsm_trans_</link>  <link linkend="fsm_8h_1a6b1de28e7a9f91913bb0499e2584b5ac">fsm_trans_t</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * <link linkend="fsm_8h_1a5a5f1422455f99b9d1c2d74d04537de7">fsm_new</link> (
+<link linkend="fsm_8h_1a6b1de28e7a9f91913bb0499e2584b5ac">fsm_trans_t</link> * tt, void * user_data)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="fsm_8h_1a6e37c5f019f2af5e5ab71bb13807fc3d">fsm_fire</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="fsm_8h_1a05233b4c7457948248efafc57c5b682a">fsm_delete</link> (
+<link linkend="fsm_8h_1ac7a7d1813cdcb9d4c76f575416188504">fsm_t</link> * fsm)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/fsm.h</para>
+    </simplesect>
+</section>

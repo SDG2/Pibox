@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="defines_8h">
+    <title>defines.h File Reference</title>
+        <section>
+            <title>Macros</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="defines_8h_1af688b049958d0a4914da420349dead85">bcm_spi</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="defines_8h_1af7aa2a3ddbd23927e32728245478016a">CANCION_ACABADA</link> 1</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="defines_8h_1a6c99a967848a25cf2ad9bccc8d670415">CANCION_NOACABADA</link> 0;</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="defines_8h_1a1fea704f265486803fc80944f9b5ba37">use_bcm</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="defines_8h_1a1745a3c7a4a8b22b101c2de42a7745bb">PIN_PWM</link> 18</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/jcala/Desktop/Memoria SDG2/Copia Codigo/Pibox/src/defines.h</para>
+    </simplesect>
+</section>

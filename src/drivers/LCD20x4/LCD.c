@@ -1,5 +1,11 @@
 #include "LCD.h"
 char datab;
+
+/**
+ * @brief Logging del bus i2c de la raspberry (USADO EN DEBUG)
+ * 
+ * @param st Estado devuelto por el bus
+ */
 void state(int st){
     switch(st){
 
@@ -19,42 +25,72 @@ void state(int st){
     }
 }
 
-// float to string
+/**
+ * @brief Manda un float a la pantalla
+ * 
+ * @param myFloat float a mandar 
+ */
 void typeFloat(float myFloat) {
 	char buffer[20];
 	sprintf(buffer, "%4.2f", myFloat);
 	typeln(buffer);
 }
 
-// int to string
+/**
+ * @brief Manda un entero a la pantalla
+ * 
+ * @param i entero a mandar
+ */
 void typeInt(int i) {
 	char array1[20];
 	sprintf(array1, "%d", i);
 	typeln(array1);
 }
 
-// clr lcd go home loc 0x80
+/**
+ * @brief Limpia el contenido del lcd
+ * 
+ */
 void ClrLcd(void) {
 	lcd_byte(0x01, LCD_CMD);
 	lcd_byte(0x02, LCD_CMD);
 }
 
-// go to location on LCD
+/**
+ * @brief Mueve el punetero de escritura de la pantalla a la linea especificada
+ * 
+ * @param line linea a la que se desea mover el puntero de escritura
+ */
 void lcdLoc(int line) {
 	lcd_byte(line, LCD_CMD);
 }
 
-// out char to LCD at current position
+/**
+ * @brief Envio de un char a la patalla
+ * 
+ * @param val 
+ */
 void typeChar(char val) {
 	lcd_byte(val, LCD_CHR);
 }
 
 
-// this allows use of any size string
+/**
+ * @brief Envio de datos a la pantalla a modo de linea
+ * Funcion generica que sive para el envio de cada uno de los caracteres que se quieren escribir en la pantalla
+ * @param s 
+ */
 void typeln(const char *s) {
 	while (*s) lcd_byte(*(s++), LCD_CHR);
 }
 
+
+/**
+ * @brief Funcion de envio de datos al expansor i2c
+ * 
+ * @param bits datos que se mandan
+ * @param mode modo de operacion
+ */
 void lcd_byte(int bits, int mode) {
 
 	//Send byte to data pins
@@ -75,7 +111,11 @@ void lcd_byte(int bits, int mode) {
 	st = bcm2835_i2c_read_register_rs(&bits_low,&datab ,1);
 	lcd_toggle_enable(bits_low);
 }
-
+/**
+ * @brief Funcion auxiliar para el envio de datos
+ * Esta funcion es la intermediaria con los regustros del expansor i2c de la pantalla 
+ * @param bits 
+ */
 void lcd_toggle_enable(int bits) {
 	int st;
 	bcm2835_delayMicroseconds(500);
@@ -87,7 +127,10 @@ void lcd_toggle_enable(int bits) {
 	bcm2835_delayMicroseconds(500);
 }
 
-
+/**
+ * @brief Inicializa el i2c y el lcd
+ * 
+ */
 void lcd_init() {
 
     if (!bcm2835_i2c_begin())

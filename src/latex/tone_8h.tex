@@ -1,0 +1,105 @@
+\hypertarget{tone_8h}{}\section{tone.\+h File Reference}
+\label{tone_8h}\index{tone.\+h@{tone.\+h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$sched.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}bcm2835.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tone_8h_aca198b2c1430e614c6a0d3951f730e3f}{tone\+\_\+init}} (uint8\+\_\+t P)
+\item 
+void \mbox{\hyperlink{tone_8h_a8efc43db3ec4d277736faf2a4054f2ff}{tone\+\_\+write}} (uint32\+\_\+t freq)
+\item 
+void \mbox{\hyperlink{tone_8h_abf8928aef50a202609b9864515356fb8}{tone\+\_\+stop}} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{tone_8h_aca198b2c1430e614c6a0d3951f730e3f}\label{tone_8h_aca198b2c1430e614c6a0d3951f730e3f}} 
+\index{tone.\+h@{tone.\+h}!tone\+\_\+init@{tone\+\_\+init}}
+\index{tone\+\_\+init@{tone\+\_\+init}!tone.\+h@{tone.\+h}}
+\subsubsection{\texorpdfstring{tone\+\_\+init()}{tone\_init()}}
+{\footnotesize\ttfamily void tone\+\_\+init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{P }\end{DoxyParamCaption})}
+
+
+
+Definition at line 30 of file tone.\+c.
+
+
+\begin{DoxyCode}
+31 \{
+32     \textcolor{keywordflow}{if} (P > 63)
+33     \{
+34         printf(\textcolor{stringliteral}{"ERROR!. Pin %d out of bounds!"}, \mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{PIN}});
+35         \textcolor{keywordflow}{return};
+36     \}
+37     \mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{PIN}} = P;
+38     \textcolor{keywordflow}{if} (pwm\_thread != 0)
+39     \{
+40         printf(\textcolor{stringliteral}{"Can not create Tone.!, had it been created yet?"});
+41         \textcolor{keywordflow}{return};
+42     \}
+43     pthread\_attr\_t tattr;
+44     \textcolor{keywordtype}{int} ret;
+45     \textcolor{keywordtype}{int} newprio = 50;
+46     \textcolor{keyword}{struct }sched\_param param;
+47     \textcolor{comment}{/* initialized with default attributes */}
+48     ret = pthread\_attr\_init(&tattr);
+49 
+50     \textcolor{comment}{/* safe to get existing scheduling param */}
+51     ret = pthread\_attr\_getschedparam(&tattr, &param);
+52 
+53     \textcolor{comment}{/* set the priority; others are unchanged */}
+54     param.sched\_priority = newprio;
+55 
+56     \textcolor{comment}{/* setting the new scheduling param */}
+57     ret = pthread\_attr\_setschedparam(&tattr, &param);
+58 
+59     bcm2835\_gpio\_fsel(\mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{PIN}}, BCM2835\_GPIO\_FSEL\_OUTP);
+60     printf(\textcolor{stringliteral}{"\(\backslash\)n PIN: %d \(\backslash\)n"}, \mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{PIN}});
+61     pthread\_create(&pwm\_thread, &tattr, \mbox{\hyperlink{tone_8c_ad277193b2dca0bab1e0ad24d45407dc3}{toggle}}, NULL);
+62 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{tone_8h_abf8928aef50a202609b9864515356fb8}\label{tone_8h_abf8928aef50a202609b9864515356fb8}} 
+\index{tone.\+h@{tone.\+h}!tone\+\_\+stop@{tone\+\_\+stop}}
+\index{tone\+\_\+stop@{tone\+\_\+stop}!tone.\+h@{tone.\+h}}
+\subsubsection{\texorpdfstring{tone\+\_\+stop()}{tone\_stop()}}
+{\footnotesize\ttfamily void tone\+\_\+stop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 78 of file tone.\+c.
+
+
+\begin{DoxyCode}
+79 \{
+80     \textcolor{keywordflow}{if} (pwm\_thread != 0)
+81     \{
+82         pthread\_cancel(pwm\_thread);
+83         pthread\_join(pwm\_thread, NULL);
+84         bcm2835\_gpio\_write(\mbox{\hyperlink{tone_8c_ad286c629602a3a532655a05c7e8d5ddb}{PIN}}, LOW);
+85     \}
+86 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{tone_8h_a8efc43db3ec4d277736faf2a4054f2ff}\label{tone_8h_a8efc43db3ec4d277736faf2a4054f2ff}} 
+\index{tone.\+h@{tone.\+h}!tone\+\_\+write@{tone\+\_\+write}}
+\index{tone\+\_\+write@{tone\+\_\+write}!tone.\+h@{tone.\+h}}
+\subsubsection{\texorpdfstring{tone\+\_\+write()}{tone\_write()}}
+{\footnotesize\ttfamily void tone\+\_\+write (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{freq }\end{DoxyParamCaption})}
+
+
+
+Definition at line 68 of file tone.\+c.
+
+
+\begin{DoxyCode}
+69 \{
+70     \textcolor{keywordflow}{if} (freq < 0)
+71         freq = 0;
+72     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (freq > 5000) \textcolor{comment}{// Max 5KHz}
+73         freq = 5000;
+74 
+75     pin\_freq = freq;
+76 \}
+\end{DoxyCode}

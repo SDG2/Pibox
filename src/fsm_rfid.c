@@ -344,7 +344,7 @@ void ConfiguraTarjeta(fsm_t *fsm)
 {
 
 	printf("DATA -> PLAY \n");
-	printf("Configuraci�n de Tarjeta \n");
+	printf("Configuracion de Tarjeta \n");
 	//Inicializa las interrupciones del Encoder
 	attachIsr(PIN_A, CHANGE, NULL, ISR);
 	attachIsr(PIN_B, CHANGE, NULL, ISR);

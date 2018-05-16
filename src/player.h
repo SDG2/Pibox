@@ -35,26 +35,34 @@ enum fsm_states
 
 //types
 //strucutra de buffers
+/**
+ * @brief Estructura que almacena los buffers del Ping Pong
+ * 
+ */
 typedef struct BUFFERS
 {
-	int *buff1_r;
-	int *buff2_r;
+	int *buff1_r; ///< Buffer1 del canal derecho
+	int *buff2_r; ///< Buffer2 del canal derecho
 
-	int *buff1_l;
-	int *buff2_l;
+	int *buff1_l; ///< Buffer1 del canal izquierdo
+	int *buff2_l; ///< Buffer1 del canal izquierdo
 
-	uint8_t currentBuffer;
-	int lengthBuffer;
-	int sampleReaded;
+	uint8_t currentBuffer; ///< Buffer actual
+	int lengthBuffer; ///<Longitud de los buffers
+	int sampleReaded; ///< Puntero de muestra
 
-	volatile uint8_t flags;
+	volatile uint8_t flags; ///< Flags asociados al Buffer
 } BUFFERS_T;
 //Tipo fsm
+/**
+ * @brief Estructura de la maquina de estados player
+ * 
+ */
 typedef struct fsm_audio_controller
 {
-	fsm_t *fsm;
-	TipoSistema *tipo_sistema;
-	BUFFERS_T *buffer;
+	fsm_t *fsm; ///< Puntero comun de maquina de estados 
+	TipoSistema *tipo_sistema; ///< Puntero a tipo sistema -> en desuso
+	BUFFERS_T *buffer; ///< Puntero a los buffers
 } fsm_audio_controller_t;
 
 //prototypes

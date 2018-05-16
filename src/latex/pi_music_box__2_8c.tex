@@ -1,0 +1,113 @@
+\hypertarget{pi_music_box__2_8c}{}\section{pi\+Music\+Box\+\_\+2.\+c File Reference}
+\label{pi_music_box__2_8c}\index{pi\+Music\+Box\+\_\+2.\+c@{pi\+Music\+Box\+\_\+2.\+c}}
+{\ttfamily \#include \char`\"{}fsm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}player.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$sched.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}R\+C522.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fsm\+\_\+rfid.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pi\+Music\+Box\+\_\+2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Interrupt\+S\+M.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mutex.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}menu\+\_\+lcd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}dbcontroller.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{pi_music_box__2_8c_a5559b6f8334054ad27750eb1b4dee6ce}{callback}} (int \mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9e}{event}})
+\begin{DoxyCompactList}\small\item\em Callback llamado cuando se produce una interrupción. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{pi_music_box__2_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{pi_music_box__2_8c_ab66ed8e0098c0a86b458672a55a9cca9}{k}} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{pi_music_box__2_8c_a5559b6f8334054ad27750eb1b4dee6ce}\label{pi_music_box__2_8c_a5559b6f8334054ad27750eb1b4dee6ce}} 
+\index{pi\+Music\+Box\+\_\+2.\+c@{pi\+Music\+Box\+\_\+2.\+c}!callback@{callback}}
+\index{callback@{callback}!pi\+Music\+Box\+\_\+2.\+c@{pi\+Music\+Box\+\_\+2.\+c}}
+\subsubsection{\texorpdfstring{callback()}{callback()}}
+{\footnotesize\ttfamily void callback (\begin{DoxyParamCaption}\item[{int}]{event }\end{DoxyParamCaption})}
+
+
+
+Callback llamado cuando se produce una interrupción. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & tipo de evento que lo ha causado \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 36 of file pi\+Music\+Box\+\_\+2.\+c.
+
+
+\begin{DoxyCode}
+37 \{
+38     \textcolor{keywordflow}{if} (\mbox{\hyperlink{pi_music_box__2_8c_ab66ed8e0098c0a86b458672a55a9cca9}{k}} == 0)
+39     \{
+40         \mbox{\hyperlink{pi_music_box__2_8c_ab66ed8e0098c0a86b458672a55a9cca9}{k}}++;
+41         \textcolor{keywordflow}{return};
+42     \}
+43     \textcolor{keywordflow}{if} (\mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9e}{event}} == \mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eaad4144f5191f08b249b3f4dcce4cf9e3}{FALLIN\_EDGE}})
+44     \{
+45         printf(\textcolor{stringliteral}{"FALLING event"});
+46         fflush(stdout);
+47         \mbox{\hyperlink{mutex_8c_ad649ab53814d18a30bb40d7242961e23}{lock}}(1);
+48         \mbox{\hyperlink{tipos_8h_a23e04a79e83a0bb62dc3d6be4e0d1b92}{flag\_rfid}} |= \mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaaff96c427210e75a502d2083d839844bb}{FLAG\_CARD\_IN}};
+49         \mbox{\hyperlink{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}{unlock}}(1);
+50     \}
+51     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9e}{event}} == \mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9ea86445853271053ed37f404b9ca4fa434}{RISING\_EDGE}})
+52     \{
+53         printf(\textcolor{stringliteral}{"RISING event"});
+54         fflush(stdout);
+55         \mbox{\hyperlink{mutex_8c_ad649ab53814d18a30bb40d7242961e23}{lock}}(1);
+56         \mbox{\hyperlink{tipos_8h_a23e04a79e83a0bb62dc3d6be4e0d1b92}{flag\_rfid}} &= ~\mbox{\hyperlink{fsm__rfid_8h_abdc0ff505cbd4c3a6fc0eee64ca2ddcaaff96c427210e75a502d2083d839844bb}{FLAG\_CARD\_IN}};
+57         \mbox{\hyperlink{mutex_8c_aa5fdb07cba530aae1495d95be367d04a}{unlock}}(1);
+58     \}
+59 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{pi_music_box__2_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{pi_music_box__2_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{pi\+Music\+Box\+\_\+2.\+c@{pi\+Music\+Box\+\_\+2.\+c}!main@{main}}
+\index{main@{main}!pi\+Music\+Box\+\_\+2.\+c@{pi\+Music\+Box\+\_\+2.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 19 of file pi\+Music\+Box\+\_\+2.\+c.
+
+
+\begin{DoxyCode}
+20 \{
+21 
+22     \mbox{\hyperlink{_interrupt_s_m_8c_af169ed2cb7b858f9c2e7eeeee874f033}{attachIsr}}(18, \mbox{\hyperlink{_interrupt_s_m_8h_a3b65133bb9997cd1ccf311af0927fc9eaada6cf2b086af8fd5f84e946d2bd145d}{CHANGE}}, NULL, \mbox{\hyperlink{pi_music_box__2_8c_a5559b6f8334054ad27750eb1b4dee6ce}{callback}});   \textcolor{comment}{//creo interrupcion para el
+       optoacoplador}
+23 
+24     menu\_lcd\_init();                        \textcolor{comment}{//inicio la pantalla}
+25     menu\_lcd\_display(\textcolor{stringliteral}{"PiBox RFID player!"}, \textcolor{stringliteral}{""}, \textcolor{stringliteral}{""}, \textcolor{stringliteral}{""});
+26     \mbox{\hyperlink{player_8c_afbf824fb6586d8a0b33e4ddfe27331ee}{launchPlayer}}();                         \textcolor{comment}{//lanzo maquina de estados del player}
+27     \mbox{\hyperlink{fsm__rfid_8c_aa239886bea26a31d0f6ddf5137a804cb}{launchRFID}}();                         \textcolor{comment}{//lanzo maquina de estados del rfid}
+28     \textcolor{keywordflow}{while} (1)
+29         ;
+30 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{pi_music_box__2_8c_ab66ed8e0098c0a86b458672a55a9cca9}\label{pi_music_box__2_8c_ab66ed8e0098c0a86b458672a55a9cca9}} 
+\index{pi\+Music\+Box\+\_\+2.\+c@{pi\+Music\+Box\+\_\+2.\+c}!k@{k}}
+\index{k@{k}!pi\+Music\+Box\+\_\+2.\+c@{pi\+Music\+Box\+\_\+2.\+c}}
+\subsubsection{\texorpdfstring{k}{k}}
+{\footnotesize\ttfamily int k = 0}
+
+
+
+Definition at line 15 of file pi\+Music\+Box\+\_\+2.\+c.
+

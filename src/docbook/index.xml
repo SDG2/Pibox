@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info>
+    <title>Pibox</title>
+    </info>
+    <chapter>
+        <title>Data Structure Documentation</title>
+        <xi:include href="struct_b_u_f_f_e_r_s.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structfsm__.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structfsm__audio__controller.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structfsm__trans__.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="struct_i_s_r___typ.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structlist__files.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="struct_tipo_sistema.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>File Documentation</title>
+        <xi:include href="dbcontroller_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="dbcontroller_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="defines_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="fsm_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="fsm_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="fsm__rfid_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="fsm__rfid_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_interrupt_s_m_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_interrupt_s_m_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="mutex_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="mutex_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="pi_music_box__2_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="pi_music_box__2_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="player_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="player_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="tipos_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="tone_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="tone_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+</book>
