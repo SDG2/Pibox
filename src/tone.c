@@ -130,5 +130,4 @@ void bipCallBack(){
 	tone_stop();
 	tmr_destroy(keyTimer);
 	success = 1;
-
 }

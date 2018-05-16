@@ -9,6 +9,8 @@
 #include "mutex.h"
 #include <string.h>
 
+uint8_t createdyet = 0; ///<Variable que indica si la maquina de estados ha sido lanzada
+
 static inline signed int scale(mad_fixed_t sample);
 static int CompruebaPlayerStart(fsm_t *userData);
 static int Comprueba_fin_bff2(fsm_t *userData);
@@ -379,6 +381,11 @@ static inline signed int scale(mad_fixed_t sample) // @suppress("Unused static f
  */
 void launchPlayer()
 {
+	if(createdyet){
+		printf("ya lanzado \n");
+		return;
+	}
+	createdyet = 1;
 	fsm_audio_controller_t *sFsm = (fsm_audio_controller_t *)malloc(sizeof(fsm_audio_controller_t));
 	sFsm->fsm = fsm_new(transition_table_player, NULL);
 
